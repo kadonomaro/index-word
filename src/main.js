@@ -12,12 +12,12 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAFrujE2RhiNTN5Gw3oMICHsfovZuTHnFo',
-  authDomain: 'index-word.firebaseapp.com',
-  databaseURL: 'https://index-word.firebaseio.com',
-  projectId: 'index-word',
-  storageBucket: 'index-word.appspot.com',
-  messagingSenderId: '664834727086',
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: '1:664834727086:web:a7dd48b4f891b8e38c213f',
 };
 
