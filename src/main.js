@@ -1,13 +1,13 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
+import Article from '@/components/Article.vue';
 
 Vue.config.productionTip = false;
 
@@ -24,6 +24,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 export default db;
+
+Vue.component('app-article', Article);
+
 new Vue({
   router,
   store,

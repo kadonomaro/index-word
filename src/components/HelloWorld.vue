@@ -1,17 +1,23 @@
 <template>
   <div class="hello">
-    <div class="article" v-for="(article, index) in articles" :key="index">
+    <!-- <div class="article" v-for="article in articles" :key="article.id">
       <h2>{{ article.title }}</h2>
       <p>{{ article.text }}</p>
       <span>{{ article.date }}</span>
-    </div>
-
+    </div> -->
+    <app-article
+      v-for="article in articles"
+      :key="article.id"
+      :id="article.id"
+      :title="article.title"
+      :text="article.text"
+      :date="article.date"
+    />
   </div>
 </template>
 
 <script>
 import db from '@/main';
-import 'firebase/firestore';
 
 export default {
   name: 'HelloWorld',
@@ -39,7 +45,7 @@ export default {
               id: doc.id,
               title: doc.data().title,
               text: doc.data().text,
-              date: new Date(doc.data().date.seconds * 1000),
+              date: new Date(doc.data().date.seconds * 1000).toLocaleString(),
             };
             this.articles.push(article);
           });
