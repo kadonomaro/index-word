@@ -3,6 +3,7 @@
     <div class="article" v-for="(article, index) in articles" :key="index">
       <h2>{{ article.title }}</h2>
       <p>{{ article.text }}</p>
+      <span>{{ article.date }}</span>
     </div>
 
   </div>
@@ -10,6 +11,7 @@
 
 <script>
 import db from '@/main';
+import 'firebase/firestore';
 
 export default {
   name: 'HelloWorld',
@@ -33,7 +35,13 @@ export default {
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {
-            this.articles.push(doc.data());
+            const article = {
+              id: doc.id,
+              title: doc.data().title,
+              text: doc.data().text,
+              date: new Date(doc.data().date.seconds * 1000),
+            };
+            this.articles.push(article);
           });
         });
     },
