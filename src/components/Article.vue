@@ -8,8 +8,9 @@
       <slot></slot>
     </div>
     <footer class="article__footer">
-      <button class="article__button">Читать</button>
+      <button class="article__button" @click="increasePopularity">Читать</button>
       <time datetime="" class="article__date">{{ date }}</time>
+      {{ popularity }}
     </footer>
 
   </article>
@@ -35,11 +36,20 @@ export default {
       type: String,
       required: true,
     },
+    popularity: {
+      type: Number,
+      required: true,
+    }
   },
   data() {
     return {
 
     };
+  },
+  methods: {
+    increasePopularity() {
+      this.$store.commit('increasePopularity', this.id);
+    }
   },
 };
 </script>

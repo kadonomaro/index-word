@@ -7,7 +7,7 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-import Article from '@/components/Article.vue';
+// import Article from '@/components/Article.vue';
 
 Vue.config.productionTip = false;
 
@@ -25,7 +25,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 export default db;
 
-Vue.component('app-article', Article);
 
 new Vue({
   router,

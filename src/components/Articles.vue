@@ -8,6 +8,7 @@
         :id="article.id"
         :title="article.title"
         :date="article.date"
+        :popularity="article.popularity"
       >
         <div v-html="article.text" ></div>
       </app-article>
@@ -17,20 +18,23 @@
 </template>
 
 <script>
-// import db from '@/main';
+import AppArticle from '@/components/Article.vue';
 
 export default {
   name: 'Articles',
+  components: {
+    AppArticle,
+  },
   data() {
     return {
       articles: this.$store.state.articles,
     };
   },
   created() {
-
+    this.getData();
   },
   mounted() {
-    this.getData();
+
   },
   methods: {
     getData() {
