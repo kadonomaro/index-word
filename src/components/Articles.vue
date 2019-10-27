@@ -7,9 +7,10 @@
         :key="article.id"
         :id="article.id"
         :title="article.title"
-        :text="article.text"
         :date="article.date"
-      />
+      >
+        <div v-html="article.text"></div>
+      </app-article>
     </div>
 
   </div>
@@ -54,7 +55,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .articles {
 
     &__list {

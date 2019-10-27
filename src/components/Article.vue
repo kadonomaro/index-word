@@ -5,10 +5,13 @@
       <img src="https://via.placeholder.com/400x200" alt="">
     </div>
     <div class="article__text">
-      <p>{{ text }}</p>
-      <time datetime="" class="article__date">{{ date }}</time>
+      <slot></slot>
     </div>
-    <button class="article__button">Читать</button>
+    <footer class="article__footer">
+      <button class="article__button">Читать</button>
+      <time datetime="" class="article__date">{{ date }}</time>
+    </footer>
+
   </article>
 </template>
 
@@ -21,10 +24,6 @@ export default {
       required: true,
     },
     title: {
-      type: String,
-      required: true,
-    },
-    text: {
       type: String,
       required: true,
     },
@@ -69,16 +68,32 @@ export default {
       flex-grow: 1;
       margin-bottom: 10px;
       padding: 10px;
+      text-align: left;
+      h3, h4, h5, h5, p, ul, ol {
+        margin: 0 0 10px;
+      }
+      ul, ol {
+        padding-left: 25px;
+      }
+    }
+    &__footer {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
     }
     &__date {
-      padding: 4px 12px;
+      padding: 6px 12px;
       color: #ffffff;
       font-size: 18px;
       background-color: rgba($color: #000000, $alpha: 0.7)
     }
     &__button {
-      margin: 10px;
+      margin-right: 5px;
       padding: 6px 12px;
+      font-size: 18px;
       background-color: transparent;
       border: 1px solid #303030;
       cursor: pointer;
