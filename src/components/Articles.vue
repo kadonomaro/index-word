@@ -9,7 +9,7 @@
         :title="article.title"
         :date="article.date"
       >
-        <div v-html="article.text"></div>
+        <div v-html="article.text" ></div>
       </app-article>
     </div>
 
@@ -17,16 +17,13 @@
 </template>
 
 <script>
-import db from '@/main';
+// import db from '@/main';
 
 export default {
   name: 'Articles',
-  props: {
-    msg: String,
-  },
   data() {
     return {
-      articles: [],
+      articles: this.$store.state.articles,
     };
   },
   created() {
@@ -37,19 +34,7 @@ export default {
   },
   methods: {
     getData() {
-      db.collection('articles')
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            const article = {
-              id: doc.id,
-              title: doc.data().title,
-              text: doc.data().text,
-              date: new Date(doc.data().date.seconds * 1000).toLocaleString(),
-            };
-            this.articles.push(article);
-          });
-        });
+      this.$store.dispatch('getArticles');
     },
   },
 };
