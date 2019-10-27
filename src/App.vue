@@ -14,6 +14,9 @@ img {
   max-width: 100%;
   width: 100%;
 }
+.container {
+  padding: 0 10px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

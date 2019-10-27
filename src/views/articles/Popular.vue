@@ -1,5 +1,6 @@
 <template>
   <div class="popular-articles">
+    <h2>Популярные статьи</h2>
     <app-articles/>
   </div>
 </template>

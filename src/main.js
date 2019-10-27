@@ -6,8 +6,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-
-// import Article from '@/components/Article.vue';
+import './common.css';
 
 Vue.config.productionTip = false;
 

@@ -1,5 +1,6 @@
 <template>
   <div class="newest-articles">
+    <h2>Новые статьи</h2>
     <app-articles/>
   </div>
 </template>

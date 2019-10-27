@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <app-tabs />
-    <app-articles/>
+    <!-- <app-articles/> -->
+    <router-view />
   </div>
 </template>
 

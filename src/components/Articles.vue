@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss">
   .articles {
-    padding: 20px 0;
+    padding: 20px 10px;
     overflow: hidden;
     &__list {
       display: flex;

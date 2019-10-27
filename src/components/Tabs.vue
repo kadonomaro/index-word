@@ -48,8 +48,12 @@ export default {
     &__link {
       display: block;
       padding: 15px 15px 20px;
-      color: #6b727a;
+      color: #757575;
       text-decoration: none;
+    }
+    &__link.router-link-exact-active {
+      color: #303030;
+      background-color: #ffffff;
     }
   }
 </style>
