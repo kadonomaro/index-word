@@ -1,18 +1,17 @@
 <template>
-  <div class="hello">
-    <!-- <div class="article" v-for="article in articles" :key="article.id">
-      <h2>{{ article.title }}</h2>
-      <p>{{ article.text }}</p>
-      <span>{{ article.date }}</span>
-    </div> -->
-    <app-article
-      v-for="article in articles"
-      :key="article.id"
-      :id="article.id"
-      :title="article.title"
-      :text="article.text"
-      :date="article.date"
-    />
+  <div class="articles">
+    <div class="articles__list">
+      <app-article
+        class="articles__item"
+        v-for="article in articles"
+        :key="article.id"
+        :id="article.id"
+        :title="article.title"
+        :text="article.text"
+        :date="article.date"
+      />
+    </div>
+
   </div>
 </template>
 
@@ -20,7 +19,7 @@
 import db from '@/main';
 
 export default {
-  name: 'HelloWorld',
+  name: 'Articles',
   props: {
     msg: String,
   },
@@ -55,20 +54,18 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  .articles {
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__item {
+      flex-basis: calc(33.333% - 20px);
+      max-width: calc(33.333% - 20px);
+      min-width: 250px;
+      margin: 10px;
+    }
+  }
 </style>
