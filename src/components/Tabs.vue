@@ -1,0 +1,55 @@
+<template>
+  <nav class="tabs">
+    <ul class="tabs__list">
+      <li class="tabs__item">
+        <router-link class="tabs__link" to="/all">Все статьи</router-link>
+      </li>
+      <li class="tabs__item">
+        <router-link class="tabs__link" to="/popular">Популярные</router-link>
+      </li>
+      <li class="tabs__item">
+        <router-link class="tabs__link" to="/newest">Новинки</router-link>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script>
+export default {
+  name: 'Tabs',
+  props: [],
+  data() {
+    return {
+
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  },
+}
+</script>
+
+<style lang="scss">
+  .tabs {
+    padding: 5px 10px 0;
+    background-color: #eaebed;
+    &__list {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    &__item {
+
+    }
+    &__link {
+      display: block;
+      padding: 15px 15px 20px;
+      color: #6b727a;
+      text-decoration: none;
+    }
+  }
+</style>

@@ -1,10 +1,11 @@
 <template>
   <article class="article">
-    <h2 class="article__title">{{ title }}</h2>
+
     <div class="article__image">
       <img src="https://via.placeholder.com/400x200" alt="">
     </div>
     <div class="article__text">
+      <h2 class="article__title">{{ title }}</h2>
       <slot></slot>
     </div>
     <footer class="article__footer">
@@ -60,16 +61,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 1px solid #cdcdcd;
+    background-color: #f6f6f6;
+    border: 1px solid #ececec;
+    border-radius: 5px;
     box-sizing: border-box;
     &__title {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      left: 10px;
       margin: 0 0 10px;
-      padding: 4px 8px;
-      background-color: rgba($color: #000000, $alpha: 0.2);
+      color: #606060;
+      font-size: 20px;
+      text-align: center;
     }
     &__image {
       width: 100%;

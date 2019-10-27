@@ -46,10 +46,12 @@ export default {
 
 <style lang="scss">
   .articles {
-
+    padding: 20px 0;
+    overflow: hidden;
     &__list {
       display: flex;
       flex-wrap: wrap;
+      margin: 0 -10px;
     }
     &__item {
       flex-basis: calc(33.333% - 20px);

@@ -1,20 +1,17 @@
 <template>
-  <div class="home">
-    <app-tabs />
+  <div class="all-articles">
     <app-articles/>
   </div>
 </template>
 
 <script>
 
-import AppTabs from '@/components/Tabs.vue';
 import AppArticles from '@/components/Articles.vue';
 
 export default {
-  name: 'home',
+  name: 'all-articles',
   components: {
-    AppTabs,
-    AppArticles
+    AppArticles,
   },
 };
 </script>
