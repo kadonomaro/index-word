@@ -22,6 +22,7 @@ import AppArticle from '@/components/Article.vue';
 
 export default {
   name: 'Articles',
+  props: ['popularArticles'],
   components: {
     AppArticle,
   },

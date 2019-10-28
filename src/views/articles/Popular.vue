@@ -1,7 +1,7 @@
 <template>
   <div class="popular-articles">
     <h2>Популярные статьи</h2>
-    <app-articles/>
+    <app-articles />
   </div>
 </template>
 

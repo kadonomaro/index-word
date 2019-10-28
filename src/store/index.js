@@ -14,11 +14,8 @@ export default new Vuex.Store({
     },
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
-      article.popularity++;
-      db.collection('articles').doc(id).set({
-        popularity: article.popularity
-      }, {
-        merge: true
+      db.collection('articles').doc(id).update({
+        popularity: ++article.popularity
       });
     }
   },
@@ -42,6 +39,10 @@ export default new Vuex.Store({
     },
   },
   getters: {
-
+    popularArticles(state) {
+      return state.articles.filter((article) => {
+        return article.popularity >= 10;
+      });
+    }
   },
 });
