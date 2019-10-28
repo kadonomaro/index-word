@@ -22,13 +22,13 @@ import AppArticle from '@/components/Article.vue';
 
 export default {
   name: 'Articles',
-  props: ['popularArticles'],
+  props: ['propArticles'],
   components: {
     AppArticle,
   },
   data() {
     return {
-      articles: this.popularArticles || this.$store.state.articles,
+      articles: this.propArticles || this.$store.state.articles,
     };
   },
   created() {

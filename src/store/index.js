@@ -43,6 +43,14 @@ export default new Vuex.Store({
       return state.articles.filter((article) => {
         return article.popularity >= 10;
       });
+    },
+    newestArticles(state) {
+      const date = new Date(Date.now() - 604800000);
+      return state.articles.filter((article) => {
+        // console.log(article.date);
+        // console.log(date.toLocaleString());
+        return article.date > date.toLocaleString();
+      });
     }
   },
 });
