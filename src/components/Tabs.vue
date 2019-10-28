@@ -42,14 +42,14 @@ export default {
       padding: 0;
       list-style-type: none;
     }
-    &__item {
-
-    }
     &__link {
       display: block;
       padding: 15px 15px 20px;
       color: #757575;
       text-decoration: none;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transition: color 0.3s ease-in, background-color 0.3s ease-in;
     }
     &__link.router-link-exact-active {
       color: #303030;

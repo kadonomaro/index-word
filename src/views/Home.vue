@@ -2,7 +2,9 @@
   <div class="home">
     <app-tabs />
     <!-- <app-articles/> -->
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 

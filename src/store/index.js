@@ -7,6 +7,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articles: [],
+    settings: {
+      daysBefore: 7
+    }
   },
   mutations: {
     updateArticles(state, article) {
@@ -45,10 +48,9 @@ export default new Vuex.Store({
       });
     },
     newestArticles(state) {
-      const date = new Date(Date.now() - 604800000);
+      const date = new Date();
+      date.setDate(date.getDate() - state.settings.daysBefore);
       return state.articles.filter((article) => {
-        // console.log(article.date);
-        // console.log(date.toLocaleString());
         return article.date > date.toLocaleString();
       });
     }
