@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      articles: this.$store.state.articles,
+      articles: this.popularArticles || this.$store.state.articles,
     };
   },
   created() {
