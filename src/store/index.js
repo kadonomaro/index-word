@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import db from '../main';
+import { db, storage } from '../main';
 
 Vue.use(Vuex);
 
@@ -40,6 +40,16 @@ export default new Vuex.Store({
           });
         });
     },
+    getImages(state, id) {
+      storage.ref().child(`${id}/tree-4578319_640.jpg`).getDownloadURL()
+        .then((url) => {
+          console.log(url);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
   },
   getters: {
     popularArticles(state) {

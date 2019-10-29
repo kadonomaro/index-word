@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 import Vue from 'vue';
 import App from './App.vue';
@@ -22,7 +23,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-export default db;
+const storage = firebase.storage();
+export { db, storage };
 
 
 new Vue({

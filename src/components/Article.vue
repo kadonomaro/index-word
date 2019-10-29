@@ -9,9 +9,8 @@
       <slot></slot>
     </div>
     <footer class="article__footer">
-      <button class="article__button" @click="increasePopularity">Читать</button>
+      <button class="article__button" @click="clickHandler">Читать</button>
       <time datetime="" class="article__date">{{ date }}</time>
-      {{ popularity }}
     </footer>
 
   </article>
@@ -50,6 +49,10 @@ export default {
   methods: {
     increasePopularity() {
       this.$store.commit('increasePopularity', this.id);
+    },
+    clickHandler() {
+      this.increasePopularity();
+      this.$store.dispatch('getImages', this.id);
     }
   },
 };
@@ -65,6 +68,7 @@ export default {
     border: 1px solid #ececec;
     border-radius: 5px;
     box-sizing: border-box;
+    overflow: hidden;
     &__title {
       margin: 0 0 10px;
       color: #606060;
@@ -98,14 +102,16 @@ export default {
       padding: 6px 12px;
       color: #ffffff;
       font-size: 18px;
-      background-color: rgba($color: #000000, $alpha: 0.7)
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      border-radius: 5px;
     }
     &__button {
       margin-right: 5px;
-      padding: 6px 12px;
+      padding: 8px 16px;
       font-size: 18px;
       background-color: transparent;
       border: 1px solid #303030;
+      border-radius: 5px;
       cursor: pointer;
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
       &:hover {
