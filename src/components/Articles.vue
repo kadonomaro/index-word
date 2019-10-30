@@ -8,9 +8,10 @@
         :id="article.id"
         :title="article.title"
         :date="article.date"
+        :image="article.image"
         :popularity="article.popularity"
       >
-        <div v-html="article.text" ></div>
+        <div v-html="article.text"></div>
       </app-article>
     </div>
 
@@ -28,11 +29,11 @@ export default {
   },
   data() {
     return {
-      articles: this.propArticles || this.$store.state.articles,
+      articles: this.propArticles || this.$store.getters.allArticles,
     };
   },
   created() {
-    this.getData();
+    this.getData();;
   },
   mounted() {
 

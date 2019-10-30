@@ -2,7 +2,7 @@
   <article class="article">
 
     <div class="article__image">
-      <img src="https://via.placeholder.com/400x200" alt="">
+      <img :src="image" alt="">
     </div>
     <div class="article__text">
       <h2 class="article__title">{{ title }}</h2>
@@ -52,7 +52,6 @@ export default {
     },
     clickHandler() {
       this.increasePopularity();
-      this.$store.dispatch('getImages', this.id);
     }
   },
 };

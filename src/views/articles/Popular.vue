@@ -5,9 +5,7 @@
       v-if="popularArticles.length > 0"
       :propArticles="popularArticles"
     />
-    <app-empty-article
-      v-else
-    />
+    <app-empty-article v-else />
   </div>
 </template>
 

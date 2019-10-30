@@ -36,22 +36,16 @@ export default new Vuex.Store({
               date: new Date(doc.data().date.seconds * 1000).toLocaleString(),
               popularity: doc.data().popularity,
             };
+            getImages(article, article.id);
             state.commit('updateArticles', article);
           });
         });
     },
-    getImages(state, id) {
-      storage.ref().child(`${id}/tree-4578319_640.jpg`).getDownloadURL()
-        .then((url) => {
-          console.log(url);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-    }
   },
   getters: {
+    allArticles(state) {
+      return state.articles;
+    },
     popularArticles(state) {
       return state.articles.filter((article) => {
         return article.popularity >= 10;
@@ -66,3 +60,15 @@ export default new Vuex.Store({
     }
   },
 });
+
+
+function getImages(article, id) {
+  storage.ref().child(`${id}/image.jpg`).getDownloadURL()
+    .then((url) => {
+      article.image = url;
+    })
+    .catch((err) => {
+      console.log(err);
+      article.image = 'https://via.placeholder.com/400x200';
+    });
+}
