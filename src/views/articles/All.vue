@@ -1,7 +1,7 @@
 <template>
   <div class="all-articles">
     <h2>Все статьи</h2>
-    <app-articles/>
+    <app-articles />
   </div>
 </template>
 

@@ -35,6 +35,7 @@ export default new Vuex.Store({
               text: doc.data().text,
               date: new Date(doc.data().date.seconds * 1000).toLocaleString(),
               popularity: doc.data().popularity,
+              image: ''
             };
             getImages(article, article.id);
             state.commit('updateArticles', article);
@@ -68,7 +69,7 @@ function getImages(article, id) {
       article.image = url;
     })
     .catch((err) => {
-      console.log(err);
+      console.warn(err.code);
       article.image = 'https://via.placeholder.com/400x200';
     });
 }

@@ -2,7 +2,7 @@
   <article class="article">
 
     <div class="article__image">
-      <img :src="image" alt="">
+      <img class="article__image-img" :src="image" alt="">
     </div>
     <div class="article__text">
       <h2 class="article__title">{{ title }}</h2>
@@ -76,6 +76,10 @@ export default {
     }
     &__image {
       width: 100%;
+    }
+    &__image-img {
+      max-height: 300px;
+      object-fit: cover;
     }
     &__text {
       flex-grow: 1;
