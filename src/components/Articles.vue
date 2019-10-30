@@ -1,20 +1,21 @@
 <template>
-  <div class="articles">
-    <div class="articles__list">
-      <app-article
-        class="articles__item"
-        v-for="article in articles"
-        :key="article.id"
-        :id="article.id"
-        :title="article.title"
-        :date="article.date"
-        :image="article.image"
-        :popularity="article.popularity"
-      >
-        <div v-html="article.text"></div>
-      </app-article>
+  <div class="container">
+    <div class="articles">
+      <div class="articles__list">
+        <app-article
+          class="articles__item"
+          v-for="article in articles"
+          :key="article.id"
+          :id="article.id"
+          :title="article.title"
+          :date="article.date"
+          :image="article.image"
+          :popularity="article.popularity"
+        >
+          <div v-html="article.text"></div>
+        </app-article>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -56,10 +57,12 @@ export default {
       margin: 0 -10px;
     }
     &__item {
-      flex-basis: calc(33.333% - 20px);
-      max-width: calc(33.333% - 20px);
+      flex-basis: calc(33.333% - 30px);
+      max-width: calc(33.333% - 30px);
+      // flex-basis: calc(25% - 30px);
+      // max-width: calc(25% - 30px);
       min-width: 250px;
-      margin: 10px;
+      margin: 15px;
     }
   }
 </style>

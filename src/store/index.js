@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     articles: [],
     settings: {
-      daysBefore: 7
+      daysBefore: 7,
+      articlePopularityLimit: 10
     }
   },
   mutations: {
@@ -49,7 +50,7 @@ export default new Vuex.Store({
     },
     popularArticles(state) {
       return state.articles.filter((article) => {
-        return article.popularity >= 10;
+        return article.popularity >= state.settings.articlePopularityLimit;
       });
     },
     newestArticles(state) {

@@ -68,6 +68,11 @@ export default {
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
+    transition: box-shadow 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 0 10px 15px -10px rgba(30,45,62,.21),
+                  0 5px 40px -10px rgba(31,44,60,.1)
+    }
     &__title {
       margin: 0 0 10px;
       color: #606060;
@@ -83,8 +88,7 @@ export default {
     }
     &__text {
       flex-grow: 1;
-      margin-bottom: 10px;
-      padding: 10px;
+      padding: 20px;
       text-align: left;
       h3, h4, h5, h5, p, ul, ol {
         margin: 0 0 10px;
@@ -98,14 +102,15 @@ export default {
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
+      padding: 20px;
+      background-color: darken($color: #f6f6f6, $amount: 5%);
       box-sizing: border-box;
     }
     &__date {
       padding: 6px 12px;
       color: #ffffff;
       font-size: 18px;
-      background-color: rgba($color: #000000, $alpha: 0.7);
+      background-color: #5cb8c9;
       border-radius: 5px;
     }
     &__button {
