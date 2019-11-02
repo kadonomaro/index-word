@@ -65,7 +65,7 @@ export default new Vuex.Store({
 
 
 function getImages(article, id) {
-  storage.ref().child(`${id}/image.jpg`).getDownloadURL()
+  storage.ref().child(`preview-images/${id}.jpg`).getDownloadURL()
     .then((url) => {
       article.image = url;
     })
