@@ -83,6 +83,7 @@ export default {
       width: 100%;
     }
     &__image-img {
+      width: 100%;
       max-height: 300px;
       object-fit: cover;
     }

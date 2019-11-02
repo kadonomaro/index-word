@@ -7,13 +7,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'home',
+    // name: 'home',
     component: Home,
     children: [
       {
-        path: '/all',
+        path: '/',
         name: 'all',
-        component: () => import('../views/articles/All.vue')
+        component: () => import('../views/articles/All.vue'),
       },
       {
         path: '/popular',

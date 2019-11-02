@@ -1,7 +1,7 @@
 <template>
   <div class="home">
+    <app-hero />
     <app-tabs />
-    <!-- <app-articles/> -->
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
@@ -12,12 +12,14 @@
 
 import AppTabs from '@/components/Tabs.vue';
 import AppArticles from '@/components/Articles.vue';
+import AppHero from '@/components/Hero.vue';
 
 export default {
   name: 'home',
   components: {
     AppTabs,
-    AppArticles
+    AppArticles,
+    AppHero
   },
 };
 </script>

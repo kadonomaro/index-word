@@ -2,7 +2,7 @@
   <nav class="tabs">
     <ul class="tabs__list">
       <li class="tabs__item">
-        <router-link class="tabs__link" to="/all">Все статьи</router-link>
+        <router-link class="tabs__link" to="/">Все статьи</router-link>
       </li>
       <li class="tabs__item">
         <router-link class="tabs__link" to="/popular">Популярные</router-link>
