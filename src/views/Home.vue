@@ -11,14 +11,12 @@
 <script>
 
 import AppTabs from '@/components/Tabs.vue';
-import AppArticles from '@/components/Articles.vue';
 import AppHero from '@/components/Hero.vue';
 
 export default {
   name: 'home',
   components: {
     AppTabs,
-    AppArticles,
     AppHero
   },
 };
