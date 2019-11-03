@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss">
   .articles {
-    padding: 20px 10px;
+    padding: 0 10px;
     overflow: hidden;
     &__list {
       display: flex;
@@ -59,8 +59,6 @@ export default {
     &__item {
       flex-basis: calc(33.333% - 30px);
       max-width: calc(33.333% - 30px);
-      // flex-basis: calc(25% - 30px);
-      // max-width: calc(25% - 30px);
       min-width: 250px;
       margin: 15px;
     }
