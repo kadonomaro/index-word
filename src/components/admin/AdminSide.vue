@@ -6,7 +6,7 @@
           <router-link class="side-nav__link" to="/admin">Home</router-link>
         </li>
         <li class="side-nav__item">
-          <router-link class="side-nav__link side-nav__link--articles" to="/admin/articles">Articles</router-link>
+          <router-link class="side-nav__link side-nav__link--editor" to="/admin/editor">Editor</router-link>
         </li>
         <li class="side-nav__item">
           <router-link class="side-nav__link side-nav__link--settings" to="/admin/settings">Settings</router-link>
@@ -54,7 +54,7 @@ export default {
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
       &:hover {
         color: #ffffff;
-        background-color: #6bdaed;
+        background-color: #5cb8c9;
       }
       &:hover::before {
         filter: invert(100);
@@ -72,7 +72,26 @@ export default {
         transition: filter 0.2s ease-in;
       }
     }
-    &__link--articles {
+    &__link.router-link-exact-active {
+      color: #ffffff;
+      background-color: #5cb8c9;
+      &::before {
+        filter: invert(100);
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 25px 0 25px 10px;
+        border-color: transparent transparent transparent #5cb8c9;
+        transform: translateY(-50%);
+      }
+    }
+    &__link--editor {
       &::before {
         background-position-x: -70px;
       }

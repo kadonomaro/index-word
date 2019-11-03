@@ -36,6 +36,18 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: () => import('../views/admin/Admin.vue'),
+    children: [
+      {
+        path: '/admin/settings',
+        name: 'all',
+        component: () => import('../views/admin/Settings.vue'),
+      },
+      {
+        path: '/admin/editor',
+        name: 'popular',
+        component: () => import('../views/admin/Editor.vue')
+      },
+    ]
   },
 ];
 
