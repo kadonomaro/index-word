@@ -23,26 +23,20 @@
 import icons from '@/assets/admin/icons.svg';
 export default {
   name: 'Admin-side',
-  data() {
-    return {
-      icons
-    }
-  }
 }
 </script>
 
 <style lang="scss">
-  .admin-side {
-    &__nav {
-
-    }
-  }
 
   .side-nav {
     &__list {
       margin: 0;
       padding: 0;
       list-style-type: none;
+    }
+    &__item {
+      border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
     }
     &__link {
       position: relative;
@@ -52,11 +46,13 @@ export default {
       text-align: initial;
       text-decoration: none;
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      &:hover {
+      &:hover,
+      &:focus {
         color: #ffffff;
         background-color: #5cb8c9;
       }
-      &:hover::before {
+      &:hover::before,
+      &:focus::before {
         filter: invert(100);
       }
       &::before {
@@ -71,13 +67,6 @@ export default {
         transform: translateY(-50%);
         transition: filter 0.2s ease-in;
       }
-    }
-    &__link.router-link-exact-active {
-      color: #ffffff;
-      background-color: #5cb8c9;
-      &::before {
-        filter: invert(100);
-      }
       &::after {
         content: '';
         position: absolute;
@@ -88,7 +77,18 @@ export default {
         border-style: solid;
         border-width: 25px 0 25px 10px;
         border-color: transparent transparent transparent #5cb8c9;
-        transform: translateY(-50%);
+        transform: translate(0, -50%);
+        opacity: 0;
+      }
+    }
+    &__link.router-link-exact-active {
+      color: #ffffff;
+      background-color: #5cb8c9;
+      &::before {
+        filter: invert(100);
+      }
+      &::after {
+        opacity: 1;
       }
     }
     &__link--editor {
@@ -106,6 +106,5 @@ export default {
         background-position-x: -105px;
       }
     }
-
   }
 </style>

@@ -39,12 +39,12 @@ const routes = [
     children: [
       {
         path: '/admin/settings',
-        name: 'all',
+        name: 'settings',
         component: () => import('../views/admin/Settings.vue'),
       },
       {
         path: '/admin/editor',
-        name: 'popular',
+        name: 'editor',
         component: () => import('../views/admin/Editor.vue')
       },
     ]
