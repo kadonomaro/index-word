@@ -6,13 +6,13 @@
           <router-link class="side-nav__link" to="/admin">Home</router-link>
         </li>
         <li class="side-nav__item">
-          <router-link class="side-nav__link" to="/admin/articles">Articles</router-link>
+          <router-link class="side-nav__link side-nav__link--articles" to="/admin/articles">Articles</router-link>
         </li>
         <li class="side-nav__item">
-          <router-link class="side-nav__link" to="/admin/settings">Settings</router-link>
+          <router-link class="side-nav__link side-nav__link--settings" to="/admin/settings">Settings</router-link>
         </li>
         <li class="side-nav__item">
-          <router-link class="side-nav__link" to="/">Exit</router-link>
+          <router-link class="side-nav__link side-nav__link--logout" to="/">Logout</router-link>
         </li>
       </ul>
     </nav>
@@ -20,8 +20,14 @@
 </template>
 
 <script>
+import icons from '@/assets/admin/icons.svg';
 export default {
-  name: 'Admin-side'
+  name: 'Admin-side',
+  data() {
+    return {
+      icons
+    }
+  }
 }
 </script>
 
@@ -38,11 +44,49 @@ export default {
       padding: 0;
       list-style-type: none;
     }
-    &__item {
-
-    }
     &__link {
+      position: relative;
+      display: block;
+      padding: 15px 10px 15px 50px;
+      color: #303030;
+      text-align: initial;
       text-decoration: none;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in;
+      &:hover {
+        color: #ffffff;
+        background-color: #6bdaed;
+      }
+      &:hover::before {
+        filter: invert(100);
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        background-image: url('~@/assets/admin/icons.svg');
+        background-repeat: no-repeat;
+        transform: translateY(-50%);
+        transition: filter 0.2s ease-in;
+      }
     }
+    &__link--articles {
+      &::before {
+        background-position-x: -70px;
+      }
+    }
+    &__link--settings {
+      &::before {
+        background-position-x: -35px;
+      }
+    }
+    &__link--logout {
+      &::before {
+        background-position-x: -105px;
+      }
+    }
+
   }
 </style>

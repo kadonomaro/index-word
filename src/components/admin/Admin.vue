@@ -21,10 +21,10 @@ export default {
   .admin {
     display: flex;
     &__side {
-      flex-basis: 20%;
+      flex-basis: 15%;
     }
     &__main {
-      flex-basis: 80%;
+      flex-basis: 85%;
     }
   }
 </style>
