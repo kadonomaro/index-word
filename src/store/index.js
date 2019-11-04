@@ -34,7 +34,7 @@ export default new Vuex.Store({
               id: doc.id,
               title: doc.data().title,
               text: doc.data().text,
-              date: new Date(doc.data().date.seconds * 1000).toLocaleString(),
+              date: new Date(doc.data().date.seconds * 1000),
               popularity: doc.data().popularity,
               image: ''
             };
@@ -57,7 +57,7 @@ export default new Vuex.Store({
       const date = new Date();
       date.setDate(date.getDate() - state.settings.daysBefore);
       return state.articles.filter((article) => {
-        return article.date > date.toLocaleString();
+        return article.date.getTime() >= date.getTime();
       });
     }
   },

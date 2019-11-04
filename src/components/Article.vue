@@ -10,7 +10,7 @@
     </div>
     <footer class="article__footer">
       <button class="article__button" @click="clickHandler">Читать</button>
-      <time datetime="" class="article__date">{{ date }}</time>
+      <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
     </footer>
 
   </article>
@@ -33,7 +33,7 @@ export default {
       required: false,
     },
     date: {
-      type: String,
+      type: Date,
       required: true,
     },
     popularity: {
