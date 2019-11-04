@@ -21,10 +21,9 @@ export default {
   .nav {
     &__list {
       display: flex;
+      margin: 0;
+      padding: 10px 0;
       list-style-type: none;
-    }
-    &__item {
-
     }
     &__link {
       display: block;
