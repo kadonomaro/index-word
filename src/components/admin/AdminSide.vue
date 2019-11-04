@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import icons from '@/assets/admin/icons.svg';
 export default {
   name: 'Admin-side',
 }
@@ -41,7 +40,7 @@ export default {
     &__link {
       position: relative;
       display: block;
-      padding: 15px 10px 15px 50px;
+      padding: 10px 10px 10px 50px;
       color: #303030;
       text-align: initial;
       text-decoration: none;
@@ -75,7 +74,7 @@ export default {
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 25px 0 25px 10px;
+        border-width: 20px 0 20px 10px;
         border-color: transparent transparent transparent #5cb8c9;
         transform: translate(0, -50%);
         opacity: 0;
