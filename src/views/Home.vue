@@ -1,23 +1,20 @@
 <template>
   <div class="home">
-    <app-hero />
-    <app-tabs />
-    <transition name="fade" mode="out-in">
-      <router-view />
-    </transition>
+    <app-header />
+    <main-layout />
   </div>
 </template>
 
 <script>
 
-import AppTabs from '@/components/Tabs.vue';
-import AppHero from '@/components/Hero.vue';
+import AppHeader from '@/components/Header.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 export default {
   name: 'home',
   components: {
-    AppTabs,
-    AppHero
+    MainLayout,
+    AppHeader
   },
 };
 </script>

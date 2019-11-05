@@ -123,7 +123,8 @@ export default {
       border-radius: 5px;
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
       cursor: pointer;
-      &:hover {
+      &:hover,
+      &:focus {
         color: #ffffff;
         background-color: #303030;
       }

@@ -1,5 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <app-header />
+    <h1>About page</h1>
   </div>
 </template>
+
+<script>
+import AppHeader from '@/components/Header.vue';
+export default {
+  components: {
+    AppHeader
+  }
+}
+</script>
+
+<style>
+
+</style>
