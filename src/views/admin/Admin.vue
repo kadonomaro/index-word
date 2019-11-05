@@ -6,7 +6,7 @@
 
 <script>
 
-import AppAdmin from '@/components/admin/Admin.vue';
+import AppAdmin from '@/components/admin/AppAdmin.vue';
 
 export default {
   name: 'admin',

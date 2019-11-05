@@ -64,7 +64,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     background-color: #f6f6f6;
-    border: 1px solid #ececec;
+    border: 2px solid #ececec;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
@@ -89,7 +89,7 @@ export default {
     }
     &__text {
       flex-grow: 1;
-      padding: 20px;
+      padding: 15px 20px;
       text-align: left;
       h3, h4, h5, h5, p, ul, ol {
         margin: 0 0 10px;
@@ -103,7 +103,7 @@ export default {
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
+      padding: 15px 20px;
       background-color: darken($color: #f6f6f6, $amount: 5%);
       box-sizing: border-box;
     }
@@ -116,13 +116,13 @@ export default {
     }
     &__button {
       margin-right: 5px;
-      padding: 8px 16px;
+      padding: 5px 16px;
       font-size: 18px;
       background-color: transparent;
-      border: 1px solid #303030;
+      border: 2px solid #303030;
       border-radius: 5px;
-      cursor: pointer;
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
+      cursor: pointer;
       &:hover {
         color: #ffffff;
         background-color: #303030;

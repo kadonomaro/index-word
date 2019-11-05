@@ -59,8 +59,8 @@ export default {
         position: absolute;
         top: 50%;
         left: 10px;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         background-image: url('~@/assets/admin/icons.svg');
         background-repeat: no-repeat;
         transform: translateY(-50%);

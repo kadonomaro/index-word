@@ -9,7 +9,7 @@
 import AdminSide from '@/components/admin/AdminSide.vue';
 import AdminMain from '@/components/admin/AdminMain.vue';
 export default {
-  name: 'Admim',
+  name: 'AppAdmin',
   components: {
     AdminSide,
     AdminMain

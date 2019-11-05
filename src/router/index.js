@@ -14,6 +14,13 @@ const routes = [
         path: '/',
         name: 'all',
         component: () => import('../views/articles/All.vue'),
+        children: [
+          {
+            path: '/articles/:id',
+            name: 'article-page',
+            component: () => import('../components/Article.vue')
+          }
+        ]
       },
       {
         path: '/popular',
