@@ -21,6 +21,7 @@ export default {
   .admin {
     display: flex;
     min-height: 100vh;
+    font-family: 'Roboto Condensed', sans-serif;
     &__side {
       position: relative;
       width: 250px;

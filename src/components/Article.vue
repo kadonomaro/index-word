@@ -9,7 +9,19 @@
       <slot></slot>
     </div>
     <footer class="article__footer">
-      <button class="article__button" @click="clickHandler">Читать</button>
+      <router-link
+        class="article__button"
+        :to="{
+          name: 'article-page',
+          params: {
+            id,
+            title,
+            image,
+            date,
+            popularity
+            }
+          }"
+        >Далее</router-link>
       <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
     </footer>
 
@@ -117,7 +129,9 @@ export default {
     &__button {
       margin-right: 5px;
       padding: 5px 16px;
+      color: inherit;
       font-size: 18px;
+      text-decoration: none;
       background-color: transparent;
       border: 2px solid #303030;
       border-radius: 5px;
