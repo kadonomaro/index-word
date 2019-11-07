@@ -26,41 +26,41 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .admin-side {
+    &__nav {
+      height: 100%;
+    }
+  }
   .side-nav {
+    background-color: #3c4c67;
+
     &__list {
       margin: 0;
       padding: 0;
       list-style-type: none;
     }
     &__item {
-      border-top: 1px solid #ffffff;
-      border-bottom: 1px solid #ffffff;
+
     }
     &__link {
       position: relative;
       display: block;
-      padding: 10px 10px 10px 50px;
-      color: #303030;
+      padding: 15px 15px 15px 40px;
+      color: #ffffff;
       text-align: initial;
       text-decoration: none;
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
       &:hover,
       &:focus {
-        color: #ffffff;
-        background-color: #5cb8c9;
-      }
-      &:hover::before,
-      &:focus::before {
-        filter: invert(100);
+        background-color: darken($color: #3c4c67, $amount: 5%);
       }
       &::before {
         content: '';
         position: absolute;
         top: 50%;
         left: 10px;
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
         background-image: url('~@/assets/admin/icons.svg');
         background-repeat: no-repeat;
         transform: translateY(-50%);
@@ -69,40 +69,35 @@ export default {
       &::after {
         content: '';
         position: absolute;
-        top: 50%;
-        right: -10px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 20px 0 20px 10px;
-        border-color: transparent transparent transparent #5cb8c9;
-        transform: translate(0, -50%);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 3px;
+        background-color: #6bdaed;
+        transition: background-color 0.2s ease-in;
         opacity: 0;
       }
     }
     &__link.router-link-exact-active {
-      color: #ffffff;
-      background-color: #5cb8c9;
-      &::before {
-        filter: invert(100);
-      }
+      background-color: #293344;
+      &::after,
       &::after {
         opacity: 1;
       }
     }
     &__link--editor {
       &::before {
-        background-position-x: -70px;
+        background-position-x: -50px;
       }
     }
     &__link--settings {
       &::before {
-        background-position-x: -35px;
+        background-position-x: -25px;
       }
     }
     &__link--logout {
       &::before {
-        background-position-x: -105px;
+        background-position-x: -75px;
       }
     }
   }

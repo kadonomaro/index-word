@@ -20,11 +20,14 @@ export default {
 <style lang="scss">
   .admin {
     display: flex;
+    min-height: 100vh;
     &__side {
-      flex-basis: 10%;
+      position: relative;
+      width: 250px;
+      box-shadow: 5px 0 10px rgba($color: #000000, $alpha: 0.3);
     }
     &__main {
-      flex-basis: 90%;
+      flex-grow: 1;
     }
   }
 </style>
