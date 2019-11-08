@@ -11,8 +11,8 @@
           :date="article.date"
           :image="article.image"
           :popularity="article.popularity"
+          :text="article.text"
         >
-          <div v-html="article.text"></div>
         </app-article>
       </div>
     </div>

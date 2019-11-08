@@ -6,7 +6,7 @@
     </div>
     <div class="article__text">
       <h2 class="article__title">{{ title }}</h2>
-      <slot></slot>
+      <div v-html="text"></div>
     </div>
     <footer class="article__footer">
       <router-link
@@ -17,6 +17,7 @@
             id,
             title,
             image,
+            text,
             date,
             popularity
             }
@@ -43,6 +44,10 @@ export default {
     image: {
       type: String,
       required: false,
+    },
+    text: {
+      type: String,
+      required: true
     },
     date: {
       type: Date,

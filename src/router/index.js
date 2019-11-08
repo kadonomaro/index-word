@@ -9,7 +9,7 @@ const routes = [
     path: '/articles/:id',
     name: 'article-page',
     props: true,
-    component: () => import('../components/Article.vue')
+    component: () => import('../components/ArticleDetail.vue')
   },
   {
     path: '/',
