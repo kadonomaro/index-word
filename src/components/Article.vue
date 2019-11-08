@@ -6,7 +6,7 @@
     </div>
     <div class="article__text">
       <h2 class="article__title">{{ title }}</h2>
-      <div v-html="text"></div>
+      <div v-html="stringExplode"></div>
     </div>
     <footer class="article__footer">
       <router-link
@@ -63,6 +63,11 @@ export default {
 
     };
   },
+  computed: {
+    stringExplode() {
+      return this.text.split('</p>')[0];
+    }
+  },
   methods: {
     increasePopularity() {
       this.$store.commit('increasePopularity', this.id);
@@ -81,14 +86,14 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     background-color: #f6f6f6;
-    // border: 2px solid #ececec;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
-    transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
     &:hover {
+      filter: brightness(0.95);
       box-shadow: 0 10px 15px -10px rgba(30,45,62,.21),
-                  0 5px 40px -10px rgba(31,44,60,.1)
+                  0 5px 40px -10px rgba(31,44,60,.1);
     }
     &__title {
       margin: 0 0 10px;

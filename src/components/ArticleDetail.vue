@@ -1,8 +1,6 @@
 <template>
-  <div class="article-detail-wrapper">
-
     <article class="article-detail">
-      <a href="" class="" @click.prevent="goBack">Назад</a>
+      <a href="" class="article-detail__link" @click.prevent="goBack">Назад</a>
       <div class="article-detail__image">
         <img class="article-detail__image-img" :src="image" :alt="imageAlt">
       </div>
@@ -14,8 +12,6 @@
         <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
       </footer>
     </article>
-
-  </div>
 </template>
 
 <script>
@@ -72,12 +68,45 @@ export default {
 </script>
 
 <style lang="scss">
-  .article-detail-wrapper {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 10px;
-  }
   .article-detail {
     padding: 20px 0;
+
+    &__image {
+
+    }
+    &__image-img {
+
+    }
+    &__title {
+      text-align: center;
+    }
+    &__text {
+      margin-bottom: 20px;
+      padding: 0 50px;
+
+      h3, h4, h5, h5, p, ul, ol {
+        margin: 0 0 10px;
+      }
+      ul, ol {
+        padding-left: 25px;
+      }
+    }
+    &__link {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px 16px;
+      color: inherit;
+      text-decoration: none;
+      background-color: transparent;
+      border: 2px solid #303030;
+      border-radius: 5px;
+      transition: color 0.2s ease-in, background-color 0.2s ease-in;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: #ffffff;
+        background-color: #303030;
+      }
+    }
   }
 </style>
