@@ -1,7 +1,11 @@
 <template>
     <article class="article-detail">
       <div class="article-detail__inner">
-        <a href="" class="article-detail__link" @click.prevent="goBack">Назад</a>
+        <app-button
+          class="article-detail__link"
+          :text="'Назад'"
+          @click-handler="goBack"
+        />
         <div class="article-detail__image">
           <img class="article-detail__image-img" :src="image" :alt="imageAlt">
         </div>
@@ -17,8 +21,12 @@
 </template>
 
 <script>
+import AppButton from '@/components/blocks/AppButton.vue';
 export default {
   name: 'ArticleDetail',
+  components: {
+    AppButton
+  },
   props: {
     id: {
       type: String,
@@ -102,21 +110,7 @@ export default {
       }
     }
     &__link {
-      display: inline-block;
       margin-bottom: 20px;
-      padding: 5px 16px;
-      color: inherit;
-      text-decoration: none;
-      background-color: transparent;
-      border: 2px solid #303030;
-      border-radius: 5px;
-      transition: color 0.2s ease-in, background-color 0.2s ease-in;
-      cursor: pointer;
-      &:hover,
-      &:focus {
-        color: #ffffff;
-        background-color: #303030;
-      }
     }
     &__footer {
       padding: 10px;

@@ -58,11 +58,6 @@ export default {
       required: true,
     }
   },
-  data() {
-    return {
-
-    };
-  },
   computed: {
     stringExplode() {
       return this.text.split('</p>')[0];
