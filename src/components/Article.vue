@@ -81,7 +81,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     background-color: #f6f6f6;
-    border: 2px solid #ececec;
+    // border: 2px solid #ececec;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;

@@ -1,7 +1,8 @@
 <template>
   <div class="article-detail-wrapper">
 
-    <article class=".article-detail">
+    <article class="article-detail">
+      <a href="" class="" @click.prevent="goBack">Назад</a>
       <div class="article-detail__image">
         <img class="article-detail__image-img" :src="image" :alt="imageAlt">
       </div>
@@ -56,12 +57,15 @@ export default {
       return this.title.replace(/\?/g, '');
     }
   },
+  mounted() {
+    this.increasePopularity();
+  },
   methods: {
     increasePopularity() {
       this.$store.commit('increasePopularity', this.id);
     },
-    clickHandler() {
-      this.increasePopularity();
+    goBack() {
+      this.$router.go(-1);
     }
   },
 };
@@ -74,6 +78,6 @@ export default {
     padding: 0 10px;
   }
   .article-detail {
-
+    padding: 20px 0;
   }
 </style>

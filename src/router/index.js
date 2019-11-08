@@ -6,12 +6,6 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/articles/:id',
-    name: 'article-page',
-    props: true,
-    component: () => import('../components/ArticleDetail.vue')
-  },
-  {
     path: '/',
     // name: 'home',
     component: Home,
@@ -30,7 +24,13 @@ const routes = [
         path: '/newest',
         name: 'newest',
         component: () => import('../views/articles/Newest.vue')
-      }
+      },
+      {
+        path: '/articles/:id',
+        name: 'article-page',
+        props: true,
+        component: () => import('../components/ArticleDetail.vue')
+      },
     ]
   },
   {
