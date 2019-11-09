@@ -1,6 +1,6 @@
 <template>
   <div class="comments">
-    <button class="comments__button" @click="isCommentWrite = !isCommentWrite">+</button>
+    <button class="comments__button comments__button--add" @click="isCommentWrite = !isCommentWrite">+</button>
 
     <transition name="fade" mode="out-in">
       <div class="comments__add" v-if="isCommentWrite">
@@ -11,7 +11,7 @@
           <label class="comments-form__label">
             <textarea class="comments-form__field"  rows="7" placeholder="Комментарий" required v-model="newComment.text"></textarea>
           </label>
-          <button @click.prevent="clickHandler">Сохранить</button>
+          <button class="comments__button" @click.prevent="clickHandler">Сохранить</button>
         </form>
       </div>
     </transition>
@@ -46,7 +46,7 @@ export default {
       newComment: {
         author: '',
         text: '',
-        date: new Date()
+        date: ''
       }
     }
   },
@@ -54,13 +54,24 @@ export default {
     commentDate(date) {
       return new Date(date.seconds * 1000).toLocaleString();
     },
-    updateComments() {
-      this.$store.commit('updateComments', [this.articleID, this.newComment]);
+    updateComments(comment) {
+      this.$store.commit('updateComments', [this.articleID, comment]);
     },
     clickHandler() {
+      this.newComment.date = new Date();
+      let comment = {
+        author: this.newComment.author,
+        text: this.newComment.text,
+        date: new Date()
+      }
+      this.updateComments(comment);
+      this.clearComment();
+      this.isCommentWrite = !this.isCommentWrite;
+    },
+    clearComment() {
       this.newComment.author = '';
       this.newComment.text = '';
-      this.updateComments();
+      this.newComment.date = ''
     }
   }
 }
@@ -72,16 +83,18 @@ export default {
     background-color: #ecf2f7;
     border-radius: 5px;
     &__button {
-      width: 30px;
-      height: 30px;
       margin-bottom: 10px;
       color: #ffffff;
-      font-size: 30px;
       line-height: 1;
       background-color: #5cb8c9;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+    }
+    &__button--add {
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
     }
     &__add {
       margin-bottom: 20px;
@@ -110,6 +123,8 @@ export default {
       width: 100%;
       max-width: 300px;
       padding: 10px;
+      font-size: 16px;
+      font-family: inherit;
       border: none;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);

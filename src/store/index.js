@@ -25,11 +25,17 @@ export default new Vuex.Store({
     },
     updateComments(state, [id, comment]) {
       const article = state.articles.find(article => article.id === id);
-      comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
-      article.comments.push(comment);
-      db.collection('articles').doc(id).update({
-        comments: article.comments
-      });
+      if (comment) {
+        comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+        setTimeout(() => {
+          article.comments.push(comment);
+          setTimeout(() => {
+            db.collection('articles').doc(id).update({
+              comments: article.comments
+            });
+          }, 100);
+        }, 100);
+      }
     }
   },
   actions: {
@@ -47,7 +53,7 @@ export default new Vuex.Store({
               date: doc.data().date.toDate(),
               popularity: doc.data().popularity,
               image: '',
-              comments: doc.data().comments
+              comments: doc.data().comments || []
             };
             getImages(article, article.id);
             state.commit('updateArticles', article);
