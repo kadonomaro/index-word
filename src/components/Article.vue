@@ -34,34 +34,13 @@
 export default {
   name: 'Article',
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: false,
-    },
-    text: {
-      type: String,
-      required: true
-    },
-    date: {
-      type: Date,
-      required: true,
-    },
-    popularity: {
-      type: Number,
-      required: true,
-    },
-    comments: {
-      type: Array,
-      required: false
-    }
+    id: {type: String, required: true},
+    title: {type: String, required: true},
+    image: {type: String, required: false},
+    text: {type: String, required: true},
+    date: {type: Date, required: true},
+    popularity: {type: Number, required: true},
+    comments: {type: Array, required: false}
   },
   computed: {
     stringExplode() {

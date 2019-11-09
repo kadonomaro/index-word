@@ -26,9 +26,6 @@ export default {
       display: flex;
       align-items: center;
     }
-    &__nav {
-
-    }
     &__logo {
       margin-right: auto;
     }

@@ -11,7 +11,7 @@
           <label class="comments-form__label">
             <textarea class="comments-form__field"  rows="7" placeholder="Комментарий" required v-model="newComment.text"></textarea>
           </label>
-          <button class="comments__button" @click.prevent="clickHandler">Сохранить</button>
+          <button class="comments__button" @click.prevent="clickHandler">Отправить</button>
         </form>
       </div>
     </transition>
@@ -84,16 +84,23 @@ export default {
     border-radius: 5px;
     &__button {
       margin-bottom: 10px;
+      padding: 5px 10px;
       color: #ffffff;
+      font-size: 16px;
       line-height: 1;
       background-color: #5cb8c9;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.2s ease-in;
+      &:hover {
+        background-color: darken($color: #5cb8c9, $amount: 10%);
+      }
     }
     &__button--add {
       width: 30px;
       height: 30px;
+      padding: 0;
       font-size: 30px;
     }
     &__add {
