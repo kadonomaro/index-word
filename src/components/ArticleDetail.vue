@@ -16,17 +16,20 @@
       </div>
       <footer class="article-detail__footer">
         <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
-        <p v-if="comments">{{ comments }}</p>
       </footer>
+      <article-comments :comments="comments" v-if="comments"/>
     </article>
 </template>
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
+import ArticleComments from '@/components/ArticleComments.vue';
+
 export default {
   name: 'ArticleDetail',
   components: {
-    AppButton
+    AppButton,
+    ArticleComments
   },
   props: {
     id: {
@@ -89,9 +92,6 @@ export default {
     &__inner {
       max-width: 1200px;
       margin: 0 auto;
-    }
-    &__image {
-
     }
     &__image-img {
       width: 100%;
