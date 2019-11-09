@@ -11,6 +11,7 @@
         :image="article.image"
         :popularity="article.popularity"
         :text="article.text"
+        :comments="article.comments"
       >
       </app-article>
     </div>

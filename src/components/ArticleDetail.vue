@@ -16,6 +16,7 @@
       </div>
       <footer class="article-detail__footer">
         <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
+        <p v-if="comments">{{ comments }}</p>
       </footer>
     </article>
 </template>
@@ -51,6 +52,10 @@ export default {
     popularity: {
       type: Number,
       required: true,
+    },
+    comments: {
+      type: Array,
+      required: false
     }
   },
   data() {

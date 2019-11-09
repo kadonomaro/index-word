@@ -19,7 +19,8 @@
             image,
             text,
             date,
-            popularity
+            popularity,
+            comments
             }
           }"
         >Далее</router-link>
@@ -56,6 +57,10 @@ export default {
     popularity: {
       type: Number,
       required: true,
+    },
+    comments: {
+      type: Array,
+      required: false
     }
   },
   computed: {

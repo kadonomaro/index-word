@@ -36,7 +36,8 @@ export default new Vuex.Store({
               text: doc.data().text,
               date: new Date(doc.data().date.seconds * 1000),
               popularity: doc.data().popularity,
-              image: ''
+              image: '',
+              comments: doc.data().comments
             };
             getImages(article, article.id);
             state.commit('updateArticles', article);
