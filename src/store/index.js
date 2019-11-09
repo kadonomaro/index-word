@@ -34,7 +34,8 @@ export default new Vuex.Store({
               id: doc.id,
               title: doc.data().title,
               text: doc.data().text,
-              date: new Date(doc.data().date.seconds * 1000),
+              // date: new Date(doc.data().date.seconds * 1000),
+              date: doc.data().date.toDate(),
               popularity: doc.data().popularity,
               image: '',
               comments: doc.data().comments
