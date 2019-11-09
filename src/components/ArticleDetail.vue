@@ -32,39 +32,13 @@ export default {
     ArticleComments
   },
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: false,
-    },
-    text: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: Date,
-      required: true,
-    },
-    popularity: {
-      type: Number,
-      required: true,
-    },
-    comments: {
-      type: Array,
-      required: false
-    }
-  },
-  data() {
-    return {
-
-    };
+    id: {type: String, required: true},
+    title: {type: String, required: true},
+    image: {type: String, required: false},
+    text: {type: String, required: true},
+    date: {type: Date, required: true},
+    popularity: {type: Number, required: true},
+    comments: {type: Array, required: false }
   },
   computed: {
     imageAlt() {
@@ -118,8 +92,10 @@ export default {
       margin-bottom: 20px;
     }
     &__footer {
+      margin-bottom: 20px;
       padding: 10px;
       background-color: #5cb8c9;
+      border-radius: 5px;
     }
     &__date {
       color: #ffffff;
