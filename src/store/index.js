@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { db, storage } from '../main';
+import firebase from 'firebase/app';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,14 @@ export default new Vuex.Store({
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
         popularity: ++article.popularity
+      });
+    },
+    updateComments(state, [id, comment]) {
+      const article = state.articles.find(article => article.id === id);
+      comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+      article.comments.push(comment);
+      db.collection('articles').doc(id).update({
+        comments: article.comments
       });
     }
   },

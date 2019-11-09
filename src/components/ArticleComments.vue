@@ -46,7 +46,7 @@ export default {
       newComment: {
         author: '',
         text: '',
-        date: Date.now()
+        date: new Date()
       }
     }
   },
@@ -58,6 +58,8 @@ export default {
       this.$store.commit('updateComments', [this.articleID, this.newComment]);
     },
     clickHandler() {
+      this.newComment.author = '';
+      this.newComment.text = '';
       this.updateComments();
     }
   }

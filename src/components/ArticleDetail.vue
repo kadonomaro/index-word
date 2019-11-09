@@ -17,7 +17,7 @@
       <footer class="article-detail__footer">
         <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
       </footer>
-      <article-comments :comments="comments" :articleID="id" v-if="comments"/>
+      <article-comments :comments="comments" :articleID="id"/>
     </article>
 </template>
 
