@@ -9,8 +9,8 @@ export default new Vuex.Store({
   state: {
     articles: [],
     settings: {
-      daysBefore: 7,
-      articlePopularityLimit: 10
+      daysBefore: null,
+      articlePopularityLimit: null
     }
   },
   mutations: {
@@ -48,7 +48,6 @@ export default new Vuex.Store({
               id: doc.id,
               title: doc.data().title,
               text: doc.data().text,
-              // date: new Date(doc.data().date.seconds * 1000),
               date: doc.data().date.toDate(),
               popularity: doc.data().popularity,
               image: '',
@@ -68,7 +67,6 @@ export default new Vuex.Store({
             daysBefore: doc.data().daysBefore,
             articlePopularityLimit: doc.data().articlePopularityLimit
           };
-          console.log(settings);
           this.commit('updateSettings', settings);
         });
     }
@@ -107,6 +105,9 @@ export default new Vuex.Store({
       return state.articles.filter((article) => {
         return article.date.getTime() >= date.getTime();
       });
+    },
+    settings(state) {
+      return state.settings;
     }
   },
 });

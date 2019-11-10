@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  mounted() {
+  beforeMount() {
     this.$store.dispatch('getSettings');
   }
 }
