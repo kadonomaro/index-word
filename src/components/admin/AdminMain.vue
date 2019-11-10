@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss">
   .admin-main {
-    padding: 10px 20px;
+    padding: 20px;
     background-color: #f4f7fd;
   }
 </style>

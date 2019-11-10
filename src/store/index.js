@@ -17,15 +17,27 @@ export default new Vuex.Store({
     updateArticles(state, article) {
       state.articles.push(article);
     },
+
     updateSettings(state, settings) {
       state.settings = settings;
     },
+    uploadSettings(state, payload) {
+      for (const key in payload) {
+        if (payload.hasOwnProperty(key)) {
+          db.collection('settings').doc('general').update({
+            [key]: payload[key]
+          });
+        }
+      }
+    },
+
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
         popularity: ++article.popularity
       });
     },
+
     updateComments(state, [id, comment]) {
       const article = state.articles.find(article => article.id === id);
       comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
@@ -122,4 +134,9 @@ function getImages(article, id) {
       console.warn(err.code);
       article.image = 'https://via.placeholder.com/400x200';
     });
+}
+
+
+function createNewSettings(settings) {
+
 }
