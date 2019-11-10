@@ -8,7 +8,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articles: [],
-    articleDetail : null,
     settings: {
       daysBefore: 7,
       articlePopularityLimit: 10
@@ -17,6 +16,9 @@ export default new Vuex.Store({
   mutations: {
     updateArticles(state, article) {
       state.articles.push(article);
+    },
+    updateSettings(state, settings) {
+      state.settings = settings;
     },
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
@@ -57,6 +59,19 @@ export default new Vuex.Store({
           });
         });
     },
+    async getSettings(state) {
+      await db.collection('settings')
+        .doc('general')
+        .get()
+        .then(doc => {
+          const settings = {
+            daysBefore: doc.data().daysBefore,
+            articlePopularityLimit: doc.data().articlePopularityLimit
+          };
+          console.log(settings);
+          this.commit('updateSettings', settings);
+        });
+    }
     // async getArticleById(state, id) {
     //   this.state.articleDetail = null;
     //   await db.collection('articles')
