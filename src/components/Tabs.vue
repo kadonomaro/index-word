@@ -17,24 +17,12 @@
 <script>
 export default {
   name: 'Tabs',
-  props: [],
-  data() {
-    return {
-
-    }
-  },
-  mounted() {
-
-  },
-  methods: {
-
-  },
 }
 </script>
 
 <style lang="scss">
   .tabs {
-    padding: 5px 10px 0;
+    padding: 10px 10px 0;
     background-color: #eaebed;
     &__list {
       display: flex;

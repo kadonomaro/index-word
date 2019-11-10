@@ -7,17 +7,17 @@
           @click-handler="goBack"
         />
         <div class="article-detail__image">
-          <img class="article-detail__image-img" :src="image" :alt="imageAlt">
+          <img class="article-detail__image-img" :src="article.image" :alt="'imageAlt'">
         </div>
         <div class="article-detail__text">
-          <h1 class="article-detail__title">{{ title }}</h1>
-          <div v-html="text"></div>
+          <h1 class="article-detail__title">{{ article.title }}</h1>
+          <div v-html="article.text"></div>
         </div>
       </div>
       <footer class="article-detail__footer">
-        <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
+        <time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
       </footer>
-      <article-comments :comments="comments" :articleID="id"/>
+      <article-comments :comments="article.comments" :articleID="article.id"/>
     </article>
 </template>
 
@@ -33,12 +33,17 @@ export default {
   },
   props: {
     id: {type: String, required: true},
-    title: {type: String, required: true},
-    image: {type: String, required: false},
-    text: {type: String, required: true},
-    date: {type: Date, required: true},
-    popularity: {type: Number, required: true},
-    comments: {type: Array, required: false }
+    // title: {type: String, required: true},
+    // image: {type: String, required: true},
+    // text: {type: String, required: true},
+    // date: {type: Date, required: true},
+    // popularity: {type: Number, required: true},
+    // comments: {type: Array, required: true }
+  },
+  data() {
+    return {
+      article: this.$store.getters.articleById(this.id)
+    }
   },
   computed: {
     imageAlt() {
@@ -49,8 +54,11 @@ export default {
     this.increasePopularity();
   },
   methods: {
-    increasePopularity() {
-      this.$store.commit('increasePopularity', this.id);
+    // increasePopularity() {
+    //   this.$store.commit('increasePopularity', this.article.id);
+    // },
+    increasePopularity: () => {
+      this.$store.commit('increasePopularity', this.article.id);
     },
     goBack() {
       this.$router.go(-1);

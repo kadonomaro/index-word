@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articles: [],
+    articleDetail : null,
     settings: {
       daysBefore: 7,
       articlePopularityLimit: 10
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     updateArticles(state, article) {
       state.articles.push(article);
     },
+    updateArticle(state, article) {
+      state.articleDetail = article;
+    },
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
@@ -25,17 +29,15 @@ export default new Vuex.Store({
     },
     updateComments(state, [id, comment]) {
       const article = state.articles.find(article => article.id === id);
-      if (comment) {
-        comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+      comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+      setTimeout(() => {
+        article.comments.push(comment);
         setTimeout(() => {
-          article.comments.push(comment);
-          setTimeout(() => {
-            db.collection('articles').doc(id).update({
-              comments: article.comments
-            });
-          }, 100);
+          db.collection('articles').doc(id).update({
+            comments: article.comments
+          });
         }, 100);
-      }
+      }, 100);
     }
   },
   actions: {
@@ -60,8 +62,30 @@ export default new Vuex.Store({
           });
         });
     },
+    // async getArticleById(state, id) {
+    //   this.state.articleDetail = null;
+    //   await db.collection('articles')
+    //     .doc(id)
+    //     .get()
+    //     .then(doc => {
+    //       const article = {
+    //         id: id,
+    //         title: doc.data().title,
+    //         text: doc.data().text,
+    //         date: doc.data().date.toDate(),
+    //         popularity: doc.data().popularity,
+    //         image: '',
+    //         comments: doc.data().comments || []
+    //       };
+    //       getImages(article, article.id);
+    //       state.commit('updateArticle', article);
+    //     });
+    // }
   },
   getters: {
+    articleById: state => id => {
+      return state.articles.find(article => article.id === id);
+    },
     allArticles(state) {
       return state.articles;
     },
