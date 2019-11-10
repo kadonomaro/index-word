@@ -14,7 +14,13 @@
         :to="{
           name: 'article-page',
           params: {
-            id
+            id,
+            title,
+            image,
+            text,
+            date,
+            popularity,
+            comments
             }
           }"
         >Далее</router-link>
@@ -128,10 +134,3 @@ export default {
     }
   }
 </style>
-// ,
-//             title,
-//             image,
-//             text,
-//             date,
-//             popularity,
-//             comments

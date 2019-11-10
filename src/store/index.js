@@ -18,9 +18,6 @@ export default new Vuex.Store({
     updateArticles(state, article) {
       state.articles.push(article);
     },
-    updateArticle(state, article) {
-      state.articleDetail = article;
-    },
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
@@ -30,13 +27,11 @@ export default new Vuex.Store({
     updateComments(state, [id, comment]) {
       const article = state.articles.find(article => article.id === id);
       comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+      article.comments.push(comment);
       setTimeout(() => {
-        article.comments.push(comment);
-        setTimeout(() => {
-          db.collection('articles').doc(id).update({
-            comments: article.comments
-          });
-        }, 100);
+        db.collection('articles').doc(id).update({
+          comments: article.comments
+        });
       }, 100);
     }
   },
@@ -83,9 +78,6 @@ export default new Vuex.Store({
     // }
   },
   getters: {
-    articleById: state => id => {
-      return state.articles.find(article => article.id === id);
-    },
     allArticles(state) {
       return state.articles;
     },
