@@ -22,6 +22,7 @@ export default new Vuex.Store({
       state.settings = settings;
     },
     uploadSettings(state, payload) {
+      console.log(payload);
       for (const key in payload) {
         if (payload.hasOwnProperty(key)) {
           db.collection('settings').doc('general').update({
