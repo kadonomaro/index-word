@@ -22,7 +22,6 @@ export default new Vuex.Store({
       state.settings = settings;
     },
     uploadSettings(state, payload) {
-      console.log(payload);
       for (const key in payload) {
         if (payload.hasOwnProperty(key)) {
           db.collection('settings').doc('general').update({
@@ -83,25 +82,6 @@ export default new Vuex.Store({
           this.commit('updateSettings', settings);
         });
     }
-    // async getArticleById(state, id) {
-    //   this.state.articleDetail = null;
-    //   await db.collection('articles')
-    //     .doc(id)
-    //     .get()
-    //     .then(doc => {
-    //       const article = {
-    //         id: id,
-    //         title: doc.data().title,
-    //         text: doc.data().text,
-    //         date: doc.data().date.toDate(),
-    //         popularity: doc.data().popularity,
-    //         image: '',
-    //         comments: doc.data().comments || []
-    //       };
-    //       getImages(article, article.id);
-    //       state.commit('updateArticle', article);
-    //     });
-    // }
   },
   getters: {
     allArticles(state) {
@@ -118,6 +98,11 @@ export default new Vuex.Store({
       return state.articles.filter((article) => {
         return article.date.getTime() >= date.getTime();
       });
+    },
+    getArticleById(state) {
+      return (id) => {
+        return state.articles.find(article => article.id === id);
+      };
     },
     settings(state) {
       return state.settings;

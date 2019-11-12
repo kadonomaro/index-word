@@ -13,15 +13,7 @@
         class="article__button"
         :to="{
           name: 'article-page',
-          params: {
-            id,
-            title,
-            image,
-            text,
-            date,
-            popularity,
-            comments
-            }
+          params: {id}
           }"
         >Далее</router-link>
       <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
@@ -46,15 +38,7 @@ export default {
     stringExplode() {
       return this.text.split('</p>')[0];
     }
-  },
-  methods: {
-    increasePopularity() {
-      this.$store.commit('increasePopularity', this.id);
-    },
-    clickHandler() {
-      this.increasePopularity();
-    }
-  },
+  }
 };
 </script>
 

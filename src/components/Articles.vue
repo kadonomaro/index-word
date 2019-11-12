@@ -20,18 +20,25 @@
 
 <script>
 import AppArticle from '@/components/Article.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Articles',
-  props: ['propArticles'],
+  props: {
+    articles: {
+      type: Array,
+      required: true
+    }
+  },
   components: {
     AppArticle,
   },
-  data() {
-    return {
-      articles: this.propArticles || this.$store.getters.allArticles,
-    };
-  },
+  computed: {
+    ...mapGetters([
+      'allArticles',
+      'popularArticles'
+    ])
+  }
 };
 </script>
 

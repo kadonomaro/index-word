@@ -3,11 +3,9 @@
     <h2>Новые статьи</h2>
     <app-articles
       v-if="newestArticles.length > 0"
-      :propArticles="newestArticles"
+      :articles="newestArticles"
     />
-    <app-empty-article
-      v-else
-    />
+    <app-empty-article v-else />
   </div>
 </template>
 

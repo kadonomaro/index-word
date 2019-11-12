@@ -7,23 +7,24 @@
           @click-handler="goBack"
         />
         <div class="article-detail__image">
-          <img class="article-detail__image-img" :src="image" :alt="'imageAlt'">
+          <img class="article-detail__image-img" :src="article.image" :alt="'imageAlt'">
         </div>
         <div class="article-detail__text">
-          <h1 class="article-detail__title">{{ title }}</h1>
-          <div v-html="text"></div>
+          <h1 class="article-detail__title">{{ article.title }}</h1>
+          <div v-html="article.text"></div>
         </div>
       </div>
       <footer class="article-detail__footer">
-        <time datetime="" class="article-detail__date">{{ date.toLocaleString() }}</time>
+        <time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
       </footer>
-      <article-comments :comments="comments" :articleID="id"/>
+      <article-comments :comments="article.comments" :articleID="id"/>
     </article>
 </template>
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
 import ArticleComments from '@/components/ArticleComments.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'ArticleDetail',
@@ -32,17 +33,17 @@ export default {
     ArticleComments
   },
   props: {
-    id: {type: String, required: true},
-    title: {type: String, required: true},
-    image: {type: String, required: true},
-    text: {type: String, required: true},
-    date: {type: Date, required: true},
-    popularity: {type: Number, required: true},
-    comments: {type: Array, required: true }
+    id: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     imageAlt() {
       return this.title.replace(/\?/g, '');
+    },
+    article() {
+      return this.$store.getters.getArticleById(this.id);
     }
   },
   mounted() {

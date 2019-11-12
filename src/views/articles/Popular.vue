@@ -3,7 +3,7 @@
     <h2>Популярные статьи</h2>
     <app-articles
       v-if="popularArticles.length > 0"
-      :propArticles="popularArticles"
+      :articles="popularArticles"
     />
     <app-empty-article v-else />
   </div>
