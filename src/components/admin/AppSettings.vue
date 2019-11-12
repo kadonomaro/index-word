@@ -36,9 +36,12 @@ export default {
       this.$store.commit('uploadSettings', settings);
     },
     editSettings(event) {
-      if (!isNaN(event.target.value)) {
+      if (this.errorClass(event)) {
         this.val = event.target.value;
       }
+    },
+    errorClass(event) {
+      return (/^[0-9]*$/g).test(event.target.value);
     }
 
   }
@@ -78,6 +81,10 @@ export default {
     &__value {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+    }
+    &__value--error {
+      background-color: #ffe0e0;
+      border-color: #ff3333;
     }
     &__button {
       background-color: transparent;
