@@ -23,21 +23,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
   name: 'EditableArticles',
-  created() {
-    this.getData();
-  },
   computed: {
     ...mapGetters([
       'allArticles'
     ])
-  },
-  methods: {
-    getData() {
-      this.$store.dispatch('getArticles');
-    },
-  },
+  }
 }
 </script>
 
@@ -48,9 +41,14 @@ export default {
       flex-wrap: wrap;
     }
     &__item {
-      flex-basis: 25%;
+      flex-basis: calc(33.3333% - 20px);
+      margin: 10px;
     }
-    display: flex;
-    flex-wrap: wrap;
+  }
+  .article {
+    &__text {
+      max-height: 600px;
+      overflow: auto;
+    }
   }
 </style>

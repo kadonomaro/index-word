@@ -13,6 +13,7 @@
 
 import AppArticles from '@/components/Articles.vue';
 import AppEmptyArticle from '@/components/EmptyArticle.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'popular-articles',
@@ -20,10 +21,10 @@ export default {
     AppArticles,
     AppEmptyArticle
   },
-  data() {
-    return {
-      popularArticles: this.$store.getters.popularArticles
-    }
+  computed: {
+    ...mapGetters([
+      'popularArticles'
+    ])
   }
 };
 </script>

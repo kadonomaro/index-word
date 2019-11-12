@@ -7,7 +7,13 @@
 <script>
 export default {
   beforeMount() {
-    this.$store.dispatch('getSettings');
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.$store.dispatch('getArticles');
+      this.$store.dispatch('getSettings');
+    }
   }
 }
 </script>

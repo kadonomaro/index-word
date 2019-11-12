@@ -1,6 +1,6 @@
 <template>
   <div class="editor">
-    <h1>Edit Articles</h1>
+    <h1 class="admin__title">Edit Articles</h1>
     <editable-articles />
   </div>
 </template>

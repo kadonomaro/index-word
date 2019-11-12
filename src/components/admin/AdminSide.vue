@@ -39,9 +39,6 @@ export default {
       padding: 0;
       list-style-type: none;
     }
-    &__item {
-
-    }
     &__link {
       position: relative;
       display: block;

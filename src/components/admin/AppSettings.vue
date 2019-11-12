@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <h1 class="settings__title">Settings</h1>
+    <h1 class="settings__title admin__title">Settings</h1>
     <form class="settings__form" action="">
       <ul class="settings__list">
         <li class="settings__item setting" v-for="(value, name) in settings" :key="name">
@@ -50,12 +50,7 @@ export default {
 
 <style lang="scss">
   .settings {
-    &__title {
-      margin: 0 0 20px;
-      padding: 5px 10px;
-      color: #ffffff;
-      background-color: #3c4c67;
-    }
+
     &__list {
       margin: 0;
       padding: 0;

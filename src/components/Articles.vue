@@ -32,17 +32,6 @@ export default {
       articles: this.propArticles || this.$store.getters.allArticles,
     };
   },
-  created() {
-    this.getData();
-  },
-  mounted() {
-
-  },
-  methods: {
-    getData() {
-      this.$store.dispatch('getArticles');
-    },
-  },
 };
 </script>
 

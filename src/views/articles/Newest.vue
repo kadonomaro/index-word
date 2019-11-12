@@ -15,17 +15,17 @@
 
 import AppArticles from '@/components/Articles.vue';
 import AppEmptyArticle from '@/components/EmptyArticle.vue';
-
+import { mapGetters } from 'vuex';
 export default {
   name: 'newest-articles',
   components: {
     AppArticles,
     AppEmptyArticle
   },
-  data() {
-    return {
-      newestArticles: this.$store.getters.newestArticles
-    }
+  computed: {
+    ...mapGetters([
+      'newestArticles'
+    ])
   }
 };
 </script>

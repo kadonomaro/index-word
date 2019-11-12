@@ -24,11 +24,17 @@ export default {
     font-family: 'Roboto Condensed', sans-serif;
     &__side {
       position: relative;
-      width: 250px;
+      min-width: 250px;
       box-shadow: 5px 0 10px rgba($color: #000000, $alpha: 0.3);
     }
     &__main {
       flex-grow: 1;
+    }
+    &__title {
+      margin: 0 0 20px;
+      padding: 5px 10px;
+      color: #ffffff;
+      background-color: #3c4c67;
     }
   }
 </style>
