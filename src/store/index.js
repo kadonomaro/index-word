@@ -32,7 +32,6 @@ export default new Vuex.Store({
     },
 
     increasePopularity(state, id) {
-      console.log('ID: ' ,id);
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
         popularity: ++article.popularity

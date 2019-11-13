@@ -1,5 +1,5 @@
 <template>
-    <article class="article-detail">
+    <article v-if="article" class="article-detail">
       <div class="article-detail__inner">
         <app-button
           class="article-detail__link"
@@ -39,19 +39,24 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'getArticleById'
+    ]),
+    article() {
+      return this.getArticleById(this.id)
+    },
     imageAlt() {
       return this.title.replace(/\?/g, '');
     },
-    article() {
-      return this.$store.getters.getArticleById(this.id);
-    }
   },
   mounted() {
     this.increasePopularity();
   },
   methods: {
     increasePopularity() {
-      this.$store.commit('increasePopularity', this.id);
+      setTimeout(() => {
+        this.$store.commit('increasePopularity', this.id);
+      }, 1000);
     },
     goBack() {
       this.$router.go(-1);
