@@ -14,8 +14,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    updateArticles(state, article) {
-      state.articles.push(article);
+    updateArticles(state, articles) {
+      state.articles = articles;
     },
 
     updateSettings(state, settings) {
@@ -32,6 +32,7 @@ export default new Vuex.Store({
     },
 
     increasePopularity(state, id) {
+      console.log('ID: ' ,id);
       const article = state.articles.find(article => article.id === id);
       db.collection('articles').doc(id).update({
         popularity: ++article.popularity
@@ -51,6 +52,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getArticles(state) {
+      const articles = [];
       this.state.articles.length = 0;
       await db.collection('articles')
         .get()
@@ -66,9 +68,10 @@ export default new Vuex.Store({
               comments: doc.data().comments || []
             };
             getImages(article, article.id);
-            state.commit('updateArticles', article);
+            articles.push(article);
           });
         });
+      state.commit('updateArticles', articles);
     },
     async getSettings(state) {
       await db.collection('settings')
