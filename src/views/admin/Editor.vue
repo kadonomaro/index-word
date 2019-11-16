@@ -1,16 +1,16 @@
 <template>
   <div class="editor">
     <h1 class="admin__title">Edit Articles</h1>
-    <editable-articles />
+    <article-edit />
   </div>
 </template>
 
 <script>
-import EditableArticles from '@/components/admin/EditableArticles.vue';
+import ArticleEdit from '@/components/admin/ArticleEdit.vue';
 export default {
   name: 'Editor',
   components: {
-    EditableArticles
+    ArticleEdit
   }
 }
 </script>
