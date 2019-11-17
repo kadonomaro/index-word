@@ -3,6 +3,7 @@
     <h2>Все статьи</h2>
     <app-articles :articles="items" />
     <paginate
+      v-model="page"
       :page-count="pageCount"
       :click-handler="pageChangeHandler"
       :prev-text="'Назад'"
@@ -15,7 +16,7 @@
 <script>
 import AppArticles from '@/components/Articles.vue';
 import { mapGetters } from 'vuex';
-import paginationMixin   from '@/mixins/pagination.mixin';
+import paginationMixin from '@/mixins/pagination.mixin';
 
 export default {
   name: 'all-articles',
@@ -24,7 +25,9 @@ export default {
     AppArticles,
   },
   mounted(){
-    this.setupPagination(this.allArticles);
+    setTimeout(() => {
+    this.setupPagination(this.allArticles)
+    }, 1000);
   },
   computed: {
     ...mapGetters([
