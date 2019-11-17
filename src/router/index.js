@@ -49,14 +49,14 @@ const routes = [
     name: 'admin',
     component: () => import('../views/admin/Admin.vue'),
     beforeEnter(to, from, next) {
-      if (!store.getters.adminAccess) {
+      let adminAccess = store.getters.adminAccess;
+      if (adminAccess) {
+        next();
+      } else {
         next({
           name: 'login',
         });
-      } else {
-        next();
       }
-
     },
     children: [
       {

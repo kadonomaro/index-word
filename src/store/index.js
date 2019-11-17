@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { db, storage } from '../main';
+import { db, storage, auth } from '../main';
 import firebase from 'firebase/app';
 
 Vue.use(Vuex);
@@ -13,10 +13,14 @@ export default new Vuex.Store({
       articlePopularityLimit: null
     },
     auth: {
-      hasAccess: true
+      hasAccess: false
     }
   },
   mutations: {
+    changeAuthStatus(state, status) {
+      state.auth.hasAccess = status;
+    },
+
     updateArticles(state, articles) {
       state.articles = articles;
     },
@@ -86,6 +90,20 @@ export default new Vuex.Store({
           };
           this.commit('updateSettings', settings);
         });
+    },
+    async login(state, [email, password]) {
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        auth.onAuthStateChanged(user => {
+          if (user) {
+            state.commit('changeAuthStatus', true);
+          } else {
+            state.commit('changeAuthStatus', false);
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
   getters: {
