@@ -2,6 +2,13 @@
   <div class="all-articles">
     <h2>Все статьи</h2>
     <app-articles :articles="allArticles" />
+    <paginate
+      :page-count="20"
+      :click-handler="pageClickHandler"
+      :prev-text="'Назад'"
+      :next-text="'Вперед'"
+      :container-class="'paginate'">
+    </paginate>
   </div>
 </template>
 
@@ -19,6 +26,11 @@ export default {
     ...mapGetters([
       'allArticles'
     ])
+  },
+  methods: {
+    pageClickHandler() {
+
+    }
   }
 };
 </script>

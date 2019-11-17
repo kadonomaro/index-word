@@ -48,6 +48,31 @@ img {
   }
 }
 
+  .paginate {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    list-style: none;
+    li {
+      margin-right: 3px;
+      color: #ffffff;
+      background-color: #5cb8c9;
+      border-radius: 5px;
+      transition: background-color 0.2s ease-in;
+      &:hover,
+      &:focus {
+        background-color: darken($color: #5cb8c9, $amount: 10%);
+      }
+    }
+    li.active {
+      background-color: darken($color: #5cb8c9, $amount: 20%);
+    }
+    a {
+      display: block;
+      padding: 8px 15px;
+    }
+  }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease-in;

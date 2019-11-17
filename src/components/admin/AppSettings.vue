@@ -3,9 +3,13 @@
     <h1 class="settings__title admin__title">Settings</h1>
     <form class="settings__form" action="">
       <ul class="settings__list">
-        <li class="settings__item" v-for="(value, name) in settings" :key="name">
-          <setting-item :name="name" :value="value" />
-        </li>
+        <setting-item
+          class="settings__item"
+          v-for="(value, name, index) in settings"
+          :key="index"
+          :name="name"
+          :val="value"
+        />
       </ul>
     </form>
   </div>

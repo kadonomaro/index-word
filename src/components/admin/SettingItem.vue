@@ -1,9 +1,14 @@
 <template>
-  <div class="setting-item">
+  <li class="setting-item">
     <span class="setting-item__title">{{ setTitle(name) }}:</span>
-    <input :class="['setting-item__value', {'setting-item__value--error': hasError}]" type="text" :value="value" @input="editSettings">
-    <button class="setting-item__button" @click.prevent="setSettings({[name]: val})">Save</button>
-  </div>
+    <input
+      type="text"
+      :class="['setting-item__value', {'setting-item__value--error': hasError}]"
+      :value="val"
+      @input="value = $event.target.value"
+    >
+    <button class="setting-item__button" @click.prevent="setSettings({[name]: value})">Save</button>
+  </li>
 </template>
 
 <script>
@@ -14,16 +19,19 @@ export default {
       type: String,
       required: true,
     },
-    value: {
+    val: {
       type: String,
-      required: true
+      required: true,
     }
   },
   data() {
     return {
-      val: null,
-      hasError: false
+      hasError: false,
+      value: ''
     }
+  },
+  created() {
+    this.value = ''+this.val;
   },
   methods: {
     setTitle(string) {
@@ -32,17 +40,9 @@ export default {
     setSettings(settings) {
       this.$store.commit('uploadSettings', settings);
     },
-    editSettings(event) {
-      if (this.errorClass(event)) {
-        this.val = event.target.value;
-        this.hasError = false;
-      } else {
-        this.hasError = true;
-      }
+    inputValidate() {
+      this.hasError = (/^[0-9]*$/g).test(this.val);
     },
-    inputValidate(event) {
-      return (/^[0-9]*$/g).test(event.target.value);
-    }
   }
 }
 </script>
