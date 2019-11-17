@@ -27,7 +27,7 @@ export default {
   },
   mounted(){
     setTimeout(() => {
-    this.setupPagination(this.allArticles)
+      this.setupPagination(this.allArticles)
     }, 1000);
   },
   computed: {

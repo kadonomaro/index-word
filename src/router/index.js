@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import store from '../store/index';
 
 Vue.use(VueRouter);
 
@@ -39,9 +40,24 @@ const routes = [
     component: () => import('../views/About.vue'),
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/admin/Login.vue'),
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: () => import('../views/admin/Admin.vue'),
+    beforeEnter(to, from, next) {
+      if (!store.getters.adminAccess) {
+        next({
+          name: 'login',
+        });
+      } else {
+        next();
+      }
+
+    },
     children: [
       {
         path: '/admin',

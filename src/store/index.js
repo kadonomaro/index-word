@@ -11,6 +11,9 @@ export default new Vuex.Store({
     settings: {
       daysBefore: null,
       articlePopularityLimit: null
+    },
+    auth: {
+      hasAccess: true
     }
   },
   mutations: {
@@ -86,6 +89,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    adminAccess(state) {
+      return state.auth.hasAccess;
+    },
     allArticles(state) {
       return state.articles;
     },

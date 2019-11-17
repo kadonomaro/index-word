@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/auth';
 
 import Vue from 'vue';
 import App from './App.vue';
@@ -26,7 +27,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storage = firebase.storage();
-export { db, storage };
+const auth = firebase.auth();
+export { db, storage, auth };
 
 
 new Vue({
