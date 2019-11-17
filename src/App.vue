@@ -69,7 +69,7 @@ img {
     }
     a {
       display: block;
-      padding: 8px 15px;
+      padding: 4px 12px;
     }
   }
 

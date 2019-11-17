@@ -1,10 +1,10 @@
 <template>
   <div class="all-articles">
     <h2>Все статьи</h2>
-    <app-articles :articles="allArticles" />
+    <app-articles :articles="items" />
     <paginate
-      :page-count="20"
-      :click-handler="pageClickHandler"
+      :page-count="pageCount"
+      :click-handler="pageChangeHandler"
       :prev-text="'Назад'"
       :next-text="'Вперед'"
       :container-class="'paginate'">
@@ -13,24 +13,23 @@
 </template>
 
 <script>
-
 import AppArticles from '@/components/Articles.vue';
 import { mapGetters } from 'vuex';
+import paginationMixin   from '@/mixins/pagination.mixin';
 
 export default {
   name: 'all-articles',
+  mixins: [paginationMixin],
   components: {
     AppArticles,
+  },
+  mounted(){
+    this.setupPagination(this.allArticles);
   },
   computed: {
     ...mapGetters([
       'allArticles'
     ])
   },
-  methods: {
-    pageClickHandler() {
-
-    }
-  }
 };
 </script>
