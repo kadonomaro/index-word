@@ -3,6 +3,7 @@
     <h2>Все статьи</h2>
     <app-articles :articles="items" />
     <paginate
+      v-if="allArticles.length > pageSize"
       v-model="page"
       :page-count="pageCount"
       :click-handler="pageChangeHandler"

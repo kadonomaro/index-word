@@ -7,6 +7,7 @@
     />
     <app-empty-article v-else />
     <paginate
+      v-if="popularArticles.length > pageSize"
       v-model="page"
       :page-count="pageCount"
       :click-handler="pageChangeHandler"
