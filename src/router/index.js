@@ -50,6 +50,7 @@ const routes = [
     component: () => import('../views/admin/Admin.vue'),
     beforeEnter(to, from, next) {
       let adminAccess = store.getters.adminAccess;
+      // console.log(adminAccess);
       if (adminAccess) {
         next();
       } else {

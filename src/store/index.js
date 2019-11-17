@@ -13,10 +13,15 @@ export default new Vuex.Store({
       articlePopularityLimit: null
     },
     auth: {
-      hasAccess: false
+      hasAccess: false,
+      error: ''
     }
   },
   mutations: {
+
+    changeErrorCode(state, code) {
+      state.auth.error = code;
+    },
     changeAuthStatus(state, status) {
       state.auth.hasAccess = status;
     },
@@ -102,11 +107,14 @@ export default new Vuex.Store({
           }
         });
       } catch (err) {
-        console.log(err);
+        state.commit('changeErrorCode', err.message);
       }
     }
   },
   getters: {
+    errorCode(state) {
+      return state.auth.error;
+    },
     adminAccess(state) {
       return state.auth.hasAccess;
     },
@@ -146,9 +154,4 @@ function getImages(article, id) {
       console.warn(err.code);
       article.image = 'https://via.placeholder.com/400x200';
     });
-}
-
-
-function createNewSettings(settings) {
-
 }
