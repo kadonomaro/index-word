@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      page: 1,
+      page: +this.$route.query.page || 1,
       pageSize: 3,
       pageCount: 0,
       allItems: [],
@@ -10,6 +10,7 @@ export default {
   },
   methods: {
     pageChangeHandler(page) {
+      this.$router.push(`${this.$route.path}?page=${page}`);
       this.items = this.allItems[page - 1] || this.allItems[0];
     },
     setupPagination(allItems) {
