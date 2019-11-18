@@ -33,14 +33,17 @@ export default {
     AppEmptyArticle
   },
   mounted(){
-    setTimeout(() => {
-    this.setupPagination(this.popularArticles)
-    }, 1000);
+    this.setupPagination(this.popularArticles);
   },
   computed: {
     ...mapGetters([
       'popularArticles'
     ])
+  },
+  watch: {
+    popularArticles(loaded) {
+      this.setupPagination(loaded);
+    }
   }
 };
 </script>

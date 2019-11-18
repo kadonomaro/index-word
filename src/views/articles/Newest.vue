@@ -33,14 +33,17 @@ export default {
     AppEmptyArticle
   },
   mounted(){
-    setTimeout(() => {
-    this.setupPagination(this.newestArticles)
-    }, 1000);
+    this.setupPagination(this.newestArticles);
   },
   computed: {
     ...mapGetters([
       'newestArticles'
     ])
+  },
+  watch: {
+    newestArticles(loaded) {
+      this.setupPagination(loaded);
+    }
   }
 };
 </script>

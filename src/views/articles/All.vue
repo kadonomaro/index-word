@@ -25,15 +25,18 @@ export default {
   components: {
     AppArticles,
   },
-  mounted(){
-    setTimeout(() => {
-      this.setupPagination(this.allArticles)
-    }, 1000);
+  mounted() {
+    this.setupPagination(this.allArticles);
   },
   computed: {
     ...mapGetters([
       'allArticles'
     ])
   },
+  watch: {
+    allArticles(loaded) {
+      this.setupPagination(loaded);
+    }
+  }
 };
 </script>
