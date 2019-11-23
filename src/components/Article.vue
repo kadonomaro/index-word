@@ -13,7 +13,7 @@
         class="article__button"
         :to="{
           name: 'article-page',
-          params: {id}
+          params: {id, url}
           }"
         >Далее</router-link>
       <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
@@ -27,6 +27,7 @@ export default {
   name: 'Article',
   props: {
     id: {type: String, required: true},
+    url: {type: String, required: true},
     title: {type: String, required: true},
     image: {type: String, required: false},
     text: {type: String, required: true},

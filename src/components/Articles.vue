@@ -6,6 +6,7 @@
         v-for="article in articles"
         :key="article.id"
         :id="article.id"
+        :url="article.url"
         :title="article.title"
         :date="article.date"
         :image="article.image"

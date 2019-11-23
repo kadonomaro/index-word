@@ -71,6 +71,7 @@ export default new Vuex.Store({
           snapshot.forEach((doc) => {
             const article = {
               id: doc.id,
+              url: doc.data().url,
               title: doc.data().title,
               text: doc.data().text,
               date: doc.data().date.toDate(),
