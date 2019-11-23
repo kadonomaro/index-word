@@ -44,4 +44,13 @@ export default {
       background-color: #ffffff;
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .tabs {
+
+      &__link {
+        padding: 10px 5px;
+      }
+    }
+  }
 </style>

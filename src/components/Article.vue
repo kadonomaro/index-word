@@ -99,7 +99,7 @@ export default {
       color: #ffffff;
       font-size: 18px;
       background-color: #5cb8c9;
-      border: 1px solid #5cb8c9;
+      border: 2px solid #5cb8c9;
       border-radius: 5px;
     }
     &__button {
@@ -117,6 +117,27 @@ export default {
       &:focus {
         color: #ffffff;
         background-color: #303030;
+      }
+    }
+  }
+
+
+  @media screen and (max-width: 767px) {
+    .article {
+
+      &__image {
+        height: 200px;
+      }
+      &__text,
+      &__footer {
+        padding: 8px 12px;
+      }
+      &__date {
+        padding: 6px;
+        font-size: 14px;
+      }
+      &__button {
+        font-size: 14px;
       }
     }
   }

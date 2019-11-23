@@ -58,4 +58,24 @@ export default {
       padding-top: 20px;
     }
   }
+
+
+  @media screen and (max-width: 767px) {
+    .hero {
+
+      &__inner {
+        display: block;
+      }
+      &__main {
+        padding: 10px 0;
+        text-align: center;
+      }
+      &__title {
+        font-size: 24px;
+      }
+      &__subtitle {
+        font-size: 18px;
+      }
+    }
+  }
 </style>
