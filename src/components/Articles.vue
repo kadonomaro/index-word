@@ -60,4 +60,26 @@ export default {
       margin: 15px;
     }
   }
+
+  @media screen and (max-width: 1279px) {
+    .articles {
+      &__item {
+        flex-basis: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        margin: 10px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .articles {
+      &__list {
+        display: block;
+      }
+      &__item {
+        max-width: calc(100% - 20px);
+        margin: 10px;
+      }
+    }
+  }
 </style>

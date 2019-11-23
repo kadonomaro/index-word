@@ -17,7 +17,7 @@
       <footer class="article-detail__footer">
         <time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
       </footer>
-      <article-comments :comments="article.comments" :articleID="id"/>
+      <article-comments :comments="article.comments" :articleID="article.id"/>
     </article>
 </template>
 
@@ -43,7 +43,7 @@ export default {
       'getArticleById'
     ]),
     article() {
-      return this.getArticleById(this.id)
+      return this.getArticleById(this.id);
     },
     imageAlt() {
       return this.title.replace(/\?/g, '');

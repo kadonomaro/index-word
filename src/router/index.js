@@ -27,7 +27,7 @@ const routes = [
         component: () => import('../views/articles/Newest.vue')
       },
       {
-        path: '/articles/:url',
+        path: '/articles/:id',
         name: 'article-page',
         props: true,
         component: () => import('../components/ArticleDetail.vue')

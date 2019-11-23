@@ -13,7 +13,7 @@
         class="article__button"
         :to="{
           name: 'article-page',
-          params: {id, url}
+          params: { id }
           }"
         >Далее</router-link>
       <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
@@ -99,6 +99,7 @@ export default {
       color: #ffffff;
       font-size: 18px;
       background-color: #5cb8c9;
+      border: 1px solid #5cb8c9;
       border-radius: 5px;
     }
     &__button {
