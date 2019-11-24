@@ -48,7 +48,9 @@ export default {
   }
   .button--light {
     border-color: #cccccc;
-    &:hover {
+    &:hover,
+    &:focus {
+      color: #606060;
       background-color: #cccccc;
     }
   }
