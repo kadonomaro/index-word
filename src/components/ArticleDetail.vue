@@ -109,4 +109,17 @@ export default {
       font-weight: bold;
     }
   }
+
+
+  @media screen and (max-width: 767px) {
+    .article-detail {
+
+      &__text {
+        padding: 10px;
+      }
+      &__title {
+        margin-bottom: 10px;
+      }
+    }
+  }
 </style>

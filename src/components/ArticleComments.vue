@@ -11,6 +11,9 @@
           <label class="comments-form__label">
             <textarea class="comments-form__field"  rows="7" placeholder="Комментарий" required v-model="newComment.text"></textarea>
           </label>
+          <transition name="fade" mode="out-in">
+            <span class="comments-form__error" v-if="isValidateError">Оба поля должны быть заполнены</span>
+          </transition>
           <button class="comments__button" @click.prevent="clickHandler">Отправить</button>
         </form>
       </div>
@@ -43,6 +46,7 @@ export default {
   data() {
     return {
       isCommentWrite: false,
+      isValidateError: false,
       newComment: {
         author: '',
         text: '',
@@ -64,9 +68,17 @@ export default {
         text: this.newComment.text,
         date: new Date()
       }
-      this.updateComments(comment);
-      this.clearComment();
-      this.isCommentWrite = !this.isCommentWrite;
+      if (comment.author && comment.text) {
+        this.updateComments(comment);
+        this.clearComment();
+        this.isCommentWrite = !this.isCommentWrite;
+      } else {
+        this.isValidateError = true;
+        setTimeout(() => {
+          this.isValidateError = false;
+        }, 2000);
+      }
+
     },
     clearComment() {
       this.newComment.author = '';
@@ -122,9 +134,12 @@ export default {
     }
     &__label {
       display: block;
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
+      margin-bottom: 10px;
+    }
+    &__error {
+      display: block;
+      margin-bottom: 10px;
+      color: #ff3333;
     }
     &__field {
       width: 100%;
