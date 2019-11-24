@@ -1,5 +1,5 @@
 <template>
-  <div class="all-articles">
+  <section class="all-articles">
     <h2>Все статьи</h2>
     <app-articles :articles="items" />
     <paginate
@@ -11,7 +11,7 @@
       :next-text="'Вперед'"
       :container-class="'paginate'">
     </paginate>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="popular-articles">
+  <section class="popular-articles">
     <h2>Популярные статьи</h2>
     <app-articles
       v-if="popularArticles.length > 0"
@@ -15,7 +15,7 @@
       :next-text="'Вперед'"
       :container-class="'paginate'">
     </paginate>
-  </div>
+  </section>
 </template>
 
 <script>

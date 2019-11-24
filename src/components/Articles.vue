@@ -45,7 +45,6 @@ export default {
 
 <style lang="scss">
   .articles {
-    padding: 0 10px;
     text-align: center;
     overflow: hidden;
     &__list {

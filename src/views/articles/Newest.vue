@@ -1,5 +1,5 @@
 <template>
-  <div class="newest-articles">
+  <section class="newest-articles">
     <h2>Новые статьи</h2>
     <app-articles
       v-if="newestArticles.length > 0"
@@ -15,7 +15,7 @@
       :next-text="'Вперед'"
       :container-class="'paginate'">
     </paginate>
-  </div>
+  </section>
 </template>
 
 <script>
