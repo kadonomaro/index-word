@@ -59,6 +59,17 @@ export default new Vuex.Store({
           comments: article.comments
         });
       }, 100);
+    },
+
+    updateArticle(state, [id, article]) {
+      db.collection('articles').doc(id).update({
+        url: article.url,
+        title: article.title,
+        text: article.text,
+        date: firebase.firestore.Timestamp.fromDate(article.date),
+        popularity: article.popularity,
+        comments: article.comments
+      });
     }
   },
   actions: {
@@ -110,9 +121,6 @@ export default new Vuex.Store({
       } catch (err) {
         state.commit('changeErrorCode', err.message);
       }
-    },
-    updateArticle(state, article) {
-      console.log(article);
     }
   },
   getters: {

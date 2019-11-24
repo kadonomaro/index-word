@@ -79,15 +79,16 @@ export default {
       newArticle: {
         title: this.article.title,
         text: this.article.text,
-        date: this.article.date,
-        url: this.article.url
+        date: new Date(),
+        url: this.article.url,
+        popularity: this.article.popularity,
+        comments: this.article.comments
       }
     }
   },
   methods: {
     updateArticle() {
-      let updatedArticle = Object.assign(this.newArticle, this.article);
-      this.$store.dispatch('updateArticle', updatedArticle);
+      this.$store.commit('updateArticle', [this.article.id ,this.newArticle]);
       this.isEdit = false;
     },
     editArticle() {
