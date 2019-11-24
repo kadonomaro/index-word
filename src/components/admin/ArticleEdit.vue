@@ -36,7 +36,7 @@ export default {
       flex-wrap: wrap;
     }
     &__item {
-      flex-basis: calc(33.3333% - 20px);
+      flex-basis: calc(50% - 20px);
       margin: 10px;
     }
   }

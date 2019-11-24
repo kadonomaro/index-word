@@ -46,6 +46,10 @@ export default {
       background-color: #303030;
     }
   }
+  .button--active {
+    color: #606060;
+    background-color: #cccccc;
+  }
   .button--light {
     border-color: #cccccc;
     &:hover,

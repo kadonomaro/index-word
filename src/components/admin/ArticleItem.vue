@@ -28,14 +28,7 @@
 
       <label class="editable-article__label">
         <span class="editable-article__field-caption">Text</span>
-        <textarea
-          class="editable-article__field"
-          rows="10"
-          :class="{ 'editable-article__field--editable': isEdit }"
-          v-html="newArticle.text"
-          v-model="newArticle.text"
-          :readonly="!isEdit"
-        ></textarea>
+        <ckeditor :editor="editor" v-model="newArticle.text" :disabled="!isEdit"></ckeditor>
       </label>
 
     </div>
@@ -49,9 +42,10 @@
       />
       <app-button
         class="editable-article__button"
+        :class="{ 'button--active' : isEdit }"
         :theme="'light'"
         :text="'Edit'"
-        @click-handler="editArticle"
+        @click-handler="toggleArticleEdit"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
@@ -68,11 +62,12 @@
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
   name: 'ArticleItem',
   components: {
-    AppButton
+    AppButton,
   },
   props: {
     article: {
@@ -82,6 +77,7 @@ export default {
   },
   data() {
     return {
+      editor: ClassicEditor,
       isEdit: false,
       isDateChange: false,
       newArticle: {
@@ -100,8 +96,8 @@ export default {
       this.$store.commit('updateArticle', [this.article.id ,this.newArticle]);
       this.isEdit = false;
     },
-    editArticle() {
-      this.isEdit = true;
+    toggleArticleEdit() {
+      this.isEdit = !this.isEdit;
     }
   }
 }
