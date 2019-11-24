@@ -110,6 +110,9 @@ export default new Vuex.Store({
       } catch (err) {
         state.commit('changeErrorCode', err.message);
       }
+    },
+    updateArticle(state, article) {
+      console.log(article);
     }
   },
   getters: {

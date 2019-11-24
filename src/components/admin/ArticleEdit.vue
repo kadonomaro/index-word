@@ -1,9 +1,12 @@
 <template>
   <div class="editable-articles">
     <div class="editable-articles__list">
-      <div v-for="article in allArticles" :key="article.id" class="editable-articles__item">
-        <article-item :article="article" />
-      </div>
+      <article-item
+        class="editable-articles__item"
+        v-for="article in allArticles"
+        :key="article.id"
+        :article="article"
+      />
     </div>
   </div>
 </template>

@@ -8,12 +8,34 @@
     <div class="editable-article__text">
       <label class="editable-article__label">
         <span class="editable-article__field-caption">Title</span>
-        <input type="text" class="editable-article__field" :value="article.title">
+        <input type="text"
+          class="editable-article__field"
+          :class="{ 'editable-article__field--editable': isEdit }"
+          v-model="newArticle.title"
+          :readonly="!isEdit"
+        >
+      </label>
+
+      <label class="editable-article__label">
+        <span class="editable-article__field-caption">URL</span>
+        <input type="text"
+          class="editable-article__field"
+          :class="{ 'editable-article__field--editable': isEdit }"
+          v-model="newArticle.url"
+          :readonly="!isEdit"
+        >
       </label>
 
       <label class="editable-article__label">
         <span class="editable-article__field-caption">Text</span>
-        <textarea class="editable-article__field" rows="10" v-html="article.text"></textarea>
+        <textarea
+          class="editable-article__field"
+          rows="10"
+          :class="{ 'editable-article__field--editable': isEdit }"
+          v-html="newArticle.text"
+          v-model="newArticle.text"
+          :readonly="!isEdit"
+        ></textarea>
       </label>
 
     </div>
@@ -23,7 +45,13 @@
         class="editable-article__button"
         :theme="'light'"
         :text="'Update'"
-        @click-handler="updateArticle(article.id)"
+        @click-handler="updateArticle"
+      />
+      <app-button
+        class="editable-article__button"
+        :theme="'light'"
+        :text="'Edit'"
+        @click-handler="editArticle"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
     </footer>
@@ -47,26 +75,42 @@ export default {
   },
   data() {
     return {
-
+      isEdit: false,
+      newArticle: {
+        title: this.article.title,
+        text: this.article.text,
+        date: this.article.date,
+        url: this.article.url
+      }
     }
   },
   methods: {
-    updateArticle(id) {
-      console.log(id);
-      // this.$store.dispatch('updateArticles', id);
+    updateArticle() {
+      let updatedArticle = Object.assign(this.newArticle, this.article);
+      this.$store.dispatch('updateArticle', updatedArticle);
+      this.isEdit = false;
+    },
+    editArticle() {
+      this.isEdit = true;
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .editable-article {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+    background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 5px;
+    box-sizing: border-box;
     &__label {
       display: block;
-      margin-bottom: 20px;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
     }
     &__field-caption {
       display: block;
@@ -77,13 +121,20 @@ export default {
     &__field {
       width: 100%;
       padding: 5px 10px;
+      font-size: 16px;
+      background-color: #eeeeee;
       border: 1px solid #cccccc;
       border-radius: 5px;
       box-sizing: border-box;
       resize: vertical;
     }
+    &__field--editable {
+      background-color: transparent;
+    }
     &__text {
       max-height: 600px;
+      padding: 10px 0;
+      flex-grow: 1;
       overflow: auto;
     }
     &__button {
