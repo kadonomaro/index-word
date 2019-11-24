@@ -54,6 +54,13 @@
         @click-handler="editArticle"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
+      <input
+        class="editable-article__checkbox"
+        type="checkbox"
+        :checked="isDateChange"
+        v-model="isDateChange"
+        title="Change date to now"
+      >
     </footer>
 
   </article>
@@ -76,6 +83,7 @@ export default {
   data() {
     return {
       isEdit: false,
+      isDateChange: false,
       newArticle: {
         title: this.article.title,
         text: this.article.text,
@@ -88,6 +96,7 @@ export default {
   },
   methods: {
     updateArticle() {
+      this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
       this.$store.commit('updateArticle', [this.article.id ,this.newArticle]);
       this.isEdit = false;
     },
@@ -128,9 +137,16 @@ export default {
       border-radius: 5px;
       box-sizing: border-box;
       resize: vertical;
+      transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
     }
     &__field--editable {
       background-color: transparent;
+      box-shadow: inset 0 0 3px rgba($color: #000000, $alpha: 0.2);
+    }
+    &__checkbox {
+      width: 20px;
+      height: 20px;
+      margin: 0 0 0 10px;
     }
     &__text {
       max-height: 600px;
