@@ -1,5 +1,9 @@
 <template>
-  <button class="button" @click="clickHandler">{{ text }}</button>
+  <button
+    class="button"
+    :class="'button--' + theme"
+    @click="clickHandler"
+  >{{ text }}</button>
 </template>
 
 <script>
@@ -9,6 +13,10 @@ export default {
     text: {
       type: String,
       required: true
+    },
+    theme: {
+      type: String,
+      required: false
     }
   },
   methods: {
@@ -38,4 +46,11 @@ export default {
       background-color: #303030;
     }
   }
+  .button--light {
+    border-color: #cccccc;
+    &:hover {
+      background-color: #cccccc;
+    }
+  }
+
 </style>
