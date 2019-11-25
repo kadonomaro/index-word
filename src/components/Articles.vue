@@ -46,7 +46,6 @@ export default {
 <style lang="scss">
   .articles {
     text-align: center;
-    overflow: hidden;
     &__list {
       display: flex;
       flex-wrap: wrap;

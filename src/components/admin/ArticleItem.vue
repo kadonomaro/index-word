@@ -3,6 +3,7 @@
 
     <div class="editable-article__image">
       <img class="editable-article__image-img" :src="article.image" alt="">
+      <input class="editable-article__file" type="file">
     </div>
 
     <div class="editable-article__text">
@@ -28,7 +29,13 @@
 
       <label class="editable-article__label">
         <span class="editable-article__field-caption">Text</span>
-        <ckeditor :editor="editor" v-model="newArticle.text" :disabled="!isEdit"></ckeditor>
+        <ckeditor
+          :editor="editor"
+          tag-name="textarea"
+          :config="editorConfig"
+          v-model="newArticle.text"
+          :disabled="!isEdit"
+        ></ckeditor>
       </label>
 
     </div>
@@ -78,6 +85,11 @@ export default {
   data() {
     return {
       editor: ClassicEditor,
+      editorConfig: {
+        toolbar: {
+        items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
+    }
+      },
       isEdit: false,
       isDateChange: false,
       newArticle: {
@@ -112,6 +124,10 @@ export default {
     border: 1px solid #cccccc;
     border-radius: 5px;
     box-sizing: border-box;
+    &__image-img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
     &__label {
       display: block;
       &:not(:last-child) {
