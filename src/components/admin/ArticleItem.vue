@@ -2,8 +2,13 @@
   <article class="editable-article">
 
     <div class="editable-article__image">
-      <img class="editable-article__image-img" :src="article.image" alt="">
-      <input class="editable-article__file" type="file">
+      <img class="editable-article__image-img" :src="newArticleImage" alt="">
+      <input
+        class="editable-article__file"
+        type="file"
+        accept="image/*"
+        @change="imageSelectHandler"
+      >
     </div>
 
     <div class="editable-article__text">
@@ -99,7 +104,8 @@ export default {
         url: this.article.url,
         popularity: this.article.popularity,
         comments: this.article.comments
-      }
+      },
+      newArticleImage: this.article.image
     }
   },
   methods: {
@@ -110,6 +116,16 @@ export default {
     },
     toggleArticleEdit() {
       this.isEdit = !this.isEdit;
+    },
+    imageSelectHandler(event) {
+      window.URL = window.URL || window.webkitURL;
+      const image = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = event => {
+        this.newArticleImage = event.target.result;
+      }
+
     }
   }
 }
@@ -124,9 +140,15 @@ export default {
     border: 1px solid #cccccc;
     border-radius: 5px;
     box-sizing: border-box;
-    &__image-img {
-      width: 100%;
+    &__image {
       margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #cccccc;
+    }
+    &__image-img {
+      height: 400px;
+      margin: 0 auto 10px;
+      object-fit: cover;
     }
     &__label {
       display: block;
