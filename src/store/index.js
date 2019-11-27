@@ -121,6 +121,10 @@ export default new Vuex.Store({
       } catch (err) {
         state.commit('changeErrorCode', err.message);
       }
+    },
+
+    uploadImage(state, [image, id]) {
+      uploadImage(image, id);
     }
   },
   getters: {
@@ -165,5 +169,14 @@ function getImages(article, id) {
     .catch((err) => {
       console.warn(err.code);
       article.image = 'https://via.placeholder.com/400x200';
+    });
+}
+
+function uploadImage(image, id) {
+  console.log(image);
+  storage.ref().child(`preview-images/${id}.jpg`)
+    .put(image)
+    .then((snapshot) => {
+      console.log(snapshot, 'success');
     });
 }

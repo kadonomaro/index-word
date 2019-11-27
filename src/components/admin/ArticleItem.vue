@@ -118,14 +118,13 @@ export default {
       this.isEdit = !this.isEdit;
     },
     imageSelectHandler(event) {
-      window.URL = window.URL || window.webkitURL;
       const image = event.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = event => {
         this.newArticleImage = event.target.result;
-      }
-
+        this.$store.dispatch('uploadImage', [image, this.article.id]);
+      };
     }
   }
 }
