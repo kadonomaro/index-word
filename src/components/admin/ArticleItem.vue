@@ -4,6 +4,7 @@
     <div class="editable-article__image">
       <img class="editable-article__image-img" :src="newArticleImage" alt="">
       <input
+        v-if="isEdit"
         class="editable-article__file"
         type="file"
         accept="image/*"
@@ -48,16 +49,17 @@
     <footer class="editable-article__footer">
       <app-button
         class="editable-article__button"
-        :theme="'light'"
-        :text="'Update'"
-        @click-handler="updateArticle"
-      />
-      <app-button
-        class="editable-article__button"
         :class="{ 'button--active' : isEdit }"
         :theme="'light'"
         :text="'Edit'"
         @click-handler="toggleArticleEdit"
+      />
+      <app-button
+        v-if="isEdit"
+        class="editable-article__button"
+        :theme="'light'"
+        :text="'Update'"
+        @click-handler="updateArticle"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
@@ -105,14 +107,20 @@ export default {
         popularity: this.article.popularity,
         comments: this.article.comments
       },
-      newArticleImage: this.article.image
+      newArticleImage: this.article.image,
+      base64Image: ''
     }
   },
   methods: {
     updateArticle() {
-      this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
-      this.$store.commit('updateArticle', [this.article.id ,this.newArticle]);
-      this.isEdit = false;
+      if (this.isEdit) {
+        this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
+        this.$store.commit('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
+        if (this.base64Image) {
+          this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);
+        }
+        this.isEdit = false;
+      }
     },
     toggleArticleEdit() {
       this.isEdit = !this.isEdit;
@@ -123,7 +131,7 @@ export default {
       reader.readAsDataURL(image);
       reader.onload = event => {
         this.newArticleImage = event.target.result;
-        this.$store.dispatch('uploadImage', [image, this.article.id]);
+        this.base64Image = image;
       };
     }
   }

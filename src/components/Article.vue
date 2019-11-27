@@ -49,7 +49,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #f6f6f6;
+    background-color: #eaeaea;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
@@ -66,8 +66,12 @@ export default {
       text-align: center;
     }
     &__image {
-      width: 100%;
       height: 300px;
+      background-color: #f6f6f6;
+      border: 2px solid #eaeaea;
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+      overflow: hidden;
     }
     &__image-img {
       width: 100%;
@@ -91,7 +95,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding: 15px 20px;
-      background-color: darken($color: #f6f6f6, $amount: 5%);
+      background-color: #dcdcdc;
       box-sizing: border-box;
     }
     &__date {
