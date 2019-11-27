@@ -28,7 +28,7 @@ const routes = [
       },
       {
         path: '/articles/:id',
-        name: 'article-page',
+        name: 'article-detail',
         props: true,
         component: () => import('../components/ArticleDetail.vue')
       },
@@ -72,7 +72,13 @@ const routes = [
       {
         path: '/admin/editor',
         name: 'editor',
-        component: () => import('../views/admin/Editor.vue')
+        component: () => import('../views/admin/Editor.vue'),
+      },
+      {
+        path: '/admin/editor/:id',
+        name: 'article-item-detail',
+        props: true,
+        component: () => import('../components/admin/ArticleItemDetail.vue')
       },
     ]
   },

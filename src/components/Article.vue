@@ -12,7 +12,7 @@
       <router-link
         class="article__button"
         :to="{
-          name: 'article-page',
+          name: 'article-detail',
           params: { id }
           }"
         >Далее</router-link>

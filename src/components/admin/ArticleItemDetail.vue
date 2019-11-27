@@ -1,6 +1,5 @@
 <template>
   <article class="editable-article">
-
     <div class="editable-article__image">
       <img class="editable-article__image-img" :src="newArticleImage" alt="">
       <input
@@ -39,7 +38,7 @@
           :editor="editor"
           tag-name="textarea"
           :config="editorConfig"
-          v-model="newArticle.text"
+          v-model="article.text"
           :disabled="!isEdit"
         ></ckeditor>
       </label>
@@ -69,36 +68,30 @@
         v-model="isDateChange"
         title="Change date to now"
       >
-      <router-link
-        class="article__button"
-        :to="{
-          name: 'article-item-detail',
-          params: { id }
-          }"
-      >Далее</router-link>
     </footer>
 
   </article>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
-  name: 'ArticleItem',
+  name: 'ArticleItemDetail',
   components: {
     AppButton,
   },
   props: {
-    article: {
-      type: Object,
+    id: {
+      type: String,
       required: true
     }
   },
   data() {
     return {
-      id: this.article.id,
+
       editor: ClassicEditor,
       editorConfig: {
         toolbar: {
@@ -108,16 +101,33 @@ export default {
       isEdit: false,
       isDateChange: false,
       newArticle: {
-        title: this.article.title,
-        text: this.article.text,
-        date: new Date(),
-        url: this.article.url,
-        popularity: this.article.popularity,
-        comments: this.article.comments
+        title: '',
+        text: '',
+        date: '',
+        url: '',
+        popularity: '',
+        comments: ''
       },
-      newArticleImage: this.article.image,
+      newArticleImage: '',
       base64Image: ''
     }
+  },
+  mounted(){
+    this.newArticle.title = this.article.title;
+    this.newArticle.text = this.article.text;
+    this.newArticle.date = new Date();
+    this.newArticle.url = this.article.url;
+    this.newArticle.popularity = this.article.popularity;
+    this.newArticle.comments = this.article.comments;
+    this.newArticleImage = this.article.image;
+  },
+  computed: {
+    ...mapGetters([
+      'getArticleById'
+    ]),
+    article() {
+      return this.getArticleById(this.id);
+    },
   },
   methods: {
     updateArticle() {
@@ -198,10 +208,7 @@ export default {
       margin: 0 0 0 10px;
     }
     &__text {
-      max-height: 600px;
       padding: 10px 0;
-      flex-grow: 1;
-      overflow: auto;
     }
     &__button {
       margin-right: 10px;
