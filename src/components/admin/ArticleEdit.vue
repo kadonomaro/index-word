@@ -32,12 +32,10 @@ export default {
 <style lang="scss">
   .editable-articles {
     &__list {
-      display: flex;
-      flex-wrap: wrap;
+
     }
     &__item {
-      flex-basis: calc(50% - 20px);
-      margin: 10px;
+      margin-bottom: 20px;
     }
   }
 </style>

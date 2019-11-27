@@ -34,16 +34,14 @@
       </label>
 
       <label class="editable-article__label">
-        <span class="editable-article__field-caption">Text</span>
-        <ckeditor
-          :editor="editor"
-          tag-name="textarea"
-          :config="editorConfig"
-          v-model="newArticle.text"
-          :disabled="!isEdit"
-        ></ckeditor>
+        <span class="editable-article__field-caption">Popularity</span>
+        <input type="text"
+          class="editable-article__field"
+          :class="{ 'editable-article__field--editable': isEdit }"
+          v-model="newArticle.popularity"
+          :readonly="!isEdit"
+        >
       </label>
-
     </div>
 
     <footer class="editable-article__footer">
@@ -99,12 +97,6 @@ export default {
   data() {
     return {
       id: this.article.id,
-      editor: ClassicEditor,
-      editorConfig: {
-        toolbar: {
-        items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
-        }
-      },
       isEdit: false,
       isDateChange: false,
       newArticle: {
@@ -149,21 +141,22 @@ export default {
 <style lang="scss">
   .editable-article {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     padding: 10px;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 5px;
     box-sizing: border-box;
     &__image {
+      flex-basis: 40%;
+      max-width: 40%;
       margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #cccccc;
     }
     &__image-img {
-      height: 400px;
-      margin: 0 auto 10px;
+      width: 100%;
+      height: 300px;
       object-fit: cover;
+      object-position: center;
     }
     &__label {
       display: block;
@@ -198,10 +191,11 @@ export default {
       margin: 0 0 0 10px;
     }
     &__text {
-      max-height: 600px;
-      padding: 10px 0;
-      flex-grow: 1;
-      overflow: auto;
+      margin-bottom: 10px;
+      padding: 0 10px;
+      flex-basis: 60%;
+      max-width: 60%;
+      box-sizing: border-box;
     }
     &__button {
       margin-right: 10px;
@@ -212,7 +206,8 @@ export default {
     &__footer {
       display: flex;
       align-items: center;
-      padding: 10px;
+      width: 100%;
+      padding: 5px;
       color: #ffffff;
       background-color: #606060;
       border-radius: 5px;

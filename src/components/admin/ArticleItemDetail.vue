@@ -1,39 +1,39 @@
 <template>
-  <article class="editable-article">
-    <div class="editable-article__image">
-      <img class="editable-article__image-img" :src="newArticleImage" alt="">
+  <article class="editable-article-detail">
+    <div class="editable-article-detail__image">
+      <img class="editable-article-detail__image-img" :src="newArticleImage" alt="">
       <input
         v-if="isEdit"
-        class="editable-article__file"
+        class="editable-article-detail__file"
         type="file"
         accept="image/*"
         @change="imageSelectHandler"
       >
     </div>
 
-    <div class="editable-article__text">
-      <label class="editable-article__label">
-        <span class="editable-article__field-caption">Title</span>
+    <div class="editable-article-detail__text">
+      <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Title</span>
         <input type="text"
-          class="editable-article__field"
-          :class="{ 'editable-article__field--editable': isEdit }"
+          class="editable-article-detail__field"
+          :class="{ 'editable-article-detail__field--editable': isEdit }"
           v-model="newArticle.title"
           :readonly="!isEdit"
         >
       </label>
 
-      <label class="editable-article__label">
-        <span class="editable-article__field-caption">URL</span>
+      <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">URL</span>
         <input type="text"
-          class="editable-article__field"
-          :class="{ 'editable-article__field--editable': isEdit }"
+          class="editable-article-detail__field"
+          :class="{ 'editable-article-detail__field--editable': isEdit }"
           v-model="newArticle.url"
           :readonly="!isEdit"
         >
       </label>
 
-      <label class="editable-article__label">
-        <span class="editable-article__field-caption">Text</span>
+      <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Text</span>
         <ckeditor
           :editor="editor"
           tag-name="textarea"
@@ -45,9 +45,9 @@
 
     </div>
 
-    <footer class="editable-article__footer">
+    <footer class="editable-article-detail__footer">
       <app-button
-        class="editable-article__button"
+        class="editable-article-detail__button"
         :class="{ 'button--active' : isEdit }"
         :theme="'light'"
         :text="'Edit'"
@@ -55,14 +55,14 @@
       />
       <app-button
         v-if="isEdit"
-        class="editable-article__button"
+        class="editable-article-detail__button"
         :theme="'light'"
         :text="'Update'"
         @click-handler="updateArticle"
       />
-      <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
+      <time datetime="" class="editable-article-detail__date">{{ article.date.toLocaleString() }}</time>
       <input
-        class="editable-article__checkbox"
+        class="editable-article-detail__checkbox"
         type="checkbox"
         :checked="isDateChange"
         v-model="isDateChange"
@@ -157,7 +157,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .editable-article {
+  .editable-article-detail {
     display: flex;
     flex-direction: column;
     padding: 10px;
