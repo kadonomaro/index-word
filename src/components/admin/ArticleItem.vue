@@ -179,7 +179,6 @@ export default {
       border: 1px solid #cccccc;
       border-radius: 5px;
       box-sizing: border-box;
-      resize: vertical;
       transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
     }
     &__field--editable {

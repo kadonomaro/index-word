@@ -9,13 +9,10 @@
       <div v-html="stringExplode"></div>
     </div>
     <footer class="article__footer">
-      <router-link
-        class="article__button"
-        :to="{
-          name: 'article-detail',
-          params: { id }
-          }"
-        >Далее</router-link>
+      <app-button
+        :text="'Читать'"
+        @click-handler="$router.push({ name: 'article-detail', params: {id} })"
+      />
       <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
     </footer>
 
@@ -23,8 +20,13 @@
 </template>
 
 <script>
+import AppButton from '@/components/blocks/AppButton.vue';
+
 export default {
   name: 'Article',
+  components: {
+    AppButton
+  },
   props: {
     id: {type: String, required: true},
     url: {type: String, required: true},
@@ -105,23 +107,6 @@ export default {
       background-color: #5cb8c9;
       border: 2px solid #5cb8c9;
       border-radius: 5px;
-    }
-    &__button {
-      margin-right: 5px;
-      padding: 5px 16px;
-      color: inherit;
-      font-size: 18px;
-      text-decoration: none;
-      background-color: transparent;
-      border: 2px solid #303030;
-      border-radius: 5px;
-      transition: color 0.2s ease-in, background-color 0.2s ease-in;
-      cursor: pointer;
-      &:hover,
-      &:focus {
-        color: #ffffff;
-        background-color: #303030;
-      }
     }
   }
 

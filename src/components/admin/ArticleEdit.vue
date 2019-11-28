@@ -31,9 +31,6 @@ export default {
 
 <style lang="scss">
   .editable-articles {
-    &__list {
-
-    }
     &__item {
       margin-bottom: 20px;
     }

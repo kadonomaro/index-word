@@ -4,10 +4,10 @@
         <app-button
           class="article-detail__link"
           :text="'Назад'"
-          @click-handler="goBack"
+          @click-handler="$router.go(-1)"
         />
         <div class="article-detail__image">
-          <img class="article-detail__image-img" :src="article.image" :alt="'imageAlt'">
+          <img class="article-detail__image-img" :src="article.image" :alt="article.title">
         </div>
         <div class="article-detail__text">
           <h1 class="article-detail__title">{{ article.title }}</h1>
@@ -44,10 +44,7 @@ export default {
     ]),
     article() {
       return this.getArticleById(this.id);
-    },
-    imageAlt() {
-      return this.title.replace(/\?/g, '');
-    },
+    }
   },
   mounted() {
     this.increasePopularity();
@@ -56,10 +53,7 @@ export default {
     increasePopularity() {
       setTimeout(() => {
         this.$store.commit('increasePopularity', this.id);
-      }, 1000);
-    },
-    goBack() {
-      this.$router.go(-1);
+      }, 3000);
     }
   },
 };

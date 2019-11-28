@@ -38,6 +38,16 @@
       </label>
 
       <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Popularity</span>
+        <input type="text"
+          class="editable-article-detail__field"
+          :class="{ 'editable-article-detail__field--editable': isEdit }"
+          v-model="newArticle.popularity"
+          :readonly="!isEdit"
+        >
+      </label>
+
+      <label class="editable-article-detail__label">
         <span class="editable-article-detail__field-caption">Text</span>
         <ckeditor
           :editor="editor"
@@ -163,13 +173,10 @@ export default {
 
 <style lang="scss">
   .editable-article-detail {
-    display: flex;
-    flex-direction: column;
     padding: 10px;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    box-sizing: border-box;
     &__image {
       margin-bottom: 10px;
       padding-bottom: 10px;
@@ -183,13 +190,13 @@ export default {
     &__label {
       display: block;
       &:not(:last-child) {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
     &__field-caption {
       display: block;
       margin-bottom: 5px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
     &__field {
@@ -200,7 +207,6 @@ export default {
       border: 1px solid #cccccc;
       border-radius: 5px;
       box-sizing: border-box;
-      resize: vertical;
       transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
     }
     &__field--editable {
