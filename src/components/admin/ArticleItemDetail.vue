@@ -1,5 +1,10 @@
 <template>
   <article class="editable-article-detail">
+    <app-button
+      class="editable-article__button"
+      :text="'Prev'"
+      @click-handler="$router.go(-1)"
+    />
     <div class="editable-article-detail__image">
       <img class="editable-article-detail__image-img" :src="newArticleImage" alt="">
       <input

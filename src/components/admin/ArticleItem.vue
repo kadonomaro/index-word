@@ -53,6 +53,12 @@
         @click-handler="toggleArticleEdit"
       />
       <app-button
+        class="editable-article__button"
+        :theme="'light'"
+        :text="'Open'"
+        @click-handler="openArticle"
+      />
+      <app-button
         v-if="isEdit"
         class="editable-article__button"
         :theme="'light'"
@@ -67,13 +73,6 @@
         v-model="isDateChange"
         title="Change date to now"
       >
-      <router-link
-        class="article__button"
-        :to="{
-          name: 'article-item-detail',
-          params: { id }
-          }"
-      >Далее</router-link>
     </footer>
 
   </article>
@@ -81,7 +80,6 @@
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
   name: 'ArticleItem',
@@ -125,6 +123,9 @@ export default {
     toggleArticleEdit() {
       this.isEdit = !this.isEdit;
     },
+    openArticle() {
+      this.$router.push({ name: 'article-item-detail', params: { id: this.id }});
+    },
     imageSelectHandler(event) {
       const image = event.target.files[0];
       const reader = new FileReader();
@@ -148,8 +149,8 @@ export default {
     border-radius: 5px;
     box-sizing: border-box;
     &__image {
-      flex-basis: 40%;
-      max-width: 40%;
+      flex-basis: 30%;
+      max-width: 30%;
       margin-bottom: 10px;
     }
     &__image-img {
@@ -161,13 +162,13 @@ export default {
     &__label {
       display: block;
       &:not(:last-child) {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
     &__field-caption {
       display: block;
       margin-bottom: 5px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
     &__field {
@@ -193,12 +194,12 @@ export default {
     &__text {
       margin-bottom: 10px;
       padding: 0 10px;
-      flex-basis: 60%;
-      max-width: 60%;
+      flex-basis: 70%;
+      max-width: 70%;
       box-sizing: border-box;
     }
     &__button {
-      margin-right: 10px;
+      margin-right: 5px;
     }
     &__date {
       margin-left: auto;
