@@ -1,7 +1,7 @@
 <template>
   <button
     class="button"
-    :class="'button--' + theme"
+    :class="theme ? 'button--' + theme : ''"
     @click="clickHandler"
   >{{ text }}</button>
 </template>

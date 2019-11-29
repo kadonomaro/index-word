@@ -77,6 +77,7 @@ export default new Vuex.Store({
       const articles = [];
       this.state.articles.length = 0;
       await db.collection('articles')
+        .orderBy('date')
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {
@@ -91,7 +92,7 @@ export default new Vuex.Store({
               comments: doc.data().comments || []
             };
             getImages(article, article.id);
-            articles.push(article);
+            articles.unshift(article);
           });
         });
       state.commit('updateArticles', articles);
