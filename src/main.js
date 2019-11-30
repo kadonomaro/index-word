@@ -16,7 +16,7 @@ Vue.config.productionTip = false;
 Vue.component('paginate', Paginate);
 Vue.use(CKEditor);
 
-const firebaseConfig = {
+const firebaseDevConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
   authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
@@ -25,6 +25,18 @@ const firebaseConfig = {
   messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: '1:664834727086:web:a7dd48b4f891b8e38c213f',
 };
+
+const firebaseProductionConfig = {
+  apiKey: "AIzaSyAbYgWAnwQQr-9Rmg70V7wjTJ16t8ljzWk",
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+  projectId: "index-word",
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
+  appId: '1:664834727086:web:a7dd48b4f891b8e38c213f',
+};
+
+const firebaseConfig = process.env.NODE_ENV === 'production' ? firebaseProductionConfig : firebaseDevConfig;
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
