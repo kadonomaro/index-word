@@ -98,20 +98,10 @@ export default {
     }
   },
   methods: {
-    updateArticle() {
-      if (this.isEdit) {
-        this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
-        this.$store.commit('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
-        if (this.base64Image) {
-          this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);
-        }
-        this.isEdit = false;
-      }
-    },
     createArticle() {
       this.$store.dispatch('createArticle', [this.newArticle, this.base64Image]);
       setTimeout(() => {
-        this.$router.go(-1);
+        this.$router.push({ name: 'editor' });
       }, 10);
     },
     imageSelectHandler(event) {

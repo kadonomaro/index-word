@@ -57,7 +57,7 @@ export default new Vuex.Store({
     updateComments(state, [id, comment]) {
       const article = state.articles.find(article => article.id === id);
       comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
-      article.comments.push(comment);
+      article.comments.unshift(comment);
       setTimeout(() => {
         db.collection('articles').doc(id).update({
           comments: article.comments
@@ -113,6 +113,7 @@ export default new Vuex.Store({
         if (image) {
           uploadImage(image, doc.id);
         }
+        article.id = doc.id;
         state.commit('addNewArticle', article);
       }).catch((error) => {
         console.log('Error creating new article', error);
