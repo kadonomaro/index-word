@@ -24,6 +24,7 @@ export default {
   .tabs {
     padding: 10px 10px 0;
     background-color: #eaebed;
+    overflow-x: auto;
     &__list {
       display: flex;
       margin: 0;
@@ -35,6 +36,7 @@ export default {
       padding: 15px 15px 20px;
       color: #757575;
       text-decoration: none;
+      white-space: nowrap;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       transition: color 0.3s ease-in, background-color 0.3s ease-in;
@@ -47,9 +49,8 @@ export default {
 
   @media screen and (max-width: 767px) {
     .tabs {
-
       &__link {
-        padding: 10px 5px;
+        padding: 10px 8px;
       }
     }
   }

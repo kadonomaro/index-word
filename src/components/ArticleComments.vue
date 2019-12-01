@@ -1,6 +1,9 @@
 <template>
   <div class="comments">
-    <button class="comments__button comments__button--add" @click="isCommentWrite = !isCommentWrite">+</button>
+    <button
+      class="comments__button comments__button--add"
+      @click="isCommentWrite = !isCommentWrite"
+    >+</button>
 
     <transition name="fade" mode="out-in">
       <div class="comments__add" v-if="isCommentWrite">
@@ -91,7 +94,7 @@ export default {
 
 <style lang="scss">
   .comments {
-    padding: 20px 20px;
+    padding: 20px 15px;
     background-color: #ecf2f7;
     border-radius: 5px;
     &__button {
@@ -178,6 +181,13 @@ export default {
       font-weight: bold;
       background-color: #5cb8c9;
       border-radius: 5px;
+    }
+  }
+
+
+  @media screen and(max-width: 767px) {
+    .comments {
+      padding: 10px;
     }
   }
 </style>

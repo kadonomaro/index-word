@@ -63,14 +63,10 @@ export default {
   .article-detail {
     padding: 20px 0;
 
-    &__inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
     &__image-img {
       width: 100%;
       max-width: 100%;
-      max-height: 600px;
+      max-height: 720px;
       object-fit: cover;
     }
     &__title {
@@ -78,8 +74,8 @@ export default {
       text-align: center;
     }
     &__text {
-      padding: 20px 50px;
-      background-color: #f6f6f6;
+      padding: 20px 30px;
+      background-color: #f9f9f9;
 
       h3, h4, h5, h5, p, ul, ol {
         margin: 0 0 10px;
@@ -95,7 +91,8 @@ export default {
       margin-bottom: 20px;
       padding: 10px;
       background-color: #5cb8c9;
-      border-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
     &__date {
       color: #ffffff;

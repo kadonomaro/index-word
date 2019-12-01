@@ -30,7 +30,7 @@ export default {
 <style lang="scss">
   .button {
     display: inline-block;
-    padding: 5px 16px;
+    padding: 6px 16px;
     color: inherit;
     font-family: inherit;
     font-size: 18px;
@@ -56,6 +56,12 @@ export default {
     &:focus {
       color: #606060;
       background-color: #cccccc;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .button {
+      font-size: 14px;
     }
   }
 
