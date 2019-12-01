@@ -8,6 +8,9 @@ export default {
       items: []
     };
   },
+  mounted() {
+    // this.pageSize = this.$store.getters.settings.paginationPageSize;
+  },
   methods: {
     pageChangeHandler(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);

@@ -10,7 +10,8 @@ export default new Vuex.Store({
     articles: [],
     settings: {
       daysBefore: null,
-      articlePopularityLimit: null
+      articlePopularityLimit: null,
+      paginationPageSize: 3
     },
     auth: {
       hasAccess: false,
@@ -104,7 +105,9 @@ export default new Vuex.Store({
         .then(doc => {
           const settings = {
             daysBefore: doc.data().daysBefore,
-            articlePopularityLimit: doc.data().articlePopularityLimit
+            articlePopularityLimit: doc.data().articlePopularityLimit,
+            paginationPageSize: doc.data().paginationPageSize
+
           };
           this.commit('updateSettings', settings);
         });

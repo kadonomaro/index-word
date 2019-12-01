@@ -28,7 +28,8 @@ export default {
   props: {
     articles: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   components: {
