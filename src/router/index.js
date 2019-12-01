@@ -80,6 +80,11 @@ const routes = [
         props: true,
         component: () => import('../components/admin/ArticleItemDetail.vue')
       },
+      {
+        path: '/admin/editor/new',
+        name: 'new-article',
+        component: () => import('../components/admin/ArticleItemNew.vue')
+      }
     ]
   },
 ];

@@ -34,7 +34,7 @@ export default {
     image: {type: String, required: false},
     text: {type: String, required: true},
     date: {type: Date, required: true},
-    popularity: {type: Number, required: true},
+    popularity: {type: [Number, String], required: true},
     comments: {type: Array, required: false}
   },
   computed: {

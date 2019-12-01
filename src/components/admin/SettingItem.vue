@@ -7,7 +7,7 @@
       :value="val"
       @input="value = $event.target.value"
     >
-    <button class="setting-item__button" @click.prevent="setSettings({[name]: value})">Save</button>
+    <button class="setting-item__button" @click.prevent="setSettings({[name]: +value})">Save</button>
   </li>
 </template>
 
@@ -20,7 +20,7 @@ export default {
       required: true,
     },
     val: {
-      type: String,
+      type: Number,
       required: true,
     }
   },
