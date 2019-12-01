@@ -82,8 +82,10 @@ export default {
     }
     &__text {
       flex-grow: 1;
+      width: 100%;
       padding: 15px 20px;
       text-align: left;
+      box-sizing: border-box;
       h3, h4, h5, h5, p, ul, ol {
         margin: 0 0 10px;
       }

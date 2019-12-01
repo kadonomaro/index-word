@@ -110,6 +110,9 @@ export default {
     },
     createArticle() {
       this.$store.dispatch('createArticle', [this.newArticle, this.base64Image]);
+      setTimeout(() => {
+        this.$router.go(-1);
+      }, 10);
     },
     imageSelectHandler(event) {
       const image = event.target.files[0];

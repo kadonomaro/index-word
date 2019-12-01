@@ -30,6 +30,9 @@ export default new Vuex.Store({
     updateArticles(state, articles) {
       state.articles = articles;
     },
+    addNewArticle(state, article) {
+      state.articles.unshift(article);
+    },
 
     updateSettings(state, settings) {
       state.settings = settings;
@@ -99,7 +102,6 @@ export default new Vuex.Store({
       state.commit('updateArticles', articles);
     },
     createArticle(state, [article, image]) {
-      console.log(article, image);
       db.collection('articles').add({
         url: article.url,
         title: article.title,
@@ -107,6 +109,13 @@ export default new Vuex.Store({
         date: firebase.firestore.Timestamp.fromDate(article.date),
         popularity: article.popularity,
         comments: article.comments
+      }).then((doc) => {
+        if (image) {
+          uploadImage(image, doc.id);
+        }
+        state.commit('addNewArticle', article);
+      }).catch((error) => {
+        console.log('Error creating new article', error);
       });
     },
     async getSettings(state) {
@@ -188,10 +197,19 @@ function getImages(article, id) {
 }
 
 function uploadImage(image, id) {
-  console.log(image);
   storage.ref().child(`preview-images/${id}.jpg`)
     .put(image)
     .then((snapshot) => {
       console.log(snapshot, 'success');
+    });
+}
+
+function deleteImage(id) {
+  storage.ref().child(`preview-images/${id}.jpg`)
+    .delete()
+    .then(() => {
+      console.log('Delete success');
+    }).catch((error) => {
+      console.log('Error deleting image');
     });
 }
