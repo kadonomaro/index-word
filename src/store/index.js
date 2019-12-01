@@ -98,6 +98,17 @@ export default new Vuex.Store({
         });
       state.commit('updateArticles', articles);
     },
+    createArticle(state, [article, image]) {
+      console.log(article, image);
+      db.collection('articles').add({
+        url: article.url,
+        title: article.title,
+        text: article.text,
+        date: firebase.firestore.Timestamp.fromDate(article.date),
+        popularity: article.popularity,
+        comments: article.comments
+      });
+    },
     async getSettings(state) {
       await db.collection('settings')
         .doc('general')

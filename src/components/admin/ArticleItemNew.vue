@@ -109,8 +109,7 @@ export default {
       }
     },
     createArticle() {
-      console.log(this.newArticle);
-      // this.$store.dispatch('createArticle', [this.newArticle, this.newArticleImage]);
+      this.$store.dispatch('createArticle', [this.newArticle, this.base64Image]);
     },
     imageSelectHandler(event) {
       const image = event.target.files[0];
