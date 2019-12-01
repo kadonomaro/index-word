@@ -58,6 +58,13 @@ export default {
       background-color: #cccccc;
     }
   }
+  .button--danger {
+    border-color: #fd3333;
+    &:hover,
+    &:focus {
+      background-color: #fd3333;
+    }
+  }
 
   @media screen and (max-width: 767px) {
     .button {

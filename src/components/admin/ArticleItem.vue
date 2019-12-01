@@ -65,6 +65,12 @@
         :text="'Update'"
         @click-handler="updateArticle"
       />
+      <app-button
+        class="editable-article__button"
+        :theme="'danger'"
+        :text="'Delete'"
+        @click-handler="deleteArticle"
+      />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
         class="editable-article__checkbox"
@@ -125,6 +131,9 @@ export default {
     },
     openArticle() {
       this.$router.push({ name: 'article-item-detail', params: { id: this.id }});
+    },
+    deleteArticle() {
+      this.$store.dispatch('deleteArticle', this.id);
     },
     imageSelectHandler(event) {
       const image = event.target.files[0];

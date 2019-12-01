@@ -119,6 +119,17 @@ export default new Vuex.Store({
         console.log('Error creating new article', error);
       });
     },
+    deleteArticle(state, id) {
+      db.collection('articles')
+        .doc(id)
+        .delete()
+        .then(() => {
+          console.log('success delete article');
+          deleteImage(id);
+        }).catch((error) => {
+          console.log('Error deleting article', error);
+        });
+    },
     async getSettings(state) {
       await db.collection('settings')
         .doc('general')
@@ -209,7 +220,7 @@ function deleteImage(id) {
   storage.ref().child(`preview-images/${id}.jpg`)
     .delete()
     .then(() => {
-      console.log('Delete success');
+      console.log('success delete image');
     }).catch((error) => {
       console.log('Error deleting image');
     });
