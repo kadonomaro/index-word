@@ -185,6 +185,14 @@ export default new Vuex.Store({
         return article.date.getTime() >= date.getTime();
       });
     },
+    articlesTitle(state) {
+      return state.articles.map((article) => {
+        return {
+          id: article.id,
+          title: article.title
+        };
+      });
+    },
     getArticleById(state) {
       return (id) => {
         return state.articles.find(article => article.id === id);
