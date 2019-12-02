@@ -11,24 +11,14 @@
         <router-link class="tabs__link" to="/newest">Новинки</router-link>
       </li>
     </ul>
-    <smart-search :list="articlesTitle"/>
   </nav>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import SmartSearch from '@/components/SmartSearch.vue';
+
 
 export default {
   name: 'Tabs',
-  components: {
-    SmartSearch
-  },
-  computed: {
-    ...mapGetters([
-      'articlesTitle'
-    ])
-  }
 }
 </script>
 
