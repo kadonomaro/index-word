@@ -98,7 +98,12 @@ export default {
       border: 2px solid #303030;
       border-radius: 50%;
       transform: translate(0, -50%);
+      transition: background-color 0.2s ease-in;
       cursor: pointer;
+      &:hover,
+      &:focus {
+        background-color: #eaebed;
+      }
     }
   }
 
@@ -119,7 +124,7 @@ export default {
     }
     &__item {
       &:not(:last-child) {
-        border-bottom: 2px solid #cccccc;
+        border-bottom: 2px solid #eaebed;
       }
     }
     &__button {

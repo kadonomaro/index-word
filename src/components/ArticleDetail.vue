@@ -61,6 +61,8 @@ export default {
 
 <style lang="scss">
   .article-detail {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px 0;
 
     &__image-img {

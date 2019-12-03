@@ -74,6 +74,10 @@ export default new Vuex.Store({
         popularity: article.popularity,
         comments: article.comments
       });
+    },
+    deleteArticle(state, article) {
+      let index = state.articles.indexOf(article);
+      state.articles.splice(index, 1);
     }
   },
   actions: {
@@ -126,6 +130,9 @@ export default new Vuex.Store({
         .then(() => {
           console.log('success delete article');
           deleteImage(id);
+          const article = this.state.articles.filter((article) => article.id === id);
+          state.commit('deleteArticle', ...article);
+
         }).catch((error) => {
           console.log('Error deleting article', error);
         });
@@ -139,7 +146,6 @@ export default new Vuex.Store({
             daysBefore: doc.data().daysBefore,
             articlePopularityLimit: doc.data().articlePopularityLimit,
             paginationPageSize: doc.data().paginationPageSize
-
           };
           this.commit('updateSettings', settings);
         });
