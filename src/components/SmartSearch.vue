@@ -1,15 +1,19 @@
 <template>
-  <div class="search">
+  <div class="search" @keydown.esc="isOpen = false">
     <form class="search__form">
-      <input
-        type="text"
-        class="search__field"
-        @input="searchItems"
-        v-model="searchValue"
-        placeholder="Название статьи"
-      >
+      <label class="search__label">
+        <input
+          type="text"
+          class="search__field"
+          @focus="searchValue ? isOpen = true : isOpen = false"
+          @input="searchItems"
+          v-model="searchValue"
+          placeholder="Название статьи"
+        >
+      </label>
+      <button v-if="searchValue" class="search__button" aria-label="close" @click.prevent="[isOpen = false, searchValue = '']"></button>
     </form>
-    <div class="search-dropdown" v-if="filteredValues.length">
+    <div class="search-dropdown" v-if="isOpen">
       <ul class="search-dropdown__list">
         <li class="search-dropdown__item" v-for="(val, index) in filteredValues" :key="index">
           <button class="search-dropdown__button" @click="clickHandler(val.id)">{{ val.title }}</button>
@@ -31,7 +35,8 @@ export default {
   data() {
     return {
       searchValue: '',
-      filteredValues: []
+      filteredValues: [],
+      isOpen: false
     }
   },
   computed: {
@@ -39,9 +44,10 @@ export default {
   },
   methods: {
     searchItems() {
+      this.isOpen = true;
       this.filteredValues.length = 0;
       this.list.forEach((item) => {
-        if(item.title.toLowerCase().includes(this.searchValue.toLowerCase()) && this.searchValue) {
+        if(item.title.toLowerCase().includes(this.searchValue.toLowerCase()) && this.searchValue && this.isOpen) {
           this.filteredValues.push({
             id: item.id,
             title: item.title
@@ -55,6 +61,7 @@ export default {
       }
     }
   }
+
 }
 </script>
 
@@ -65,13 +72,33 @@ export default {
     margin: 0 auto;
     padding: 15px 10px;
     background-color: #ffffff;
+    &__label {
+      position: relative;
+    }
     &__field {
       width: 100%;
-      padding: 5px 10px;
+      padding: 7px 40px 7px 10px;
       font-size: 16px;
       border: 2px solid #303030;
       border-radius: 5px;
       box-sizing: border-box;
+    }
+    &__button {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      background-color: transparent;
+      background-image: url('~@/assets/close.svg');
+      background-position: center;
+      background-size: 13px;
+      background-repeat: no-repeat;
+      border: 2px solid #303030;
+      border-radius: 50%;
+      transform: translate(0, -50%);
+      cursor: pointer;
     }
   }
 
