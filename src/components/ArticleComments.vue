@@ -1,8 +1,10 @@
 <template>
   <div class="comments">
+    <span class="comments__title">Оставьте свой комментарий</span>
     <button
       class="comments__button comments__button--add"
       @click="isCommentWrite = !isCommentWrite"
+      title="Добавить комментарий"
     >+</button>
 
     <transition name="fade" mode="out-in">
@@ -94,9 +96,16 @@ export default {
 
 <style lang="scss">
   .comments {
-    padding: 20px 15px;
+    padding: 10px 15px;
     background-color: #ecf2f7;
     border-radius: 5px;
+    &__title {
+      display: block;
+      color: #303030;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
     &__button {
       margin-bottom: 10px;
       padding: 5px 10px;
@@ -122,12 +131,14 @@ export default {
       margin-bottom: 20px;
     }
     &__list {
-      margin: 0 0 20px;
+      margin: 0 0 10px;
       padding: 0;
       list-style-type: none;
     }
     &__item {
-      margin-bottom: 10px;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
     }
   }
 

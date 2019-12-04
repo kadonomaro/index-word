@@ -75,8 +75,7 @@ export default new Vuex.Store({
         comments: article.comments
       });
     },
-    deleteArticle(state, article) {
-      let index = state.articles.indexOf(article);
+    deleteArticle(state, index) {
       state.articles.splice(index, 1);
     }
   },
@@ -130,8 +129,8 @@ export default new Vuex.Store({
         .then(() => {
           console.log('success delete article');
           deleteImage(id);
-          const article = this.state.articles.filter((article) => article.id === id);
-          state.commit('deleteArticle', ...article);
+          const articleIndex = this.state.articles.findIndex((article) => article.id === id);
+          state.commit('deleteArticle', articleIndex);
 
         }).catch((error) => {
           console.log('Error deleting article', error);

@@ -79,11 +79,22 @@ export default {
       padding: 20px 30px;
       background-color: #f9f9f9;
 
-      h3, h4, h5, h5, p, ul, ol {
+      h3, h4, h5, h5, p, ul, ol, blockquote {
         margin: 0 0 10px;
       }
       ul, ol {
         padding-left: 25px;
+      }
+      blockquote {
+        margin: 0 0 15px 25px;
+        padding: 5px 5px 5px 10px;
+        background-color: #e9e9e9;
+        border-left: 5px solid #999999;
+      }
+      blockquote > p {
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
     &__link {
