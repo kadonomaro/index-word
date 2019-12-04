@@ -12,8 +12,11 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import './registerServiceWorker';
 import './common.scss';
 
+import EscapeDirective from '@/directives/escape.directive';
+
 Vue.config.productionTip = false;
 Vue.component('paginate', Paginate);
+Vue.directive('escape', EscapeDirective);
 Vue.use(CKEditor);
 
 const firebaseDevConfig = {

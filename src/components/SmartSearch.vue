@@ -1,5 +1,5 @@
 <template>
-  <div class="search" @keydown.esc="isOpen = false">
+  <div class="search" v-escape="close">
     <form class="search__form">
       <label class="search__label">
         <input
@@ -59,6 +59,9 @@ export default {
       if (this.$route.params.id !== id) {
         this.$router.push({ name: 'article-detail', params: {id} })
       }
+    },
+    close() {
+      this.isOpen = false;
     }
   }
 
