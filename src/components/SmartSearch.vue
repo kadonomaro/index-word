@@ -77,11 +77,17 @@ export default {
     }
     &__field {
       width: 100%;
-      padding: 7px 40px 7px 10px;
+      padding: 7px 40px 7px 7px;
       font-size: 16px;
-      border: 2px solid #303030;
+      border: 2px solid #909090;
       border-radius: 5px;
       box-sizing: border-box;
+      transition: border-color 0.2s ease;
+      outline: none;
+      &:hover,
+      &:focus {
+        border-color: #303030;
+      }
     }
     &__button {
       position: absolute;
@@ -95,14 +101,16 @@ export default {
       background-position: center;
       background-size: 13px;
       background-repeat: no-repeat;
-      border: 2px solid #303030;
+      border: 2px solid #909090;
       border-radius: 50%;
       transform: translate(0, -50%);
-      transition: background-color 0.2s ease-in;
+      transition: background-color 0.2s ease-in, border-color 0.2s ease-in;
       cursor: pointer;
+      outline: none;
       &:hover,
       &:focus {
         background-color: #eaebed;
+        border-color: #303030;
       }
     }
   }
@@ -136,6 +144,7 @@ export default {
       border: none;
       transition: background-color 0.2s ease-in;
       cursor: pointer;
+      outline: none;
       &:hover,
       &:focus {
         background-color: #eaebed;
