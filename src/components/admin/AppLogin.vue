@@ -21,7 +21,10 @@
               v-model="loginData.password"
             >
           </label>
-          <button class="login-box__button" @click.prevent="loginClickHandler">Login</button>
+          <div class="login-box__bottom">
+            <button class="login-box__button" @click.prevent="loginClickHandler">Login</button>
+            <div class="login-box__loader" v-if="isLoading"></div>
+          </div>
           <span class="login-box__error">{{ errorCode }}</span>
         </form>
       </div>
@@ -39,7 +42,8 @@ export default {
       loginData: {
         email: '',
         password: ''
-      }
+      },
+      isLoading: false
     }
   },
   computed: {
@@ -50,6 +54,7 @@ export default {
   },
   methods: {
     loginClickHandler() {
+      this.isLoading = true;
       this.$store.dispatch('login', [this.loginData.email, this.loginData.password]);
     }
   },
@@ -58,6 +63,9 @@ export default {
       if (loggedIn) {
         this.$router.push('/admin');
       }
+    },
+    errorCode() {
+      this.isLoading = false;
     }
   }
 }
@@ -117,8 +125,11 @@ export default {
         border-color: lighten($color: #3c4c67, $amount: 20%);
       }
     }
-    &__button {
+    &__bottom {
+      position: relative;
       margin-bottom: 10px;
+    }
+    &__button {
       padding: 4px 12px;
       color:  #3c4c67;
       font-family: inherit;
@@ -134,6 +145,15 @@ export default {
         color: #ffffff;
         background-color: #3c4c67;
       }
+    }
+    &__loader {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: 50%;
+      right: 0;
+      background-image: url('~@/assets/admin/loader.gif');
+      transform: translate(0, -50%);
     }
     &__error {
       display: block;
