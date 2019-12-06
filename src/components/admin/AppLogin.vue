@@ -44,13 +44,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'errorCode'
+      'errorCode',
+      'adminAccess'
     ])
   },
   methods: {
     loginClickHandler() {
       this.$store.dispatch('login', [this.loginData.email, this.loginData.password]);
-      this.$router.push('/admin');
+    }
+  },
+  watch: {
+    adminAccess(loggedIn) {
+      if (loggedIn) {
+        this.$router.push('/admin');
+      }
     }
   }
 }
