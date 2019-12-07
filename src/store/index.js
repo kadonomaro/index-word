@@ -98,7 +98,7 @@ export default new Vuex.Store({
               popularity: doc.data().popularity,
               image: '',
               comments: doc.data().comments || [],
-              isActive: doc.data().active || true
+              isActive: doc.data().isActive
             };
             getImages(article, article.id);
             articles.unshift(article);
@@ -183,6 +183,9 @@ export default new Vuex.Store({
     },
     allArticles(state) {
       return state.articles;
+    },
+    activeArticles(state) {
+      return state.articles.filter((article) => article.isActive);
     },
     popularArticles(state) {
       return state.articles.filter((article) => {

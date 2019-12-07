@@ -3,7 +3,7 @@
     <h2>Все статьи</h2>
     <app-articles :articles="items" />
     <paginate
-      v-if="allArticles.length > pageSize"
+      v-if="activeArticles.length > pageSize"
       v-model="page"
       :page-count="pageCount"
       :click-handler="pageChangeHandler"
@@ -26,15 +26,15 @@ export default {
     AppArticles,
   },
   mounted() {
-    this.setupPagination(this.allArticles);
+    this.setupPagination(this.activeArticles);
   },
   computed: {
     ...mapGetters([
-      'allArticles'
+      'activeArticles'
     ])
   },
   watch: {
-    allArticles(loaded) {
+    activeArticles(loaded) {
       this.setupPagination(loaded);
     }
   }
