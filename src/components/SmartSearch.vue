@@ -123,11 +123,24 @@ export default {
     z-index: 99;
     left: 10px;
     right: 10px;
+    max-height: 360px;
+    background-color: #ffffff;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #909090;
+      border-radius: 2px;
+    }​
+    &::-webkit-scrollbar-track-piece {
+      background-color: #eaebed;
+    }
     &__list {
       margin: 0;
       padding: 0;
