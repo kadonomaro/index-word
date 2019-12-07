@@ -13,6 +13,7 @@
         :popularity="article.popularity"
         :text="article.text"
         :comments="article.comments"
+        :isActive="article.isActive"
       >
       </app-article>
     </div>

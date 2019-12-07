@@ -35,7 +35,8 @@ export default {
     text: {type: String, required: true},
     date: {type: Date, required: true},
     popularity: {type: [Number, String], required: true},
-    comments: {type: Array, required: false}
+    comments: {type: Array, required: false},
+    isActive: {type: Boolean, required: true}
   },
   computed: {
     stringExplode() {

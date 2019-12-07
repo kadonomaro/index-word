@@ -14,8 +14,17 @@
 
     <div class="editable-article__text">
       <label class="editable-article__label">
+        <span class="editable-article__field-caption">Active</span>
+        <input
+          type="checkbox"
+          class="editable-article__checkbox"
+          v-model="newArticle.isActive"
+        >
+      </label>
+      <label class="editable-article__label">
         <span class="editable-article__field-caption">Title</span>
-        <input type="text"
+        <input
+          type="text"
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.title"
@@ -25,7 +34,8 @@
 
       <label class="editable-article__label">
         <span class="editable-article__field-caption">URL</span>
-        <input type="text"
+        <input
+          type="text"
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.url"
@@ -35,7 +45,8 @@
 
       <label class="editable-article__label">
         <span class="editable-article__field-caption">Popularity</span>
-        <input type="text"
+        <input
+          type="text"
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.popularity"
@@ -109,6 +120,7 @@ export default {
         date: new Date(),
         url: this.article.url,
         popularity: this.article.popularity,
+        isActive: this.article.isActive,
         comments: this.article.comments
       },
       newArticleImage: this.article.image,

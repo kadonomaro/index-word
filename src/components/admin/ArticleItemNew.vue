@@ -16,6 +16,15 @@
     </div>
 
     <div class="editable-article-detail__text">
+
+      <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Active</span>
+        <input type="checkbox"
+          class="editable-article-detail__checkbox"
+          v-model="newArticle.isActive"
+        >
+      </label>
+
       <label class="editable-article-detail__label">
         <span class="editable-article-detail__field-caption">Title</span>
         <input type="text"
@@ -91,6 +100,7 @@ export default {
         date: new Date(),
         url: '',
         popularity: '',
+        isActive: true,
         comments: []
       },
       newArticleImage: '',

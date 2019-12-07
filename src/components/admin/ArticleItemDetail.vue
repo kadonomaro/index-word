@@ -2,7 +2,7 @@
   <article class="editable-article-detail">
     <app-button
       class="editable-article__button"
-      :text="'Prev'"
+      :text="'Back'"
       @click-handler="$router.go(-1)"
     />
     <div class="editable-article-detail__image">
@@ -17,6 +17,14 @@
     </div>
 
     <div class="editable-article-detail__text">
+
+      <label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Active</span>
+        <input type="checkbox"
+          class="editable-article-detail__checkbox"
+          v-model="newArticle.isActive"
+        >
+      </label>
       <label class="editable-article-detail__label">
         <span class="editable-article-detail__field-caption">Title</span>
         <input type="text"
@@ -121,7 +129,8 @@ export default {
         date: '',
         url: '',
         popularity: '',
-        comments: ''
+        comments: '',
+        isActive: ''
       },
       newArticleImage: '',
       base64Image: ''
@@ -134,6 +143,7 @@ export default {
     this.newArticle.url = this.article.url;
     this.newArticle.popularity = this.article.popularity;
     this.newArticle.comments = this.article.comments;
+    this.newArticle.isActive = this.article.isActive;
     this.newArticleImage = this.article.image;
   },
   computed: {
