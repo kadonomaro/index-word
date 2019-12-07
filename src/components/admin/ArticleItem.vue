@@ -3,13 +3,16 @@
 
     <div class="editable-article__image">
       <img class="editable-article__image-img" :src="newArticleImage" alt="">
-      <input
-        v-if="isEdit"
-        class="editable-article__file"
-        type="file"
-        accept="image/*"
-        @change="imageSelectHandler"
-      >
+      <label class="editable-article__label">
+        <input
+          v-if="isEdit"
+          class="editable-article__file"
+          type="file"
+          accept="image/*"
+          @change="imageSelectHandler"
+        >
+        <span v-if="isEdit" class="editable-article__file-custom">Choose a image</span>
+      </label>
     </div>
 
     <div class="editable-article__text">
@@ -177,6 +180,7 @@ export default {
     &__image-img {
       width: 100%;
       height: 300px;
+      margin-bottom: 10px;
       object-fit: cover;
       object-position: center;
     }
@@ -205,6 +209,29 @@ export default {
     &__field--editable {
       background-color: transparent;
       box-shadow: inset 0 0 3px rgba($color: #000000, $alpha: 0.2);
+    }
+    &__file {
+	    position: absolute;
+      width: 0.1px;
+      height: 0.1px;
+      z-index: -1;
+      opacity: 0;
+      overflow: hidden;
+    }
+    &__file-custom {
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 18px;
+      border: 2px solid #303030;
+      border-radius: 5px;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in;
+      user-select: none;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: #ffffff;
+        background-color: #303030;
+      }
     }
     &__checkbox {
       width: 20px;
