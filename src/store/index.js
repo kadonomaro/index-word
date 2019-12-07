@@ -160,7 +160,10 @@ export default new Vuex.Store({
           }
         });
       } catch (err) {
-        state.commit('changeErrorCode', err.message);
+        state.commit('changeErrorCode', '');
+        setTimeout(() => {
+          state.commit('changeErrorCode', err.message);
+        }, 100);
       }
     },
 

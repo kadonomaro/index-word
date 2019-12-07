@@ -44,6 +44,7 @@ export default {
     min-height: 100vh;
     &__inner {
       flex-grow: 1;
+      padding-bottom: 30px;
     }
   }
 </style>
