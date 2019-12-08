@@ -11,7 +11,7 @@ export default new Vuex.Store({
     settings: {
       daysBefore: null,
       articlePopularityLimit: null,
-      paginationPageSize: 3
+      paginationPageSize: 9
     },
     auth: {
       hasAccess: false,

@@ -10,6 +10,7 @@
       v-if="newestArticles.length > pageSize"
       v-model="page"
       :page-count="pageCount"
+      :page-range="pageRange"
       :click-handler="pageChangeHandler"
       :prev-text="'Назад'"
       :next-text="'Вперед'"
