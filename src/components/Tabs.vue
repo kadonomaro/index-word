@@ -52,7 +52,7 @@ export default {
   @media screen and (max-width: 767px) {
     .tabs {
       &__link {
-        padding: 10px 8px;
+        padding: 12px 10px;
       }
     }
   }

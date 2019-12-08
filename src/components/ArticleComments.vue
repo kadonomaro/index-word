@@ -101,6 +101,7 @@ export default {
     border-radius: 5px;
     &__title {
       display: block;
+      margin-bottom: 10px;
       color: #303030;
       font-size: 20px;
       font-weight: bold;
@@ -199,6 +200,21 @@ export default {
   @media screen and(max-width: 767px) {
     .comments {
       padding: 10px;
+      &__button {
+        padding: 14px 18px;
+
+      }
+      &__button--add {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+      }
+    }
+    .comments-form {
+
+      &__field {
+        padding: 12px 16px;
+      }
     }
   }
 </style>

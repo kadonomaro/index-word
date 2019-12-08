@@ -122,11 +122,10 @@ export default {
       }
       &__text,
       &__footer {
-        padding: 8px 12px;
+        padding: 8px;
       }
       &__date {
-        padding: 6px;
-        font-size: 14px;
+        padding: 8px 4px;
       }
       &__button {
         font-size: 14px;

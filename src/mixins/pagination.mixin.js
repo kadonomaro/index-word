@@ -2,7 +2,8 @@ export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageSize: 6,
+      pageSize: 1,
+      pageRange: 1,
       pageCount: 0,
       allItems: [],
       items: []

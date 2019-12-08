@@ -68,7 +68,7 @@ export default {
 
   @media screen and (max-width: 767px) {
     .button {
-      font-size: 14px;
+      padding: 8px 18px;
     }
   }
 

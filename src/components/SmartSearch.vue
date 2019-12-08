@@ -166,4 +166,25 @@ export default {
       }
     }
   }
+
+
+  @media screen and (max-width: 767px) {
+    .search {
+
+      &__field {
+        padding: 15px 55px 15px 10px;
+      }
+      &__button {
+        width: 40px;
+        height: 40px;
+        background-size: 20px;
+      }
+    }
+    .search-dropdown {
+
+      &__button {
+        padding: 12px 16px;
+      }
+    }
+  }
 </style>
