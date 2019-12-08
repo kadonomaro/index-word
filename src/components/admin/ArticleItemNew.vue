@@ -33,8 +33,12 @@
         <span class="editable-article-detail__field-caption">Title</span>
         <input type="text"
           class="editable-article-detail__field"
-          :class="{ 'editable-article-detail__field--editable': isEdit }"
+          :class="{
+            'editable-article-detail__field--editable': isEdit,
+            invalid: $v.newArticle.title.$dirty && (!$v.newArticle.title.required || !$v.newArticle.title.minLength)
+            }"
           v-model="newArticle.title"
+          @blur="$v.newArticle.title.$touch()"
         >
       </label>
 
@@ -42,8 +46,11 @@
         <span class="editable-article-detail__field-caption">URL</span>
         <input type="text"
           class="editable-article-detail__field"
-          :class="{ 'editable-article-detail__field--editable': isEdit }"
+          :class="{ 'editable-article-detail__field--editable': isEdit,
+          invalid: $v.newArticle.url.$dirty && (!$v.newArticle.url.required || !$v.newArticle.url.minLength)
+          }"
           v-model="newArticle.url"
+          @blur="$v.newArticle.url.$touch()"
         >
       </label>
 
@@ -84,6 +91,8 @@
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+import { required, minLength } from 'vuelidate/lib/validators';
+
 export default {
   name: 'ArticleItemNew',
   components: {
@@ -103,13 +112,24 @@ export default {
         text: '',
         date: new Date(),
         url: '',
-        popularity: '',
+        popularity: 0,
         isActive: true,
         comments: []
       },
       newArticleImage: '',
       base64Image: ''
     }
+  },
+  validations: {
+    newArticle: {
+      title: {
+        required,
+        minLength: minLength(3)
+      },
+      url: {
+        required, minLength: minLength(3)
+      }
+    },
   },
   methods: {
     createArticle() {
@@ -168,6 +188,10 @@ export default {
       border-radius: 5px;
       box-sizing: border-box;
       transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+    }
+    &__field.invalid {
+      background-color: #ffeaea;
+      border-color: #ff8080;
     }
     &__field--editable {
       background-color: transparent;
