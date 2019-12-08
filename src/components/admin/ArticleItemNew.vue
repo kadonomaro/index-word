@@ -49,7 +49,7 @@
           :class="{ 'editable-article-detail__field--editable': isEdit,
           invalid: $v.newArticle.url.$dirty && (!$v.newArticle.url.required || !$v.newArticle.url.minLength)
           }"
-          v-model="newArticle.url"
+          v-model="transliterate"
           @blur="$v.newArticle.url.$touch()"
         >
       </label>
@@ -146,6 +146,49 @@ export default {
         this.newArticleImage = event.target.result;
         this.base64Image = image;
       };
+    }
+  },
+  computed: {
+    transliterate() {
+      const dictionary = {
+        ' ' : '_',
+        'а' : 'a',
+        'б' : 'b',
+        'в' : 'v',
+        'г' : 'g',
+        'д' : 'd',
+        'е' : 'e',
+        'ё' : 'yo',
+        'ж' : 'zh',
+        'з' : 'z',
+        'и' : 'i',
+        'й' : 'y',
+        'к' : 'k',
+        'л' : 'l',
+        'м' : 'm',
+        'н' : 'n',
+        'о' : 'o',
+        'п' : 'p',
+        'р' : 'r',
+        'с' : 's',
+        'т' : 't',
+        'у' : 'u',
+        'ф' : 'f',
+        'х' : 'h',
+        'ц' : 'c',
+        'ч' : 'ch',
+        'ш' : 'sh',
+        'щ' : 'shch',
+        'ъ' : '',
+        'ы' : 'y',
+        'ь' : '',
+        'э' : 'e',
+        'ю' : 'yu',
+        'я' : 'ya',
+      }
+      return this.newArticle.title.toLowerCase().split('').map((char)=>{
+        return dictionary[char];
+      }).join('');
     }
   }
 }

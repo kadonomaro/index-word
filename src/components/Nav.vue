@@ -1,13 +1,13 @@
 <template>
   <nav class="nav">
-    <ul class="nav__list">
+    <!-- <ul class="nav__list">
       <li class="nav__item">
         <router-link class="nav__link" to="/">Home</router-link>
       </li>
       <li class="nav__item">
         <router-link class="nav__link" to="/about">About</router-link>
       </li>
-    </ul>
+    </ul> -->
   </nav>
 </template>
 

@@ -74,7 +74,6 @@ export default {
     max-width: 900px;
     margin: 0 auto;
     padding: 15px 10px;
-    background-color: #ffffff;
     &__label {
       position: relative;
     }
