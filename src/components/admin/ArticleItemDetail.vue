@@ -64,7 +64,7 @@
           :editor="editor"
           tag-name="textarea"
           :config="editorConfig"
-          v-model="article.text"
+          v-model="newArticle.text"
           :disabled="!isEdit"
         ></ckeditor>
       </label>
@@ -139,7 +139,7 @@ export default {
       base64Image: ''
     }
   },
-  mounted(){
+  created(){
     this.newArticle.title = this.article.title;
     this.newArticle.text = this.article.text;
     this.newArticle.date = new Date();
@@ -181,6 +181,7 @@ export default {
       };
     }
   }
+
 }
 </script>
 

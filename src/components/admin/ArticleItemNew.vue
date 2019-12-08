@@ -38,6 +38,7 @@
             invalid: $v.newArticle.title.$dirty && (!$v.newArticle.title.required || !$v.newArticle.title.minLength)
             }"
           v-model="newArticle.title"
+          @input="transliterate"
           @blur="$v.newArticle.title.$touch()"
         >
       </label>
@@ -49,7 +50,8 @@
           :class="{ 'editable-article-detail__field--editable': isEdit,
           invalid: $v.newArticle.url.$dirty && (!$v.newArticle.url.required || !$v.newArticle.url.minLength)
           }"
-          v-model="transliterate"
+
+          :value="newArticle.url"
           @blur="$v.newArticle.url.$touch()"
         >
       </label>
@@ -146,9 +148,7 @@ export default {
         this.newArticleImage = event.target.result;
         this.base64Image = image;
       };
-    }
-  },
-  computed: {
+    },
     transliterate() {
       const dictionary = {
         ' ' : '_',
@@ -179,14 +179,24 @@ export default {
         'ч' : 'ch',
         'ш' : 'sh',
         'щ' : 'shch',
-        'ъ' : '',
         'ы' : 'y',
-        'ь' : '',
         'э' : 'e',
         'ю' : 'yu',
         'я' : 'ya',
+        '0' : '',
+        '1' : '',
+        '2' : '',
+        '3' : '',
+        '4' : '',
+        '5' : '',
+        '6' : '',
+        '7' : '',
+        '8' : '',
+        '9' : '',
+        '.' : '',
+        ',' : '',
       }
-      return this.newArticle.title.toLowerCase().split('').map((char)=>{
+      this.newArticle.url = this.newArticle.title.toLowerCase().split('').map((char)=>{
         return dictionary[char];
       }).join('');
     }
