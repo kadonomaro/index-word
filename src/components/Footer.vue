@@ -2,16 +2,26 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__col">
-        <app-logo :text="false" />
+        <app-logo class="footer__logo" />
       </div>
       <div class="footer__col">
         <span class="footer__title">статьи</span>
-        <router-link class="footer__link" to="/popular">Популярные</router-link>
-        <router-link class="footer__link" to="/newest">Новинки</router-link>
+        <ul class="footer__list">
+          <li class="footer__item">
+            <router-link class="footer__link" to="/popular">Популярные</router-link>
+            </li>
+          <li class="footer__item">
+            <router-link class="footer__link" to="/newest">Новинки</router-link>
+            </li>
+        </ul>
       </div>
       <div class="footer__col">
         <span class="footer__title">мы в социальных сетях</span>
-        <a class="footer__link" href="https://github.com/kadonomaro" target="_blank">Github</a>
+        <ul class="footer__list">
+          <li class="footer__item">
+            <a class="footer__link" href="https://github.com/kadonomaro" target="_blank">Github</a>
+          </li>
+        </ul>
       </div>
     </div>
     <span class="footer__copy">Designed by Kadonomaro Ⓒ {{ new Date().getFullYear() }}</span>
@@ -54,9 +64,15 @@ export default {
       text-transform: uppercase;
       border-bottom: 1px solid currentColor;
     }
-    &__link {
-      display: block;
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    &__item {
       margin-bottom: 5px;
+    }
+    &__link {
       color: inherit;
       text-decoration: none;
       transition: color 0.2s ease-in;
@@ -68,6 +84,23 @@ export default {
     &__copy {
       display: block;
       text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .footer {
+
+      &__inner {
+        display: block;
+      }
+      &__col {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      &__logo {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 </style>

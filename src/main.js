@@ -7,6 +7,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import Vuelidate from 'vuelidate';
 import Paginate from 'vuejs-paginate';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import './registerServiceWorker';
@@ -18,6 +19,7 @@ Vue.config.productionTip = false;
 Vue.component('paginate', Paginate);
 Vue.directive('escape', EscapeDirective);
 Vue.use(CKEditor);
+Vue.use(Vuelidate);
 
 const firebaseDevConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
