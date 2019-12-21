@@ -66,15 +66,7 @@ export default new Vuex.Store({
     },
 
     updateArticle(state, [id, article]) {
-      db.collection('articles').doc(id).update({
-        url: article.url,
-        title: article.title,
-        text: article.text,
-        date: firebase.firestore.Timestamp.fromDate(article.date),
-        popularity: article.popularity,
-        isActive: article.isActive,
-        comments: article.comments
-      });
+
     },
     deleteArticle(state, index) {
       state.articles.splice(index, 1);
@@ -125,12 +117,22 @@ export default new Vuex.Store({
         console.log('Error creating new article', error);
       });
     },
+    updateArticle(state, [id, article]) {
+      db.collection('articles').doc(id).update({
+        url: article.url,
+        title: article.title,
+        text: article.text,
+        date: firebase.firestore.Timestamp.fromDate(article.date),
+        popularity: article.popularity,
+        isActive: article.isActive,
+        comments: article.comments
+      });
+    },
     deleteArticle(state, id) {
       db.collection('articles')
         .doc(id)
         .delete()
         .then(() => {
-          console.log('success delete article');
           deleteImage(id);
           const articleIndex = this.state.articles.findIndex((article) => article.id === id);
           state.commit('deleteArticle', articleIndex);
@@ -139,6 +141,7 @@ export default new Vuex.Store({
           console.log('Error deleting article', error);
         });
     },
+
     async getSettings(state) {
       await db.collection('settings')
         .doc('general')

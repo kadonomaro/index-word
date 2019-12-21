@@ -134,7 +134,7 @@ export default {
     updateArticle() {
       if (this.isEdit) {
         this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
-        this.$store.commit('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
+        this.$store.dispatch('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
         if (this.base64Image) {
           this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);
         }
