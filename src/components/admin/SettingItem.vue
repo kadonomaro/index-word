@@ -38,7 +38,7 @@ export default {
       return string.split(/(?=[A-Z])/).join(' ').toLowerCase();
     },
     setSettings(settings) {
-      this.$store.commit('uploadSettings', settings);
+      this.$store.dispatch('uploadSettings', settings);
     },
     inputValidate() {
       this.hasError = (/^[0-9]*$/g).test(this.val);

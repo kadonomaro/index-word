@@ -37,15 +37,6 @@ export default new Vuex.Store({
     updateSettings(state, settings) {
       state.settings = settings;
     },
-    uploadSettings(state, payload) {
-      for (const key in payload) {
-        if (payload.hasOwnProperty(key)) {
-          db.collection('settings').doc('general').update({
-            [key]: payload[key]
-          });
-        }
-      }
-    },
 
     increasePopularity(state, id) {
       const article = state.articles.find(article => article.id === id);
@@ -65,9 +56,9 @@ export default new Vuex.Store({
       }, 100);
     },
 
-    updateArticle(state, [id, article]) {
+    // updateArticle(state, [id, article]) {
 
-    },
+    // },
     deleteArticle(state, index) {
       state.articles.splice(index, 1);
     }
@@ -155,6 +146,16 @@ export default new Vuex.Store({
           this.commit('updateSettings', settings);
         });
     },
+    uploadSettings(state, payload) {
+      for (const key in payload) {
+        if (payload.hasOwnProperty(key)) {
+          db.collection('settings').doc('general').update({
+            [key]: payload[key]
+          });
+        }
+      }
+    },
+
     async login(state, [email, password]) {
       try {
         await auth.signInWithEmailAndPassword(email, password);
