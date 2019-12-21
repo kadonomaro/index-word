@@ -56,9 +56,6 @@ export default new Vuex.Store({
       }, 100);
     },
 
-    // updateArticle(state, [id, article]) {
-
-    // },
     deleteArticle(state, index) {
       state.articles.splice(index, 1);
     }

@@ -48,14 +48,25 @@ export default {
   },
   mounted() {
     this.increasePopularity();
+    if (this.article) {
+      this.setPageTitle(this.article.title);
+    }
   },
   methods: {
     increasePopularity() {
       setTimeout(() => {
         this.$store.commit('increasePopularity', this.id);
       }, 3000);
+    },
+    setPageTitle(title) {
+        document.title = title + " – Index Word";
     }
   },
+  watch: {
+    article(loaded) {
+      this.setPageTitle(loaded.title)
+    }
+  }
 };
 </script>
 
