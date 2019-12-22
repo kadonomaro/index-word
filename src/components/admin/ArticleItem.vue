@@ -85,6 +85,12 @@
         :text="'Delete'"
         @click-handler="deleteArticle"
       />
+      <app-button
+        class="editable-article__button"
+        :theme="'light'"
+        :text="'Modal'"
+        @click-handler="openModal(newArticle.title)"
+      />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
         class="editable-article__checkbox"
@@ -94,7 +100,6 @@
         title="Change date to now"
       >
     </footer>
-
   </article>
 </template>
 
@@ -104,7 +109,7 @@ import AppButton from '@/components/blocks/AppButton.vue';
 export default {
   name: 'ArticleItem',
   components: {
-    AppButton,
+    AppButton
   },
   props: {
     article: {
@@ -127,10 +132,18 @@ export default {
         comments: this.article.comments
       },
       newArticleImage: this.article.image,
-      base64Image: ''
+      base64Image: '',
+
+      isModalVisible: false,
     }
   },
   methods: {
+    openModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
     updateArticle() {
       if (this.isEdit) {
         this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
@@ -158,7 +171,7 @@ export default {
         this.newArticleImage = event.target.result;
         this.base64Image = image;
       };
-    }
+    },
   }
 }
 </script>
