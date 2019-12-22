@@ -83,13 +83,7 @@
         class="editable-article__button"
         :theme="'danger'"
         :text="'Delete'"
-        @click-handler="deleteArticle"
-      />
-      <app-button
-        class="editable-article__button"
-        :theme="'light'"
-        :text="'Modal'"
-        @click-handler="openModal(newArticle.title)"
+        @click-handler="openModal"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
@@ -100,16 +94,28 @@
         title="Change date to now"
       >
     </footer>
+
+    <modal v-show="isModalVisible" @close="closeModal" @action="deleteArticle">
+      <template v-slot:header>
+        <span>Delete Article</span>
+      </template>
+      <template v-slot:body>
+        <span>You really want to delete the article "{{ newArticle.title }}", this action cannot be undone.</span>
+      </template>
+    </modal>
+
   </article>
 </template>
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
+import Modal from '@/components/blocks/Modal.vue';
 
 export default {
   name: 'ArticleItem',
   components: {
-    AppButton
+    AppButton,
+    Modal
   },
   props: {
     article: {

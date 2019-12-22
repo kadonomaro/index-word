@@ -4,8 +4,8 @@
 
       <div class="modal">
         <header class="modal__header">
-          <button class="modal__button modal__button--close" @click="close" aria-label="Close modal">x</button>
           <slot name="header"></slot>
+          <button class="modal__button modal__button--close" @click="close" aria-label="Close modal"></button>
         </header>
         <section class="modal__body">
           <slot name="body">
@@ -14,7 +14,6 @@
         <footer class="modal__footer">
           <slot name="footer">
             <app-button
-              class="editable-article__button"
               :text="'OK'"
               @click-handler="action"
             />
@@ -60,21 +59,24 @@ export default {
   .modal {
     position: relative;
     min-width: 320px;
+    max-width: 600px;
     background: #ffffff;
     overflow-x: auto;
     &__header,
     &__footer {
       display: flex;
-      padding: 15px;
+      padding: 10px 20px;
     }
     &__header {
       justify-content: space-between;
       color: #ffffff;
+      font-size: 24px;
       background-color: #606060;
     }
     &__body {
       position: relative;
-      padding: 20px 10px;
+      padding: 10px 20px;
+      font-size: 18px;
     }
     &__footer {
       justify-content: flex-end;
@@ -92,26 +94,15 @@ export default {
       right: 5px;
       width: 30px;
       height: 30px;
+      color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 47.971 47.971'%3E%3Cpath fill='%23ffffff' d='M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z'/%3E%3C/svg%3E");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 2px solid #ffffff;
     }
   }
 
-
-  .btn-close {
-    padding: 20px;
-    color: #4AAE9B;
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-  }
-
-  .btn-green {
-    color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
-    border-radius: 2px;
-  }
 
   .modal-fade-enter,
   .modal-fade-leave-active {
