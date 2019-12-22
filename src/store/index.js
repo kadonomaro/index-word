@@ -27,22 +27,18 @@ export default new Vuex.Store({
       state.auth.hasAccess = status;
     },
 
+    addNewArticle(state, article) {
+      state.articles.unshift(article);
+    },
     updateArticles(state, articles) {
       state.articles = articles;
     },
-    addNewArticle(state, article) {
-      state.articles.unshift(article);
+    deleteArticle(state, index) {
+      state.articles.splice(index, 1);
     },
 
     updateSettings(state, settings) {
       state.settings = settings;
-    },
-
-    increasePopularity(state, id) {
-      const article = state.articles.find(article => article.id === id);
-      db.collection('articles').doc(id).update({
-        popularity: ++article.popularity
-      });
     },
 
     updateComments(state, [id, comment]) {
@@ -55,10 +51,6 @@ export default new Vuex.Store({
         });
       }, 100);
     },
-
-    deleteArticle(state, index) {
-      state.articles.splice(index, 1);
-    }
   },
   actions: {
     async getArticles(state) {
@@ -128,6 +120,13 @@ export default new Vuex.Store({
         }).catch((error) => {
           console.log('Error deleting article', error);
         });
+    },
+
+    increasePopularity(state, id) {
+      const article = this.state.articles.find(article => article.id === id);
+      db.collection('articles').doc(id).update({
+        popularity: ++article.popularity
+      });
     },
 
     async getSettings(state) {

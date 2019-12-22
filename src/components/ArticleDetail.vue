@@ -55,7 +55,7 @@ export default {
   methods: {
     increasePopularity() {
       setTimeout(() => {
-        this.$store.commit('increasePopularity', this.id);
+        this.$store.dispatch('increasePopularity', this.id);
       }, 3000);
     },
     setPageTitle(title) {
