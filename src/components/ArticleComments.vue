@@ -64,7 +64,7 @@ export default {
       return new Date(date.seconds * 1000).toLocaleString();
     },
     updateComments(comment) {
-      this.$store.commit('updateComments', [this.articleID, comment]);
+      this.$store.dispatch('updateComments', [this.articleID, comment]);
     },
     clickHandler() {
       this.newComment.date = new Date();

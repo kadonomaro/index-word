@@ -40,17 +40,6 @@ export default new Vuex.Store({
     updateSettings(state, settings) {
       state.settings = settings;
     },
-
-    updateComments(state, [id, comment]) {
-      const article = state.articles.find(article => article.id === id);
-      comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
-      article.comments.unshift(comment);
-      setTimeout(() => {
-        db.collection('articles').doc(id).update({
-          comments: article.comments
-        });
-      }, 100);
-    },
   },
   actions: {
     async getArticles(state) {
@@ -120,6 +109,17 @@ export default new Vuex.Store({
         }).catch((error) => {
           console.log('Error deleting article', error);
         });
+    },
+
+    updateComments(state, [id, comment]) {
+      const article = this.state.articles.find(article => article.id === id);
+      comment.date = firebase.firestore.Timestamp.fromDate(comment.date);
+      article.comments.unshift(comment);
+      setTimeout(() => {
+        db.collection('articles').doc(id).update({
+          comments: article.comments
+        });
+      }, 100);
     },
 
     increasePopularity(state, id) {
