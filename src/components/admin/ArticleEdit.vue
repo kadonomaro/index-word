@@ -46,7 +46,8 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
+      deletedArticleId: ''
     }
   },
   computed: {
@@ -57,12 +58,14 @@ export default {
   methods: {
     openModal(id) {
       this.isModalVisible = true;
+      this.deletedArticleId = id;
     },
     closeModal() {
       this.isModalVisible = false;
     },
     deleteArticle(id) {
-      console.log('object');
+      this.closeModal();
+      this.$store.dispatch('deleteArticle', this.deletedArticleId);
     }
   }
 
