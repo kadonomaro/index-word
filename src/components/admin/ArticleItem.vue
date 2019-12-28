@@ -83,7 +83,7 @@
         class="editable-article__button"
         :theme="'danger'"
         :text="'Delete'"
-        @click-handler="openModal"
+        @click-handler="openDeleteModal"
       />
       <time datetime="" class="editable-article__date">{{ article.date.toLocaleString() }}</time>
       <input
@@ -95,27 +95,16 @@
       >
     </footer>
 
-    <modal v-show="isModalVisible" @close="closeModal" @action="deleteArticle">
-      <template v-slot:header>
-        <span>Delete Article</span>
-      </template>
-      <template v-slot:body>
-        <span>You really want to delete the article "{{ newArticle.title }}", this action cannot be undone.</span>
-      </template>
-    </modal>
-
   </article>
 </template>
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
-import Modal from '@/components/blocks/Modal.vue';
 
 export default {
   name: 'ArticleItem',
   components: {
-    AppButton,
-    Modal
+    AppButton
   },
   props: {
     article: {
@@ -139,17 +128,9 @@ export default {
       },
       newArticleImage: this.article.image,
       base64Image: '',
-
-      isModalVisible: false,
     }
   },
   methods: {
-    openModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
     updateArticle() {
       if (this.isEdit) {
         this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
@@ -166,9 +147,11 @@ export default {
     openArticle() {
       this.$router.push({ name: 'article-item-detail', params: { id: this.id }});
     },
-    deleteArticle() {
-      this.$store.dispatch('deleteArticle', this.id);
+
+    openDeleteModal() {
+      this.$emit('modal', this.id);
     },
+
     imageSelectHandler(event) {
       const image = event.target.files[0];
       const reader = new FileReader();
