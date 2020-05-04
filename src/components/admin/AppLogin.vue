@@ -61,7 +61,7 @@ export default {
   watch: {
     adminAccess(loggedIn) {
       if (loggedIn) {
-        this.$router.push('/admin');
+        this.$router.push('/admin/editor');
       }
     },
     errorCode() {

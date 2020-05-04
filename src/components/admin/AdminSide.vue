@@ -3,9 +3,6 @@
     <nav class="admin-side__nav side-nav">
       <ul class="side-nav__list">
         <li class="side-nav__item">
-          <router-link class="side-nav__link" to="/admin">General</router-link>
-        </li>
-        <li class="side-nav__item">
           <router-link class="side-nav__link side-nav__link--editor" to="/admin/editor">Editor</router-link>
         </li>
         <li class="side-nav__item">

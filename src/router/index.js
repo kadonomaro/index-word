@@ -58,21 +58,16 @@ const routes = [
         });
       }
     },
-    children: [
-      {
-        path: '/admin',
-        name: 'general',
-        component: () => import('../views/admin/General.vue'),
+		children: [
+			{
+        path: '/admin/editor',
+        name: 'editor',
+        component: () => import('../views/admin/Editor.vue'),
       },
       {
         path: '/admin/settings',
         name: 'settings',
         component: () => import('../views/admin/Settings.vue'),
-      },
-      {
-        path: '/admin/editor',
-        name: 'editor',
-        component: () => import('../views/admin/Editor.vue'),
       },
       {
         path: '/admin/editor/:id',
