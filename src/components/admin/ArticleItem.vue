@@ -31,7 +31,7 @@
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.title"
-          :readonly="!isEdit"
+          :disabled="!isEdit"
         >
       </label>
 
@@ -42,7 +42,7 @@
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.url"
-          :readonly="!isEdit"
+          :disabled="!isEdit"
         >
       </label>
 
@@ -53,7 +53,7 @@
           class="editable-article__field"
           :class="{ 'editable-article__field--editable': isEdit }"
           v-model="newArticle.popularity"
-          :readonly="!isEdit"
+          :disabled="!isEdit"
         >
       </label>
     </div>
