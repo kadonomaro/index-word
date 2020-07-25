@@ -88,8 +88,9 @@ export default {
     }
     &__text {
       padding: 20px 30px;
-      background-color: #f9f9f9;
-
+      background-color: $color-dark-gray;
+			letter-spacing: 0.03em;
+			line-height: 1.3;
       h3, h4, h5, h5, p, ul, ol, blockquote {
         margin: 0 0 10px;
       }
@@ -114,13 +115,13 @@ export default {
     &__footer {
       margin-bottom: 20px;
       padding: 10px;
-      background-color: #5cb8c9;
+      background-color: $color-darkest;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
     }
     &__date {
       color: #ffffff;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
   }

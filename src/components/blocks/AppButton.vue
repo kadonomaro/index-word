@@ -2,7 +2,7 @@
   <button
     class="button"
     :class="theme ? 'button--' + theme : ''"
-    @click="clickHandler"
+    @click.prevent="clickHandler"
   >{{ text }}</button>
 </template>
 

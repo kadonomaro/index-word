@@ -52,21 +52,22 @@ img {
   display: flex;
   justify-content: center;
   padding: 0;
-  font-size: 24px;
+  font-size: 18px;
   list-style: none;
   li {
     margin-right: 3px;
     color: #ffffff;
-    background-color: #5cb8c9;
-    border-radius: 5px;
+    background-color: $color-dark-gray;
+    border-radius: 3px;
     transition: background-color 0.2s ease-in;
     &:hover,
     &:focus {
-      background-color: darken($color: #5cb8c9, $amount: 10%);
+      background-color: darken($color: $color-accent, $amount: 10%);
     }
   }
   li.active {
-    background-color: darken($color: #5cb8c9, $amount: 20%);
+		color: $color-text;
+		background-color: $color-accent;
   }
   a {
     display: block;

@@ -19,7 +19,7 @@
           <transition name="fade" mode="out-in">
             <span class="comments-form__error" v-if="isValidateError">Оба поля должны быть заполнены</span>
           </transition>
-          <button class="comments__button" @click.prevent="clickHandler">Отправить</button>
+					<app-button :text="'Отправить'" @click-handler="clickHandler"/>
         </form>
       </div>
     </transition>
@@ -36,8 +36,13 @@
 </template>
 
 <script>
+import AppButton from '@/components/blocks/AppButton.vue';
+
 export default {
-  name: 'ArticleComments',
+	name: 'ArticleComments',
+	components: {
+		AppButton
+	},
   props: {
     articleID: {
       type: String,
@@ -97,12 +102,11 @@ export default {
 <style lang="scss">
   .comments {
     padding: 10px 15px;
-    background-color: #ecf2f7;
+    background-color: $color-darkest;
     border-radius: 5px;
     &__title {
       display: block;
       margin-bottom: 10px;
-      color: #303030;
       font-size: 20px;
       font-weight: bold;
       text-align: center;
@@ -110,16 +114,16 @@ export default {
     &__button {
       margin-bottom: 10px;
       padding: 5px 10px;
-      color: #ffffff;
+      color: $color-text;
       font-size: 16px;
       line-height: 1;
-      background-color: #5cb8c9;
+      background-color: $color-accent;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.2s ease-in;
       &:hover {
-        background-color: darken($color: #5cb8c9, $amount: 10%);
+        background-color: darken($color: $color-accent, $amount: 10%);
       }
     }
     &__button--add {
@@ -172,13 +176,14 @@ export default {
 
   .comment {
     padding: 5px;
-    background-color: #ffffff;
+    background-color: $color-gray;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
     &__author {
       display: block;
       margin-bottom: 10px;
-      color: #303030;
+			color: $color-accent;
+			font-size: 18px;
       font-weight: bold;
     }
     &__text {
@@ -189,9 +194,8 @@ export default {
       display: inline-block;
       padding: 4px 6px;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: bold;
-      background-color: #5cb8c9;
       border-radius: 5px;
     }
   }

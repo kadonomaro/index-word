@@ -43,7 +43,7 @@ export default {
   .footer {
     padding: 20px 0 10px;
     color: #dbdbdb;
-    background-color: #3c4c67;
+    background-color: $color-dark-gray;
     &__inner {
       display: flex;
       max-width: 1600px;
