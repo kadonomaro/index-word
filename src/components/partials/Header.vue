@@ -21,7 +21,8 @@ export default {
 
 <style lang="scss">
   .header {
-    padding: 10px;
+		padding: 10px;
+		background-color: $color-dark-gray;
     &__inner {
       display: flex;
       align-items: center;

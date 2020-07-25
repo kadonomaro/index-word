@@ -3,7 +3,11 @@
     <div class="logo__image">
       <img :src="image" alt="Index Word">
     </div>
-    <span class="logo__title" v-if="text">Index Word</span>
+		<div class="logo__text" v-if="text">
+			<span class="logo__title" >Index Word</span>
+			<span class="logo__subtitle">Очередной ИТ блог</span>
+		</div>
+
   </div>
 </template>
 
@@ -35,12 +39,20 @@ export default {
       height: 60px;
       margin-right: 10px;
       pointer-events: none;
-    }
+		}
+		&__text {
+			user-select: none;
+		}
     &__title {
-      display: block;
+			display: block;
+			color: #ffffff;
       font-size: 24px;
       font-weight: bold;
-      user-select: none;
     }
+		&__subtitle {
+			display: block;
+			font-size: 16px;
+			color: $color-accent;
+		}
   }
 </style>

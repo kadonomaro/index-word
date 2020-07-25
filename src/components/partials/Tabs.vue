@@ -25,7 +25,7 @@ export default {
 <style lang="scss">
   .tabs {
     padding: 10px 10px 0;
-    background-color: #eaebed;
+    background-color: $color-dark-gray;
     overflow-x: auto;
     &__list {
       display: flex;
@@ -35,8 +35,8 @@ export default {
     }
     &__link {
       display: block;
-      padding: 15px 15px 20px;
-      color: #757575;
+      padding: 15px 25px 15px;
+      color: $color-medium-gray;
       text-decoration: none;
       white-space: nowrap;
       border-top-left-radius: 5px;
@@ -44,8 +44,8 @@ export default {
       transition: color 0.3s ease-in, background-color 0.3s ease-in;
     }
     &__link.router-link-exact-active {
-      color: #303030;
-      background-color: #ffffff;
+      color: $color-accent;
+      background-color: $color-gray;
     }
   }
 

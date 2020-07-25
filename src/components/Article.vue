@@ -55,26 +55,23 @@ export default {
     flex-direction: column;
     align-items: flex-start;
 		height: 100%;
-    background-color: #eaeaea;
+    background-color: $color-dark-gray;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
     transition: box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
     &:hover {
       filter: brightness(0.95);
-      box-shadow: 0 10px 15px -10px rgba(30,45,62,.21),
-                  0 5px 40px -10px rgba(31,44,60,.1);
+      box-shadow: 0 10px 20px rgba(255,255,255,.1);
     }
     &__title {
-      margin: 0 0 10px;
-      color: #606060;
+      margin: 0 0 20px;
+      color: $color-light-gray;
       font-size: 20px;
       text-align: center;
     }
     &__image {
       height: 225px;
-      background-color: #f6f6f6;
-      border: 2px solid #eaeaea;
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
       overflow: hidden;
@@ -88,7 +85,9 @@ export default {
       flex-grow: 1;
       width: 100%;
       padding: 10px 15px;
-      text-align: left;
+			text-align: left;
+			letter-spacing: 0.03em;
+			line-height: 1.3;
       box-sizing: border-box;
       h3, h4, h5, h5, p, ul, ol {
         margin: 0 0 10px;
@@ -102,17 +101,13 @@ export default {
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
-      background-color: #dcdcdc;
+      padding: 10px 15px;
+      background-color: $color-darkest;
       box-sizing: border-box;
     }
     &__date {
-      padding: 6px 12px;
-      color: #ffffff;
-      font-size: 18px;
-      background-color: #5cb8c9;
-      border: 2px solid #5cb8c9;
-      border-radius: 5px;
+			font-size: 16px;
+			text-align: right;
     }
   }
 

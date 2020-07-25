@@ -57,7 +57,7 @@ export default {
     },
     clickHandler(id) {
       if (this.$route.params.id !== id) {
-        this.$router.push({ name: 'article-detail', params: {id} })
+				this.$router.push({ name: 'article-detail', params: {id} });
       }
     },
     close() {
@@ -79,16 +79,21 @@ export default {
     }
     &__field {
       width: 100%;
-      padding: 7px 40px 7px 7px;
+			padding: 7px 40px 7px 7px;
+			color: inherit;
       font-size: 16px;
-      border: 2px solid #909090;
-      border-radius: 5px;
+      border: 2px solid $color-medium-gray;
+			border-radius: 5px;
+			background-color: transparent;
       box-sizing: border-box;
       transition: border-color 0.2s ease;
-      outline: none;
+			outline: none;
+			&::placeholder {
+				color: inherit;
+			}
       &:hover,
       &:focus {
-        border-color: #303030;
+        border-color: $color-accent;
       }
     }
     &__button {

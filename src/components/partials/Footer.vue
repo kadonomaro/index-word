@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__col">
-        <app-logo class="footer__logo" />
+        <app-logo class="footer__logo" :text="false" />
       </div>
       <div class="footer__col">
         <span class="footer__title">статьи</span>
