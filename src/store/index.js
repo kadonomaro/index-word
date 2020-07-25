@@ -19,30 +19,29 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-
-    changeErrorCode(state, code) {
+    CHANGE_ERROR_CODE(state, code) {
       state.auth.error = code;
     },
-    changeAuthStatus(state, status) {
+    CHANGE_AUTH_STATUS(state, status) {
       state.auth.hasAccess = status;
     },
 
-    addNewArticle(state, article) {
+    ADD_NEW_ARTICLE(state, article) {
       state.articles.unshift(article);
     },
-    updateArticles(state, articles) {
+    UPDATE_ARTICLES(state, articles) {
       state.articles = articles;
     },
-    deleteArticle(state, index) {
+    DELETE_ARTICLE(state, index) {
       state.articles.splice(index, 1);
     },
 
-    updateSettings(state, settings) {
+    UPDATE_SETTINGS(state, settings) {
       state.settings = settings;
     },
   },
   actions: {
-    async getArticles(state) {
+    async getArticles({ commit }) {
       const articles = [];
       this.state.articles.length = 0;
       await db.collection('articles')
@@ -65,8 +64,9 @@ export default new Vuex.Store({
             articles.unshift(article);
           });
         });
-      state.commit('updateArticles', articles);
-    },
+      commit('UPDATE_ARTICLES', articles);
+		},
+
     createArticle(state, [article, image]) {
       db.collection('articles').add({
         url: article.url,
@@ -81,11 +81,12 @@ export default new Vuex.Store({
           uploadImage(image, doc.id);
         }
         article.id = doc.id;
-        state.commit('addNewArticle', article);
+        state.commit('ADD_NEW_ARTICLE', article);
       }).catch((error) => {
         console.log('Error creating new article', error);
       });
-    },
+		},
+
     updateArticle(state, [id, article]) {
       db.collection('articles').doc(id).update({
         url: article.url,
@@ -96,7 +97,8 @@ export default new Vuex.Store({
         isActive: article.isActive,
         comments: article.comments
       });
-    },
+		},
+
     deleteArticle(state, id) {
       db.collection('articles')
         .doc(id)
@@ -104,7 +106,7 @@ export default new Vuex.Store({
         .then(() => {
           deleteImage(id);
           const articleIndex = this.state.articles.findIndex((article) => article.id === id);
-          state.commit('deleteArticle', articleIndex);
+          state.commit('DELETE_ARTICLE', articleIndex);
 
         }).catch((error) => {
           console.log('Error deleting article', error);
@@ -129,7 +131,7 @@ export default new Vuex.Store({
       });
     },
 
-    async getSettings(state) {
+    async getSettings({ commit }) {
       await db.collection('settings')
         .doc('general')
         .get()
@@ -139,7 +141,8 @@ export default new Vuex.Store({
             articlePopularityLimit: doc.data().articlePopularityLimit,
             paginationPageSize: doc.data().paginationPageSize
           };
-          this.commit('updateSettings', settings);
+					commit('UPDATE_SETTINGS', settings);
+
         });
     },
     uploadSettings(state, payload) {
@@ -152,20 +155,20 @@ export default new Vuex.Store({
       }
     },
 
-    async login(state, [email, password]) {
+    async login({ commit }, [email, password]) {
       try {
         await auth.signInWithEmailAndPassword(email, password);
         auth.onAuthStateChanged(user => {
           if (user) {
-            state.commit('changeAuthStatus', true);
+            commit('CHANGE_AUTH_STATUS', true);
           } else {
-            state.commit('changeAuthStatus', false);
+            commit('CHANGE_AUTH_STATUS', false);
           }
         });
       } catch (err) {
-        state.commit('changeErrorCode', '');
+        commit('CHANGE_ERROR_CODE', '');
         setTimeout(() => {
-          state.commit('changeErrorCode', err.message);
+          commit('CHANGE_ERROR_CODE', err.message);
         }, 100);
       }
     },
