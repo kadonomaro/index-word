@@ -2,49 +2,59 @@
   <div class="hero">
     <div class="hero__inner">
       <div class="hero__main">
-        <h1 class="hero__title">{{ title }}</h1>
-        <span class="hero__subtitle">{{ subtitle }}</span>
+				<div class="hero__text">
+					<h1 class="hero__title">{{ title }}</h1>
+					<span class="hero__subtitle">{{ subtitle }}</span>
+				</div>
       </div>
-      <div class="hero__side">
-        <div class="hero__image"><img :src="heroImage" alt="Человек читает книгу" width="600"></div>
-      </div>
+			<div class="hero__canvas">
+				<app-canvas />
+			</div>
     </div>
   </div>
 </template>
 
 <script>
-import heroImage from '@/assets/man.png';
+import AppCanvas from '@/components/partials/Canvas.vue';
+
 export default {
-  name: 'Hero',
+	name: 'Hero',
+	components: {
+		AppCanvas
+	},
   data() {
     return {
       title: 'Что почитать на этой неделе?',
       subtitle: 'Мы собрали для вас самые интересные статьи за этот период',
-      heroImage
     }
-  }
+	}
 }
 </script>
 
 <style lang="scss">
   .hero {
     color: #ffffff;
-    background-color: #6bdaed;
-    box-shadow: inset 0 5px 7px rgba($color: #000000, $alpha: 0.15),
-                inset 0 -5px 7px rgba($color: #000000, $alpha: 0.15);
+    background-color: #202020;
     &__inner {
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
+			position: relative;
     }
     &__main {
-      flex-basis: 60%;
-      padding: 10px;
-      text-align: right;
-    }
-    &__side {
-      flex-basis: 40%;
-    }
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+		&__text {
+			padding: 10px 20px;
+			background-color: rgba($color: #000000, $alpha: 0.7);
+		}
     &__title {
       margin: 0 0 20px;
       font-size: 36px;
