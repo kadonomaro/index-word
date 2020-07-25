@@ -24,7 +24,7 @@
         </ul>
       </div>
     </div>
-    <span class="footer__copy">Designed by Kadonomaro Ⓒ {{ new Date().getFullYear() }}</span>
+    <span class="footer__copy">Designed by <a class="footer__link" href="https://airsoftware.ru.com/">Airsoftware</a> Ⓒ {{ new Date().getFullYear() }}</span>
   </footer>
 </template>
 

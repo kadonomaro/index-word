@@ -58,11 +58,16 @@ export default {
     clickHandler(id) {
       if (this.$route.params.id !== id) {
 				this.$router.push({ name: 'article-detail', params: {id} });
+				this.close();
+				this.clear();
       }
     },
     close() {
       this.isOpen = false;
-    }
+		},
+		clear() {
+			this.searchValue = '';
+		}
   }
 
 }
