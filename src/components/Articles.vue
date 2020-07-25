@@ -1,21 +1,10 @@
 <template>
   <div class="articles">
     <div class="articles__list">
-      <app-article
-        class="articles__item"
-        v-for="article in articles"
-        :key="article.id"
-        :id="article.id"
-        :url="article.url"
-        :title="article.title"
-        :date="article.date"
-        :image="article.image"
-        :popularity="article.popularity"
-        :text="article.text"
-        :comments="article.comments"
-        :isActive="article.isActive"
-      >
-      </app-article>
+			<div class="articles__item" v-for="article in articles" :key="article.id">
+				<app-article :article="article" />
+			</div>
+
     </div>
   </div>
 </template>
@@ -54,10 +43,11 @@ export default {
       margin: 0 -10px;
     }
     &__item {
-      flex-basis: calc(33.333% - 30px);
-      max-width: calc(33.333% - 30px);
+      flex-basis: 33.3333%;
+      max-width: 33.3333%;
       min-width: 250px;
-      margin: 15px;
+			padding: 15px;
+			box-sizing: border-box;
     }
   }
 

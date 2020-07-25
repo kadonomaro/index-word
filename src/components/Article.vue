@@ -2,18 +2,18 @@
   <article class="article">
 
     <div class="article__image">
-      <img class="article__image-img" :src="image" alt="">
+      <img class="article__image-img" :src="article.image" alt="">
     </div>
     <div class="article__text">
-      <h2 class="article__title">{{ title }}</h2>
+      <h2 class="article__title">{{ article.title }}</h2>
       <div v-html="stringExplode"></div>
     </div>
     <footer class="article__footer">
       <app-button
         :text="'Читать'"
-        @click-handler="$router.push({ name: 'article-detail', params: {id} })"
+        @click-handler="$router.push({ name: 'article-detail', params: {id: article.id} })"
       />
-      <time datetime="" class="article__date">{{ date.toLocaleString() }}</time>
+      <time datetime="" class="article__date">{{ article.date.toLocaleString() }}</time>
     </footer>
 
   </article>
@@ -28,19 +28,14 @@ export default {
     AppButton
   },
   props: {
-    id: {type: String, required: true},
-    url: {type: String, required: true},
-    title: {type: String, required: true},
-    image: {type: String, required: false},
-    text: {type: String, required: true},
-    date: {type: Date, required: true},
-    popularity: {type: [Number, String], required: true},
-    comments: {type: Array, required: false},
-    isActive: {type: Boolean, required: true}
+		article: {
+			type: Object,
+			required: true
+		}
   },
   computed: {
     stringExplode() {
-      return this.text.split('</p>')[0];
+      return this.article.text.split('</p>')[0];
     }
   }
 };
