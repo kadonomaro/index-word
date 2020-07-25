@@ -1,36 +1,50 @@
 <template>
     <article v-if="article" class="article-detail">
       <div class="article-detail__inner">
-        <app-button
-          class="article-detail__link"
-          :text="'Назад'"
-          @click-handler="$router.go(-1)"
-        />
-        <div class="article-detail__image">
-          <img class="article-detail__image-img" :src="article.image" :alt="article.title">
-        </div>
-        <div class="article-detail__text">
-          <h1 class="article-detail__title">{{ article.title }}</h1>
-          <div v-html="article.text"></div>
-        </div>
+				<div class="article-detail__main">
+					<header class="article-detail__header">
+						<app-button
+							class="article-detail__link"
+							:text="'Назад'"
+							@click-handler="$router.go(-1)"
+						/>
+						<h1 class="article-detail__title">{{ article.title }}</h1>
+					</header>
+					<div class="article-detail__image">
+						<img class="article-detail__image-img" :src="article.image" :alt="article.title">
+					</div>
+					<div class="article-detail__text">
+						<div v-html="article.text"></div>
+					</div>
+					<footer class="article-detail__footer">
+						<time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
+					</footer>
+					<article-comments :comments="article.comments" :articleID="article.id"/>
+				</div>
+
+				<aside class="article-detail__side">
+					<header class="article-detail__header">
+						<h2 class="article-detail__title">Похожие статьи</h2>
+					</header>
+					<related-articles />
+				</aside>
+
       </div>
-      <footer class="article-detail__footer">
-        <time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
-      </footer>
-      <article-comments :comments="article.comments" :articleID="article.id"/>
     </article>
 </template>
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
 import ArticleComments from '@/components/ArticleComments.vue';
+import RelatedArticles from '@/components/RelatedArticles.vue';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'ArticleDetail',
   components: {
     AppButton,
-    ArticleComments
+		ArticleComments,
+		RelatedArticles
   },
   props: {
     id: {
@@ -72,9 +86,19 @@ export default {
 
 <style lang="scss">
   .article-detail {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px 0;
+		&__inner {
+			display: flex;
+		}
+		&__header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		&__side {
+			max-width: 400px;
+			padding-left: 20px;
+		}
 
     &__image-img {
       width: 100%;
@@ -83,7 +107,9 @@ export default {
       object-fit: cover;
     }
     &__title {
-      margin: 0 0 20px;
+			flex-grow: 1;
+      margin: 0;
+			padding: 10px 5px;
       text-align: center;
     }
     &__text {
@@ -108,9 +134,6 @@ export default {
           margin-bottom: 0;
         }
       }
-    }
-    &__link {
-      margin-bottom: 20px;
     }
     &__footer {
       margin-bottom: 20px;
