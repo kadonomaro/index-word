@@ -2,7 +2,9 @@
   <article class="article">
 
     <div class="article__image">
-      <img class="article__image-img" :src="article.image" alt="">
+			<router-link :to="{ name: 'article-detail', params: {id: this.article.id} }">
+				<img class="article__image-img" :src="article.image" alt="">
+			</router-link>
     </div>
     <div class="article__text">
       <h2 class="article__title">{{ article.title }}</h2>
@@ -11,7 +13,7 @@
     <footer class="article__footer">
       <app-button
         :text="'Читать'"
-        @click-handler="$router.push({ name: 'article-detail', params: {id: article.id} })"
+        @click-handler="goToDetail"
       />
       <time datetime="" class="article__date">{{ article.date.toLocaleString() }}</time>
     </footer>
@@ -32,7 +34,12 @@ export default {
 			type: Object,
 			required: true
 		}
-  },
+	},
+	methods: {
+		goToDetail() {
+			this.$router.push({ name: 'article-detail', params: {id: this.article.id} });
+		}
+	},
   computed: {
     stringExplode() {
       return this.article.text.split('</p>')[0];
@@ -47,6 +54,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+		height: 100%;
     background-color: #eaeaea;
     border-radius: 5px;
     box-sizing: border-box;
@@ -64,7 +72,7 @@ export default {
       text-align: center;
     }
     &__image {
-      height: 300px;
+      height: 225px;
       background-color: #f6f6f6;
       border: 2px solid #eaeaea;
       border-top-left-radius: inherit;
@@ -79,7 +87,7 @@ export default {
     &__text {
       flex-grow: 1;
       width: 100%;
-      padding: 15px 20px;
+      padding: 10px 15px;
       text-align: left;
       box-sizing: border-box;
       h3, h4, h5, h5, p, ul, ol {

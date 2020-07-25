@@ -11,7 +11,7 @@ export default new Vuex.Store({
     settings: {
       daysBefore: null,
       articlePopularityLimit: null,
-      paginationPageSize: 9
+      paginationPageSize: 8
     },
     auth: {
       hasAccess: false,
@@ -215,7 +215,7 @@ export default new Vuex.Store({
         return state.articles.find(article => article.id === id);
       };
     },
-    settings(state) {
+    getSettings(state) {
       return state.settings;
     }
   },

@@ -1,17 +1,27 @@
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageSize: 9,
+      pageSize: 8,
       pageRange: 1,
       pageCount: 0,
       allItems: [],
       items: []
     };
   },
-  mounted() {
-    // this.pageSize = this.$store.getters.settings.paginationPageSize;
-  },
+	mounted() {
+		this.pageSize = this.getPageSize
+	},
+	computed: {
+		...mapGetters([
+			'getSettings'
+		]),
+		getPageSize() {
+			return this.getSettings.paginationPageSize
+		}
+	},
   methods: {
     pageChangeHandler(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);

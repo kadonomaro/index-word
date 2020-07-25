@@ -42,8 +42,8 @@ export default {
       margin: 0 -10px;
     }
     &__item {
-      flex-basis: 33.3333%;
-      max-width: 33.3333%;
+      flex-basis: 25%;
+      max-width: 25%;
       min-width: 250px;
 			padding: 15px;
 			box-sizing: border-box;
