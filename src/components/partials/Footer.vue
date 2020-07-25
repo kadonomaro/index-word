@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import AppLogo from '@/components/Logo.vue';
+import AppLogo from '@/components/partials/Logo.vue';
 
 export default {
   name: 'Footer',

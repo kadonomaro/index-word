@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import AppLogo from '@/components/Logo.vue';
-import AppNav from '@/components/Nav.vue';
+import AppLogo from '@/components/partials/Logo.vue';
+import AppNav from '@/components/partials/Nav.vue';
 export default {
   name: 'Header',
   components: {

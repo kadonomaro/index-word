@@ -16,10 +16,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppTabs from '@/components/Tabs.vue';
-import AppHero from '@/components/Hero.vue';
-import SmartSearch from '@/components/SmartSearch.vue';
-import AppFooter from '@/components/Footer.vue';
+import AppTabs from '@/components/partials/Tabs.vue';
+import AppHero from '@/components/partials/Hero.vue';
+import SmartSearch from '@/components/partials/SmartSearch.vue';
+import AppFooter from '@/components/partials/Footer.vue';
 
 export default {
   name: 'MainLayout',

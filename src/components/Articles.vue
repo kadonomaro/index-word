@@ -4,7 +4,6 @@
 			<div class="articles__item" v-for="article in articles" :key="article.id">
 				<app-article :article="article" />
 			</div>
-
     </div>
   </div>
 </template>
