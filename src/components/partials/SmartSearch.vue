@@ -76,9 +76,7 @@ export default {
 <style lang="scss">
   .search {
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 15px 10px;
+		max-width: 900px;
     &__label {
       position: relative;
     }

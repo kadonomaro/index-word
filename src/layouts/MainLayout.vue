@@ -2,8 +2,7 @@
   <main class="main-layout">
     <div class="main-layout__inner">
       <app-hero />
-      <app-tabs />
-      <smart-search :list="articlesTitle"/>
+      <app-navigation />
       <div class="container">
         <transition name="fade" mode="out-in">
           <router-view />
@@ -15,24 +14,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import AppTabs from '@/components/partials/Tabs.vue';
+import AppNavigation from '@/components/partials/Navigation.vue';
 import AppHero from '@/components/partials/Hero.vue';
-import SmartSearch from '@/components/partials/SmartSearch.vue';
 import AppFooter from '@/components/partials/Footer.vue';
 
 export default {
   name: 'MainLayout',
   components: {
     AppHero,
-    AppTabs,
-    SmartSearch,
+    AppNavigation,
     AppFooter
-  },
-  computed: {
-    ...mapGetters([
-      'articlesTitle'
-    ])
   }
 }
 </script>
