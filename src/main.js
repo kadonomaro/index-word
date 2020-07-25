@@ -12,7 +12,7 @@ import Vuelidate from 'vuelidate';
 import Paginate from 'vuejs-paginate';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import './registerServiceWorker';
-import './common.scss';
+import '@/assets/css/style.scss';
 
 import EscapeDirective from '@/directives/escape.directive';
 
