@@ -178,20 +178,21 @@ export default {
 
   @media screen and (max-width: 767px) {
     .search {
-
       &__field {
-        padding: 15px 55px 15px 10px;
+        padding: 10px 55px 10px 10px;
       }
       &__button {
-        width: 40px;
-        height: 40px;
-        background-size: 20px;
+				right: 10px;
+        width: 30px;
+        height: 30px;
+        background-size: 15px;
       }
     }
     .search-dropdown {
-
+			left: 5px;
+			right: 5px;
       &__button {
-        padding: 12px 16px;
+        padding: 6px 10px;
       }
     }
   }

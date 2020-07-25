@@ -68,9 +68,15 @@ export default {
   }
 
   @media screen and (max-width: 767px) {
-    .tabs {
+    .navigation {
+			flex-direction: column;
+			&__search {
+				order: -1;
+				margin: 0;
+			}
       &__link {
-        padding: 12px 10px;
+				padding: 12px 10px;
+				transform: translateY(15px);
       }
     }
   }

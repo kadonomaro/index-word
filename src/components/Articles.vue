@@ -53,9 +53,8 @@ export default {
   @media screen and (max-width: 1279px) {
     .articles {
       &__item {
-        flex-basis: calc(50% - 20px);
-        max-width: calc(50% - 20px);
-        margin: 10px;
+        flex-basis: 50%;
+        max-width: 50%;
       }
     }
   }
@@ -66,8 +65,7 @@ export default {
         display: block;
       }
       &__item {
-        max-width: calc(100% - 20px);
-        margin: 10px;
+        max-width: 100%;
       }
     }
   }
