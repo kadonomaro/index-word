@@ -12,8 +12,8 @@
       :page-count="pageCount"
       :page-range="pageRange"
       :click-handler="pageChangeHandler"
-      :prev-text="'Назад'"
-      :next-text="'Вперед'"
+      :prev-text="'<'"
+      :next-text="'>'"
       :container-class="'paginate'">
     </paginate>
   </section>

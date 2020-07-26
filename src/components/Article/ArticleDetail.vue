@@ -17,6 +17,9 @@
 					<div class="article-detail__text">
 						<div v-html="article.text"></div>
 					</div>
+					<div class="article-detail__tags" v-if="article.tags.length">
+						<article-tags :tags="article.tags" />
+					</div>
 					<footer class="article-detail__footer">
 						<time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
 					</footer>
@@ -37,6 +40,7 @@
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
 import ArticleComments from '@/components/Article/ArticleComments.vue';
+import ArticleTags from '@/components/Article/ArticleTags.vue';
 import RelatedArticles from '@/components/Article/RelatedArticles.vue';
 import { mapGetters } from 'vuex';
 
@@ -45,6 +49,7 @@ export default {
   components: {
     AppButton,
 		ArticleComments,
+		ArticleTags,
 		RelatedArticles
   },
   props: {
@@ -149,7 +154,10 @@ export default {
           margin-bottom: 0;
         }
       }
-    }
+		}
+		&__tags {
+			background-color: $color-dark-gray;
+		}
     &__footer {
       margin-bottom: 20px;
       padding: 10px;
