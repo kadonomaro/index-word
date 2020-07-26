@@ -10,7 +10,6 @@
       <h2 class="article__title">{{ article.title }}</h2>
       <div v-html="stringExplode"></div>
     </div>
-					{{ article.tags }}
     <footer class="article__footer">
       <app-button
         :text="'Читать'"

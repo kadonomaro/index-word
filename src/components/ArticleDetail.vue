@@ -64,9 +64,6 @@ export default {
 		related() {
 			return this.relatedArticles(this.article.tags, this.id)
 		}
-		// related() {
-		// 	return this.relatedArticles.filter(article => article.id !== this.article.id);
-		// }
   },
   mounted() {
     this.increasePopularity();
@@ -103,8 +100,13 @@ export default {
 			align-items: center;
 			margin-bottom: 10px;
 		}
+		&__main {
+			flex-grow: 1;
+		}
 		&__side {
-			max-width: 400px;
+			flex-basis: 350px;
+			max-width: 350px;
+			flex-shrink: 0;
 			padding-left: 20px;
 		}
 
@@ -175,6 +177,9 @@ export default {
 
   @media screen and (max-width: 767px) {
     .article-detail {
+			&__header {
+				display: block;
+			}
       &__text {
         padding: 10px;
       }

@@ -76,7 +76,8 @@ export default {
 			}
       &__link {
 				padding: 12px 10px;
-				transform: translateY(15px);
+				transform: translateY(10px);
+				-webkit-tap-highlight-color: transparent;
       }
     }
   }

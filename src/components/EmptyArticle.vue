@@ -14,8 +14,8 @@ export default {
   .empty-article {
     margin: 0 10px;
     padding: 10px;
-    background-color: #f6f6f6;
-    border: 1px solid #ececec;
+    background-color: $color-dark-gray;
+    border: 1px solid $color-medium-gray;
     border-radius: 5px;
   }
 </style>
