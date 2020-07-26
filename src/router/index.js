@@ -29,7 +29,7 @@ const routes = [
         path: '/articles/:id',
         name: 'article-detail',
         props: true,
-        component: () => import('../components/ArticleDetail.vue')
+        component: () => import('../components/Article/ArticleDetail.vue')
       },
     ]
   },

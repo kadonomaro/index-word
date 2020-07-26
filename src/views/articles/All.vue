@@ -1,7 +1,7 @@
 <template>
   <section class="all-articles">
     <h2>Все статьи</h2>
-    <app-articles :articles="items" />
+    <article-list :articles="items" />
     <paginate
       v-if="activeArticles.length > pageSize"
       v-model="page"
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AppArticles from '@/components/Articles.vue';
+import ArticleList from '@/components/Article/ArticleList.vue';
 import { mapGetters } from 'vuex';
 import paginationMixin from '@/mixins/pagination.mixin';
 
@@ -24,7 +24,7 @@ export default {
   name: 'all-articles',
   mixins: [paginationMixin],
   components: {
-    AppArticles,
+    ArticleList,
   },
   mounted() {
     this.setupPagination(this.activeArticles);

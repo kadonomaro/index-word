@@ -34,7 +34,7 @@
 import AppButton from '@/components/blocks/AppButton.vue';
 
 export default {
-  name: 'Article',
+  name: 'ArticleItem',
   components: {
     AppButton
   },

@@ -1,7 +1,7 @@
 <template>
   <section class="popular-articles">
     <h2>Популярные статьи</h2>
-    <app-articles
+    <article-list
       v-if="popularArticles.length > 0"
       :articles="items"
     />
@@ -21,8 +21,8 @@
 
 <script>
 
-import AppArticles from '@/components/Articles.vue';
-import AppEmptyArticle from '@/components/EmptyArticle.vue';
+import ArticleList from '@/components/Article/ArticleList.vue';
+import AppEmptyArticle from '@/components/Article/EmptyArticle.vue';
 import { mapGetters } from 'vuex';
 import paginationMixin from '@/mixins/pagination.mixin';
 
@@ -30,7 +30,7 @@ export default {
   name: 'popular-articles',
   mixins: [paginationMixin],
   components: {
-    AppArticles,
+    ArticleList,
     AppEmptyArticle
   },
   mounted(){

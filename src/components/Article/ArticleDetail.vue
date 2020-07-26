@@ -36,8 +36,8 @@
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
-import ArticleComments from '@/components/ArticleComments.vue';
-import RelatedArticles from '@/components/RelatedArticles.vue';
+import ArticleComments from '@/components/Article/ArticleComments.vue';
+import RelatedArticles from '@/components/Article/RelatedArticles.vue';
 import { mapGetters } from 'vuex';
 
 export default {

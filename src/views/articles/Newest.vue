@@ -1,11 +1,11 @@
 <template>
   <section class="newest-articles">
     <h2>Новые статьи</h2>
-    <app-articles
+    <article-list
       v-if="newestArticles.length > 0"
       :articles="items"
     />
-    <app-empty-article v-else />
+    <empty-article v-else />
     <paginate
       v-if="newestArticles.length > pageSize"
       v-model="page"
@@ -21,8 +21,8 @@
 
 <script>
 
-import AppArticles from '@/components/Articles.vue';
-import AppEmptyArticle from '@/components/EmptyArticle.vue';
+import ArticleList from '@/components/Article/ArticleList.vue';
+import EmptyArticle from '@/components/Article/EmptyArticle.vue';
 import { mapGetters } from 'vuex';
 import paginationMixin from '@/mixins/pagination.mixin';
 
@@ -30,8 +30,8 @@ export default {
   name: 'newest-articles',
   mixins: [paginationMixin],
   components: {
-    AppArticles,
-    AppEmptyArticle
+    ArticleList,
+    EmptyArticle
   },
   mounted(){
     this.setupPagination(this.newestArticles);

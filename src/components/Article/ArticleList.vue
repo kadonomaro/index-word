@@ -2,18 +2,18 @@
   <div class="articles">
     <div class="articles__list">
 			<div class="articles__item" v-for="article in articles" :key="article.id">
-				<app-article :article="article" />
+				<article-item :article="article" />
 			</div>
     </div>
   </div>
 </template>
 
 <script>
-import AppArticle from '@/components/Article.vue';
+import ArticleItem from '@/components/Article/ArticleItem.vue';
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'Articles',
+  name: 'ArticleList',
   props: {
     articles: {
       type: Array,
@@ -22,7 +22,7 @@ export default {
     }
   },
   components: {
-    AppArticle,
+    ArticleItem,
   },
   computed: {
     ...mapGetters([
