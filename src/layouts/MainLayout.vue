@@ -32,7 +32,8 @@ export default {
   .main-layout {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+		min-height: 100vh;
+		color: #ffffff;
     &__inner {
       flex-grow: 1;
       padding-bottom: 30px;

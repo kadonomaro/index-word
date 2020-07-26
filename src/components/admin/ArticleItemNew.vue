@@ -92,8 +92,8 @@
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
 import { required, minLength } from 'vuelidate/lib/validators';
+import { dictionary } from '@/helpers/transliterate.js'
 
 export default {
   name: 'ArticleItemNew',
@@ -150,54 +150,9 @@ export default {
       };
     },
     transliterate() {
-      const dictionary = {
-        ' ' : '_',
-        'а' : 'a',
-        'б' : 'b',
-        'в' : 'v',
-        'г' : 'g',
-        'д' : 'd',
-        'е' : 'e',
-        'ё' : 'yo',
-        'ж' : 'zh',
-        'з' : 'z',
-        'и' : 'i',
-        'й' : 'y',
-        'к' : 'k',
-        'л' : 'l',
-        'м' : 'm',
-        'н' : 'n',
-        'о' : 'o',
-        'п' : 'p',
-        'р' : 'r',
-        'с' : 's',
-        'т' : 't',
-        'у' : 'u',
-        'ф' : 'f',
-        'х' : 'h',
-        'ц' : 'c',
-        'ч' : 'ch',
-        'ш' : 'sh',
-        'щ' : 'shch',
-        'ы' : 'y',
-        'э' : 'e',
-        'ю' : 'yu',
-        'я' : 'ya',
-        '0' : '',
-        '1' : '',
-        '2' : '',
-        '3' : '',
-        '4' : '',
-        '5' : '',
-        '6' : '',
-        '7' : '',
-        '8' : '',
-        '9' : '',
-        '.' : '',
-        ',' : '',
-      }
+
       this.newArticle.url = this.newArticle.title.toLowerCase().split('').map((char)=>{
-        return dictionary[char];
+        return dictionary[char] || char;
       }).join('');
     }
   }

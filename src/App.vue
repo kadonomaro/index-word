@@ -32,7 +32,6 @@ img {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #ffffff;
 }
 
 #nav {
@@ -55,11 +54,13 @@ img {
   font-size: 18px;
   list-style: none;
   li {
-    margin-right: 3px;
     color: #ffffff;
     background-color: $color-dark-gray;
     border-radius: 3px;
     transition: background-color 0.2s ease-in;
+		&:not(:last-child) {
+			margin-right: 3px;
+		}
     &:hover,
     &:focus {
       background-color: darken($color: $color-accent, $amount: 10%);
@@ -86,11 +87,11 @@ img {
 }
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .paginate {
-    font-size: 16px;
+    font-size: 18px;
     a {
-      padding: 4px 8px;
+      padding: 10px 16px;
     }
   }
 }

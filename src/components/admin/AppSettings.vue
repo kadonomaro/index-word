@@ -5,7 +5,7 @@
       <ul class="settings__list">
         <setting-item
           class="settings__item"
-          v-for="(value, name, index) in settings"
+          v-for="(value, name, index) in getSettings"
           :key="index"
           :name="name"
           :val="value"
@@ -23,10 +23,9 @@ export default {
   components: {
     SettingItem,
   },
-  name: 'Settings',
   computed: {
     ...mapGetters([
-      'settings'
+      'getSettings'
     ]),
   },
 
