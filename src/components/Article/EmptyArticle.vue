@@ -16,6 +16,6 @@ export default {
     padding: 10px;
     background-color: $color-dark-gray;
     border: 1px solid $color-medium-gray;
-    border-radius: 5px;
+    border-radius: $border-radius;
   }
 </style>

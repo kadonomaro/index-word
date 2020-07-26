@@ -110,6 +110,11 @@ export default {
 			padding-left: 20px;
 		}
 
+		&__image {
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			overflow: hidden;
+		}
     &__image-img {
       width: 100%;
       max-width: 100%;
@@ -149,8 +154,8 @@ export default {
       margin-bottom: 20px;
       padding: 10px;
       background-color: $color-darkest;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
     }
     &__date {
       color: #ffffff;

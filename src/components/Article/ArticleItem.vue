@@ -65,14 +65,17 @@ export default {
     align-items: flex-start;
 		height: 100%;
     background-color: $color-dark-gray;
-    border-radius: 5px;
+		border-radius: $border-radius;
+		box-shadow: 0 3px 8px rgba($color: #000000, $alpha: 0.5);
     box-sizing: border-box;
     overflow: hidden;
-    transition: box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
+		transition: box-shadow 0.2s ease-in-out;
     &:hover {
-      filter: brightness(0.95);
-      box-shadow: 0 10px 20px rgba(255,255,255,.1);
-    }
+      box-shadow: 0 5px 12px rgba($color: #000000, $alpha: 0.6);
+		}
+		&:hover &__image-img {
+			filter: brightness(1);
+		}
     &__title {
       margin: 0 0 20px;
       color: $color-light-gray;
@@ -83,12 +86,14 @@ export default {
       height: 225px;
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
-      overflow: hidden;
+			overflow: hidden;
     }
     &__image-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+			object-fit: cover;
+			filter: brightness(0.85);
+			transition: filter 0.2s ease-in;
     }
     &__text {
       flex-grow: 1;

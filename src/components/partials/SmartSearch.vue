@@ -86,7 +86,7 @@ export default {
 			color: inherit;
       font-size: 16px;
       border: 2px solid $color-medium-gray;
-			border-radius: 5px;
+			border-radius: $border-radius;
 			background-color: transparent;
       box-sizing: border-box;
       transition: border-color 0.2s ease;
@@ -132,8 +132,8 @@ export default {
     right: 10px;
     max-height: 360px;
     background-color: #ffffff;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
     box-sizing: border-box;
     overflow: auto;

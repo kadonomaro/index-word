@@ -103,7 +103,7 @@ export default {
   .comments {
     padding: 10px 15px;
     background-color: $color-darkest;
-    border-radius: 5px;
+    border-radius: $border-radius;
     &__title {
       display: block;
       margin-bottom: 10px;
@@ -119,7 +119,7 @@ export default {
       line-height: 1;
       background-color: $color-accent;
       border: none;
-      border-radius: 5px;
+      border-radius: $border-radius;
       cursor: pointer;
       transition: background-color 0.2s ease-in;
       &:hover {
@@ -167,7 +167,7 @@ export default {
       font-size: 16px;
       font-family: inherit;
       border: none;
-      border-radius: 5px;
+      border-radius: $border-radius;
       box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
       resize: none;
       box-sizing: border-box;
@@ -177,7 +177,7 @@ export default {
   .comment {
     padding: 5px;
     background-color: $color-gray;
-    border-radius: 5px;
+    border-radius: $border-radius;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
     &__author {
       display: block;
@@ -196,7 +196,6 @@ export default {
       color: #ffffff;
       font-size: 12px;
       font-weight: bold;
-      border-radius: 5px;
     }
   }
 

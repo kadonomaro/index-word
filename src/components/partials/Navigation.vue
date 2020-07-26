@@ -56,10 +56,10 @@ export default {
       color: $color-medium-gray;
       text-decoration: none;
       white-space: nowrap;
-      border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
+      border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
 			transform: translateY(10px);
-      transition: color 0.3s ease-in, background-color 0.3s ease-in;
+      transition: color 0.2s ease-in, background-color 0.2s ease-in;
     }
     &__link.router-link-exact-active {
       color: $color-accent;

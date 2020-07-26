@@ -37,7 +37,7 @@ export default {
     text-decoration: none;
     background-color: transparent;
     border: 2px solid $color-accent;
-    border-radius: 5px;
+    border-radius: $border-radius;
     transition: color 0.2s ease-in, background-color 0.2s ease-in;
     cursor: pointer;
     &:hover,
