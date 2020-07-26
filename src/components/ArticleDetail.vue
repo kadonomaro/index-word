@@ -1,7 +1,8 @@
 <template>
-    <article v-if="article" class="article-detail">
+    <main v-if="article" class="article-detail">
       <div class="article-detail__inner">
-				<div class="article-detail__main">
+
+				<article class="article-detail__main">
 					<header class="article-detail__header">
 						<app-button
 							class="article-detail__link"
@@ -20,17 +21,17 @@
 						<time datetime="" class="article-detail__date">{{ article.date.toLocaleString() }}</time>
 					</footer>
 					<article-comments :comments="article.comments" :articleID="article.id"/>
-				</div>
+				</article>
 
-				<aside class="article-detail__side">
+				<aside class="article-detail__side" v-if="relatedArticles">
 					<header class="article-detail__header">
 						<h2 class="article-detail__title">Похожие статьи</h2>
 					</header>
-					<related-articles />
+					<related-articles :articles="related" />
 				</aside>
 
       </div>
-    </article>
+    </main>
 </template>
 
 <script>
@@ -54,11 +55,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getArticleById'
+			'getArticleById',
+			'relatedArticles'
     ]),
     article() {
       return this.getArticleById(this.id);
-    }
+		},
+		related() {
+			return this.relatedArticles.filter(article => article.id !== this.article.id);
+		}
   },
   mounted() {
     this.increasePopularity();
@@ -149,15 +154,26 @@ export default {
     }
   }
 
+	@media screen and (max-width: 1024px) {
+		.article-detail {
+			&__inner {
+				display: block;
+			}
+			&__main {
+				margin-bottom: 20px;
+			}
+			&__side {
+				max-width: 100%;
+				padding: 0;
+			}
+		}
+	}
+
 
   @media screen and (max-width: 767px) {
     .article-detail {
-
       &__text {
         padding: 10px;
-      }
-      &__title {
-        margin-bottom: 10px;
       }
     }
   }

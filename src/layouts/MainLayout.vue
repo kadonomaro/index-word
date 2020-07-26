@@ -1,5 +1,5 @@
 <template>
-  <main class="main-layout">
+  <div class="main-layout">
     <div class="main-layout__inner">
       <app-hero />
       <app-navigation />
@@ -10,7 +10,7 @@
       </div>
     </div>
     <app-footer />
-  </main>
+  </div>
 </template>
 
 <script>

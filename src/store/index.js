@@ -188,7 +188,8 @@ export default new Vuex.Store({
       return state.articles;
 		},
 		relatedArticles(state) {
-			return state.articles.splice(0, 3);
+			const articles = [...state.articles];
+			return articles.splice(0, 3);
 		},
     activeArticles(state) {
       return state.articles.filter((article) => article.isActive);

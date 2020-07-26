@@ -1,7 +1,7 @@
 <template>
 	<div class="related">
 		<div class="related__list">
-			<div class="related__item" v-for="article in relatedArticles" :key="article.id">
+			<div class="related__item" v-for="article in articles" :key="article.id">
 				<app-article :article="article" />
 			</div>
 		</div>
@@ -17,10 +17,11 @@ export default {
 	components: {
 		AppArticle
 	},
-	computed: {
-		...mapGetters([
-			'relatedArticles'
-		])
+	props: {
+		articles: {
+			type: Array,
+			required: true
+		}
 	}
 }
 </script>
@@ -30,6 +31,36 @@ export default {
 		&__item {
 			&:not(:last-child) {
 				margin-bottom: 20px;
+			}
+		}
+	}
+
+
+	@media screen and (max-width: 1024px) {
+		.related {
+			&__list {
+				display: flex;
+				margin: 0 -10px;
+			}
+			&__item {
+				flex-basis: 50%;
+				max-width: 50%;
+				padding: 10px;
+				&:not(:last-child) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+
+	@media screen and (max-width: 600px) {
+		.related {
+			&__list {
+				display: block;
+			}
+			&__item {
+				max-width: 100%;
 			}
 		}
 	}
