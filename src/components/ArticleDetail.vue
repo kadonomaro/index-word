@@ -136,8 +136,8 @@ export default {
       blockquote {
         margin: 0 0 15px 25px;
         padding: 5px 5px 5px 10px;
-        background-color: #e9e9e9;
-        border-left: 5px solid #999999;
+        background-color: $color-gray;
+        border-left: 5px solid $color-medium-dark-gray;
       }
       blockquote > p {
         &:last-child {
