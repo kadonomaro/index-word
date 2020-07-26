@@ -10,6 +10,15 @@
       <h2 class="article__title">{{ article.title }}</h2>
       <div v-html="stringExplode"></div>
     </div>
+		<div class="article__tags" v-if="article.tags.length">
+			<div class="article-tags">
+				<ul class="article-tags__list">
+					<li class="article-tags__item" v-for="tag in article.tags" :key="tag">
+						<router-link :to="'/'" class="article-tags__link">{{ tag }}</router-link>
+					</li>
+				</ul>
+			</div>
+		</div>
     <footer class="article__footer">
       <app-button
         :text="'Читать'"
@@ -96,6 +105,9 @@ export default {
         padding-left: 25px;
       }
     }
+		&__tags {
+			width: 100%;
+		}
     &__footer {
       display: flex;
       width: 100%;
@@ -110,6 +122,33 @@ export default {
 			text-align: right;
     }
   }
+
+
+	.article-tags {
+		padding: 5px 15px;
+		text-align: left;
+		&__list {
+			display: flex;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		&__item {
+			&:not(:last-child) {
+				margin-right: 10px;
+			}
+		}
+		&__link {
+			color: $color-medium-gray;
+			transition: color 0.2s ease-in;
+			&:hover {
+				color: #ffffff;
+			}
+			&::before {
+				content: '#';
+			}
+		}
+	}
 
 
   @media screen and (max-width: 767px) {
