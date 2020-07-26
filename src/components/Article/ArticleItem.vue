@@ -14,7 +14,7 @@
 			<div class="article-tags">
 				<ul class="article-tags__list">
 					<li class="article-tags__item" v-for="tag in article.tags" :key="tag">
-						<router-link :to="'/'" class="article-tags__link">{{ tag }}</router-link>
+						<router-link :to="{ name: 'articles-tags', query: {tag} }" class="article-tags__link">{{ tag }}</router-link>
 					</li>
 				</ul>
 			</div>

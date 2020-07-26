@@ -24,6 +24,12 @@ const routes = [
         path: '/newest',
         name: 'newest',
         component: () => import('../views/articles/Newest.vue')
+			},
+			{
+        path: '/articles/',
+        name: 'articles-tags',
+        props: true,
+        component: () => import('../views/articles/Tags.vue')
       },
       {
         path: '/articles/:id',

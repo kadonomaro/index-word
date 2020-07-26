@@ -224,7 +224,12 @@ export default new Vuex.Store({
       return (id) => {
         return state.articles.find(article => article.id === id);
       };
-    },
+		},
+		getArticlesByTag(state) {
+			return (tag) => {
+				return state.articles.filter(article => article.tags.includes(tag))
+			}
+		},
     getSettings(state) {
       return state.settings;
     }
