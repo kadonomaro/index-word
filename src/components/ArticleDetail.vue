@@ -23,7 +23,7 @@
 					<article-comments :comments="article.comments" :articleID="article.id"/>
 				</article>
 
-				<aside class="article-detail__side" v-if="relatedArticles">
+				<aside class="article-detail__side" v-if="related.length">
 					<header class="article-detail__header">
 						<h2 class="article-detail__title">Похожие статьи</h2>
 					</header>
@@ -62,8 +62,11 @@ export default {
       return this.getArticleById(this.id);
 		},
 		related() {
-			return this.relatedArticles.filter(article => article.id !== this.article.id);
+			return this.relatedArticles(this.article.tags, this.id)
 		}
+		// related() {
+		// 	return this.relatedArticles.filter(article => article.id !== this.article.id);
+		// }
   },
   mounted() {
     this.increasePopularity();

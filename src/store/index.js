@@ -57,7 +57,8 @@ export default new Vuex.Store({
               date: doc.data().date.toDate(),
               popularity: doc.data().popularity,
               image: '',
-              comments: doc.data().comments || [],
+							comments: doc.data().comments || [],
+							tags: doc.data().tags || [],
               isActive: doc.data().isActive
             };
             getImages(article, article.id);
@@ -75,7 +76,8 @@ export default new Vuex.Store({
         date: firebase.firestore.Timestamp.fromDate(article.date),
         popularity: article.popularity,
         isActive: article.isActive,
-        comments: article.comments
+				comments: article.comments,
+				tags: article.tags || []
       }).then((doc) => {
         if (image) {
           uploadImage(image, doc.id);
@@ -188,8 +190,12 @@ export default new Vuex.Store({
       return state.articles;
 		},
 		relatedArticles(state) {
-			const articles = [...state.articles];
-			return articles.splice(0, 3);
+			return (tags, id) => {
+				const articles = [...state.articles];
+				return articles.filter(article => {
+					return article.tags.some(tag => tags.includes(tag)) && article.id !== id;
+				}).splice(0, 3);
+			}
 		},
     activeArticles(state) {
       return state.articles.filter((article) => article.isActive);
