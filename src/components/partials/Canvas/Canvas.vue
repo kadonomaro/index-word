@@ -16,13 +16,13 @@ export default {
 		this.initialSettings();
 		this.drawText({
 			font: 'bold 16px Roboto',
-			ASCIICharRange: [65, 122],
 			cell: {
 				width: 20,
 				height: 20
 			},
 			colors: ['#9b9b9b','#828282', '#696969', '#505050'],
-			delay: window.innerWidth <= 767 ? 1000 : 500
+			words: this.shuffle(words),
+			delay: window.innerWidth <= 767 ? 500 : 1000
 		})
 	},
 	methods: {
@@ -32,7 +32,7 @@ export default {
 			this.$refs.canvas.height = 450;
 		},
 
-		drawText({font, ASCIICharRange, colors, cell= {width: 1, height: 1}, delay}) {
+		drawText({font, colors, cell= {width: 1, height: 1}, words, delay}) {
 			const maxCount = words.length;
 			let counter = 0;
 			const positions = [];
@@ -49,7 +49,6 @@ export default {
 					if (!positions.some(pos => pos.x === position.x && pos.y === position.y)) {
 							this.context.fillStyle = colors[this.getRandomRange(0, colors.length - 1)];
 							this.context.fillText(words[counter], position.x, position.y);
-							console.log(position.width);
 							counter++;
 					}
 					positions.push(position);
@@ -64,9 +63,14 @@ export default {
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
 
-		getRandomSymbol(start, end) {
-			return String.fromCharCode(this.getRandomRange(start, end));
+		shuffle(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+					let j = Math.floor(Math.random() * (i + 1));
+					[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
 		}
+
 	}
 }
 </script>
