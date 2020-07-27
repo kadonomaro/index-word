@@ -58,6 +58,16 @@
         >
       </label>
 
+			<label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Tags</span>
+        <input type="text"
+          class="editable-article-detail__field"
+          :class="{ 'editable-article-detail__field--editable': isEdit }"
+          v-model="newArticle.tags"
+          :readonly="!isEdit"
+        >
+      </label>
+
       <label class="editable-article-detail__label">
         <span class="editable-article-detail__field-caption">Text</span>
         <ckeditor
@@ -103,6 +113,7 @@
 import { mapGetters } from 'vuex';
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { stringToArray } from '@/helpers/stringToArray.js';
 
 export default {
   name: 'ArticleItemDetail',
@@ -132,7 +143,8 @@ export default {
         date: '',
         url: '',
         popularity: '',
-        comments: '',
+				comments: '',
+				tags: '',
         isActive: ''
       },
       newArticleImage: '',
@@ -145,7 +157,8 @@ export default {
     this.newArticle.date = new Date();
     this.newArticle.url = this.article.url;
     this.newArticle.popularity = this.article.popularity;
-    this.newArticle.comments = this.article.comments;
+		this.newArticle.comments = this.article.comments;
+		this.newArticle.tags = this.article.tags;
     this.newArticle.isActive = this.article.isActive;
     this.newArticleImage = this.article.image;
   },
@@ -160,7 +173,8 @@ export default {
   methods: {
     updateArticle() {
       if (this.isEdit) {
-        this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
+				this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
+				this.newArticle.tags = stringToArray(this.newArticle.tags);
         this.$store.dispatch('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
         if (this.base64Image) {
           this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);

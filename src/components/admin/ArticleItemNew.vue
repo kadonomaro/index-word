@@ -65,6 +65,15 @@
         >
       </label>
 
+			<label class="editable-article-detail__label">
+        <span class="editable-article-detail__field-caption">Tags</span>
+        <input type="text"
+          class="editable-article-detail__field"
+          :class="{ 'editable-article-detail__field--editable': isEdit }"
+          v-model="newArticle.tags"
+        >
+      </label>
+
       <label class="editable-article-detail__label">
         <span class="editable-article-detail__field-caption">Text</span>
         <ckeditor
@@ -93,7 +102,8 @@
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { required, minLength } from 'vuelidate/lib/validators';
-import { dictionary } from '@/helpers/transliterate.js'
+import { dictionary } from '@/helpers/transliterate.js';
+import { stringToArray } from '@/helpers/stringToArray.js';
 
 export default {
   name: 'ArticleItemNew',
@@ -116,7 +126,8 @@ export default {
         url: '',
         popularity: 0,
         isActive: true,
-        comments: []
+				comments: [],
+				tags: ''
       },
       newArticleImage: '',
       base64Image: ''
@@ -135,11 +146,13 @@ export default {
   },
   methods: {
     createArticle() {
+			this.newArticle.tags = stringToArray(this.newArticle.tags);
       this.$store.dispatch('createArticle', [this.newArticle, this.base64Image]);
       setTimeout(() => {
         this.$router.push({ name: 'editor' });
-      }, 10);
-    },
+			}, 10);
+		},
+
     imageSelectHandler(event) {
       const image = event.target.files[0];
       const reader = new FileReader();
@@ -148,13 +161,17 @@ export default {
         this.newArticleImage = event.target.result;
         this.base64Image = image;
       };
-    },
-    transliterate() {
+		},
 
+    transliterate() {
       this.newArticle.url = this.newArticle.title.toLowerCase().split('').map((char)=>{
         return dictionary[char] || char;
       }).join('');
-    }
+		},
+
+		stringToArray(string) {
+			return string.replace(/\s+/g,'').split(',');
+		}
   }
 }
 </script>

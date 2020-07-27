@@ -56,6 +56,17 @@
           :disabled="!isEdit"
         >
       </label>
+
+			<label class="editable-article__label">
+        <span class="editable-article__field-caption">Tags</span>
+        <input
+          type="text"
+          class="editable-article__field"
+          :class="{ 'editable-article__field--editable': isEdit }"
+          v-model="newArticle.tags"
+          :disabled="!isEdit"
+        >
+      </label>
     </div>
 
     <footer class="editable-article__footer">
@@ -100,6 +111,7 @@
 
 <script>
 import AppButton from '@/components/blocks/AppButton.vue';
+import { stringToArray } from '@/helpers/stringToArray.js';
 
 export default {
   name: 'ArticleItem',
@@ -124,7 +136,8 @@ export default {
         url: this.article.url,
         popularity: this.article.popularity,
         isActive: this.article.isActive,
-        comments: this.article.comments
+				comments: this.article.comments,
+				tags: this.article.tags
       },
       newArticleImage: this.article.image,
       base64Image: '',
@@ -133,7 +146,8 @@ export default {
   methods: {
     updateArticle() {
       if (this.isEdit) {
-        this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
+				this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
+				this.newArticle.tags = stringToArray(this.newArticle.tags);
         this.$store.dispatch('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
         if (this.base64Image) {
           this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);

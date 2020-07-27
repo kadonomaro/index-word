@@ -97,7 +97,8 @@ export default new Vuex.Store({
         date: firebase.firestore.Timestamp.fromDate(article.date),
         popularity: article.popularity,
         isActive: article.isActive,
-        comments: article.comments
+				comments: article.comments,
+				tags: article.tags
       });
 		},
 
@@ -107,8 +108,8 @@ export default new Vuex.Store({
         .delete()
         .then(() => {
           deleteImage(id);
-          const articleIndex = this.state.articles.findIndex((article) => article.id === id);
-          state.commit('DELETE_ARTICLE', articleIndex);
+          const index = this.state.articles.findIndex((article) => article.id === id);
+          state.commit('DELETE_ARTICLE', index);
 
         }).catch((error) => {
           console.log('Error deleting article', error);
