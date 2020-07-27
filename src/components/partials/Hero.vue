@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AppCanvas from '@/components/partials/Canvas.vue';
+import AppCanvas from '@/components/partials/Canvas/Canvas.vue';
 
 export default {
 	name: 'Hero',

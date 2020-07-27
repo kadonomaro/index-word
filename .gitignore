@@ -3,6 +3,7 @@ node_modules
 /dist
 /design
 /.firebase
+words.js
 
 
 # local env files
