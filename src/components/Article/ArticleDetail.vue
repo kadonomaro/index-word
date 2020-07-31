@@ -42,6 +42,7 @@ import AppButton from '@/components/blocks/AppButton.vue';
 import ArticleComments from '@/components/Article/ArticleComments.vue';
 import ArticleTags from '@/components/Article/ArticleTags.vue';
 import RelatedArticles from '@/components/Article/RelatedArticles.vue';
+import meta from '@/mixins/meta.mixin';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -51,7 +52,8 @@ export default {
 		ArticleComments,
 		ArticleTags,
 		RelatedArticles
-  },
+	},
+	mixins: [meta],
   props: {
     id: {
       type: String,
@@ -72,23 +74,12 @@ export default {
   },
   mounted() {
     this.increasePopularity();
-    if (this.article) {
-      this.setPageTitle(this.article.title);
-    }
   },
   methods: {
     increasePopularity() {
       setTimeout(() => {
         this.$store.dispatch('increasePopularity', this.id);
       }, 3000);
-    },
-    setPageTitle(title) {
-        document.title = title + " – Index Word";
-    }
-  },
-  watch: {
-    article(loaded) {
-      this.setPageTitle(loaded.title)
     }
   }
 };
