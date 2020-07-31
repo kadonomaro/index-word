@@ -15,7 +15,7 @@
 		</div>
     <footer class="article__footer">
       <app-button
-        :text="'Читать'"
+        :text="'Подробнее'"
         @click-handler="goToDetail"
       />
       <time datetime="" class="article__date">{{ article.date.toLocaleString() }}</time>

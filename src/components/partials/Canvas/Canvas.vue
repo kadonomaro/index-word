@@ -16,13 +16,9 @@ export default {
 		this.initialSettings();
 		this.drawText({
 			font: 'bold 16px Roboto',
-			cell: {
-				width: 20,
-				height: 20
-			},
 			colors: ['#9b9b9b','#828282', '#696969', '#505050'],
 			words: this.shuffle(words),
-			delay: window.innerWidth <= 767 ? 500 : 1000
+			delay: window.innerWidth <= 767 ? 500 : 10
 		})
 	},
 	methods: {
@@ -32,18 +28,17 @@ export default {
 			this.$refs.canvas.height = 450;
 		},
 
-		drawText({font, colors, cell= {width: 1, height: 1}, words, delay}) {
-			const maxCount = words.length;
+		drawText({font, colors, words, delay}) {
+			this.context.font = font;
+			const HEIGHT = 15;
 			let counter = 0;
 			const positions = [];
 
-			this.context.font = font;
 
 			const interval = setInterval(() => {
 					const position = {
-							x: Math.ceil(this.getRandomRange(0, this.$refs.canvas.width) / cell.width) * cell.width,
-							y: Math.ceil(this.getRandomRange(0, this.$refs.canvas.height) / cell.height) * cell.height,
-							width: words[counter].length
+							x: Math.ceil(this.getRandomRange(0, this.$refs.canvas.width) / getTextWidth(words[counter])) * getTextWidth(words[counter]),
+							y: Math.ceil(this.getRandomRange(0, this.$refs.canvas.height) / HEIGHT) * HEIGHT,
 					};
 
 					if (!positions.some(pos => pos.x === position.x && pos.y === position.y)) {
@@ -53,10 +48,14 @@ export default {
 					}
 					positions.push(position);
 
-					if (counter >= maxCount) {
+					if (counter >= words.length) {
 							clearInterval(interval);
 					}
 			}, delay);
+
+			const getTextWidth = (text) => {
+				return this.context.measureText(text).width;
+			}
 		},
 
 		getRandomRange(min, max) {

@@ -30,20 +30,19 @@ export default {
 <style lang="scss">
   .button {
     display: inline-block;
-    padding: 5px 25px;
-    color: inherit;
+    padding: 5px 15px;
+    color: $color-text;
     font-family: inherit;
     font-size: 18px;
     text-decoration: none;
-    background-color: transparent;
-    border: 2px solid $color-accent;
+		background-color: $color-accent;
+		border: none;
     border-radius: $border-radius;
-    transition: color 0.2s ease-in, background-color 0.2s ease-in;
+    transition: background-color 0.2s ease-in;
     cursor: pointer;
     &:hover,
     &:focus {
-      color: $color-text;
-      background-color: $color-accent;
+      background-color: darken($color: $color-accent, $amount: 10%);
     }
   }
   .button--active {
