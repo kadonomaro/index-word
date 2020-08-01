@@ -40,6 +40,7 @@ export default {
 		align-items: center;
     padding: 10px 10px;
 		background-color: $color-dark-gray;
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 		&__search {
 			width: 100%;
 			margin-left: 30px;
@@ -52,18 +53,19 @@ export default {
     }
     &__link {
       display: block;
-      padding: 15px 25px 15px;
+      padding: 15px 25px 30px;
       color: $color-medium-gray;
       text-decoration: none;
-      white-space: nowrap;
+			white-space: nowrap;
       border-top-left-radius: $border-radius;
 			border-top-right-radius: $border-radius;
-			transform: translateY(10px);
+			transform: translateY(25px);
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
     }
     &__link.router-link-exact-active {
       color: $color-accent;
-      background-color: $color-gray;
+			background-color: $color-gray;
+			background-image: url('~@/assets/bg-noise.png');
     }
   }
 

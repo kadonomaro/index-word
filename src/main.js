@@ -11,7 +11,6 @@ import store from './store';
 import Vuelidate from 'vuelidate';
 import Paginate from 'vuejs-paginate';
 import CKEditor from '@ckeditor/ckeditor5-vue';
-import VueMeta from 'vue-meta';
 import './registerServiceWorker';
 import '@/assets/css/style.scss';
 
@@ -22,9 +21,6 @@ Vue.component('paginate', Paginate);
 Vue.directive('escape', EscapeDirective);
 Vue.use(CKEditor);
 Vue.use(Vuelidate);
-Vue.use(VueMeta, {
-	refreshOnceOnNavigation: true
-});
 
 const firebaseDevConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,

@@ -44,6 +44,7 @@ export default {
     padding: 20px 0 10px;
     color: #dbdbdb;
     background-color: $color-dark-gray;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
     &__inner {
       display: flex;
       max-width: 1600px;

@@ -28,6 +28,9 @@ img {
   margin: 0 auto;
   padding: 0 10px;
 }
+body {
+	background-image: url('~@/assets/bg-noise.png');
+}
 #app {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
