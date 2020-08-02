@@ -79,10 +79,21 @@ export default {
       text-align: center;
     }
     &__image {
-      height: 225px;
+			position: relative;
+      height: 250px;
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
 			overflow: hidden;
+			&::before {
+				content: '';
+				position: absolute;
+				z-index: 10;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100px;
+				background-image: linear-gradient(to bottom, transparent 0%, transparent 30%, $color-dark-gray 100%);
+			}
     }
     &__image-img {
       width: 100%;
