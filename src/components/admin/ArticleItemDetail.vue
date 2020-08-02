@@ -128,12 +128,11 @@ export default {
   },
   data() {
     return {
-
       editor: ClassicEditor,
       editorConfig: {
         toolbar: {
-        items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
-        }
+        	items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
+				}
       },
       isEdit: false,
       isDateChange: false,
@@ -152,30 +151,15 @@ export default {
     }
   },
   created(){
-    this.newArticle.title = this.article.title;
-    this.newArticle.text = this.article.text;
-    this.newArticle.date = new Date();
-    this.newArticle.url = this.article.url;
-    this.newArticle.popularity = this.article.popularity;
-		this.newArticle.comments = this.article.comments;
-		this.newArticle.tags = this.article.tags;
-    this.newArticle.isActive = this.article.isActive;
-    this.newArticleImage = this.article.image;
-  },
-  computed: {
-    ...mapGetters([
-      'getArticleById'
-    ]),
-    article() {
-      return this.getArticleById(this.id);
-    },
+		this.newArticle = this.article;
+		this.newArticle.date = new Date();
   },
   methods: {
     updateArticle() {
       if (this.isEdit) {
 				this.isDateChange ? this.newArticle.date = new Date() : this.newArticle.date = this.article.date;
 				this.newArticle.tags = stringToArray(this.newArticle.tags);
-        this.$store.dispatch('updateArticle', [this.article.id ,this.newArticle]); // need to fix this by dispatch
+        this.$store.dispatch('updateArticle', [this.article.id ,this.newArticle]);
         if (this.base64Image) {
           this.$store.dispatch('uploadImage', [this.base64Image, this.article.id]);
         }
@@ -194,6 +178,14 @@ export default {
         this.base64Image = image;
       };
     }
+	},
+	computed: {
+    ...mapGetters([
+      'getArticleById'
+    ]),
+    article() {
+      return this.getArticleById(this.id);
+    },
   }
 
 }

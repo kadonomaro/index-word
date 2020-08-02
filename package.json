@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "github:ckeditor/ckeditor5-build-classic",
+    "@ckeditor/ckeditor5-upload": "^21.0.0",
     "@ckeditor/ckeditor5-vue": "github:ckeditor/ckeditor5-vue",
     "core-js": "^3.3.2",
     "firebase": "^7.2.1",

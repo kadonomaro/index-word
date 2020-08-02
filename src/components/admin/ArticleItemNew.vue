@@ -167,10 +167,6 @@ export default {
       this.newArticle.url = this.newArticle.title.toLowerCase().split('').map((char)=>{
         return dictionary[char] || char;
       }).join('');
-		},
-
-		stringToArray(string) {
-			return string.replace(/\s+/g,'').split(',');
 		}
   }
 }

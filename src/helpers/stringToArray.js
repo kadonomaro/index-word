@@ -3,5 +3,4 @@ export function stringToArray(string) {
 		return string.replace(/\s+/g,'').split(',');
 	}
 	return string;
-
 }
