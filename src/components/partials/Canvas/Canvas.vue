@@ -19,7 +19,7 @@ export default {
 			colors: ['#9b9b9b','#828282', '#696969', '#505050'],
 			words: this.shuffle(words),
 			delay: window.innerWidth <= 767 ? 500 : 1000
-		})
+		});
 	},
 	methods: {
 		initialSettings() {

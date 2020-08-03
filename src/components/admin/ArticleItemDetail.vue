@@ -87,7 +87,7 @@
         :class="{ 'button--active' : isEdit }"
         :theme="'light'"
         :text="'Edit'"
-        @click-handler="toggleArticleEdit"
+        @click-handler="changeEditStatus"
       />
       <app-button
         v-if="isEdit"
@@ -131,7 +131,7 @@ export default {
       editor: ClassicEditor,
       editorConfig: {
         toolbar: {
-        	items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
+        	items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'imageUpload', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
 				}
       },
       isEdit: false,
@@ -153,6 +153,7 @@ export default {
   created(){
 		this.newArticle = this.article;
 		this.newArticle.date = new Date();
+		this.newArticleImage = this.article.image;
   },
   methods: {
     updateArticle() {
@@ -166,15 +167,15 @@ export default {
         this.isEdit = false;
       }
     },
-    toggleArticleEdit() {
+    changeEditStatus() {
       this.isEdit = !this.isEdit;
     },
     imageSelectHandler(event) {
       const image = event.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(image);
-      reader.onload = event => {
-        this.newArticleImage = event.target.result;
+      reader.onload = evt => {
+        this.newArticleImage = evt.target.result;
         this.base64Image = image;
       };
     }

@@ -2,13 +2,32 @@
   <nav class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item">
-        <router-link class="navigation__link" to="/">Все статьи</router-link>
+        <router-link
+					class="navigation__link"
+					to="/"
+					active-class="navigation__link--active"
+					exact
+				>
+					Все статьи
+				</router-link>
       </li>
       <li class="navigation__item">
-        <router-link class="navigation__link" to="/popular">Популярные</router-link>
+        <router-link
+					class="navigation__link"
+					to="/popular"
+					active-class="navigation__link--active"
+				>
+					Популярные
+				</router-link>
       </li>
       <li class="navigation__item">
-        <router-link class="navigation__link" to="/newest">Новинки</router-link>
+        <router-link
+					class="navigation__link"
+					to="/newest"
+					active-class="navigation__link--active"
+				>
+					Новинки
+				</router-link>
       </li>
     </ul>
 		<div class="navigation__search">
@@ -62,7 +81,7 @@ export default {
 			transform: translateY(25px);
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
     }
-    &__link.router-link-exact-active {
+    &__link--active {
       color: $color-accent;
 			background-color: $color-gray;
 			background-image: url('~@/assets/bg-noise.png');
