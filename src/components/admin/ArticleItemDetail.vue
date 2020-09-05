@@ -114,6 +114,7 @@ import { mapGetters } from 'vuex';
 import AppButton from '@/components/blocks/AppButton.vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { stringToArray } from '@/helpers/stringToArray.js';
+import UploadAdapter from '@/helpers/UploadAdapter.js';
 
 export default {
   name: 'ArticleItemDetail',
@@ -132,7 +133,8 @@ export default {
       editorConfig: {
         toolbar: {
         	items: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedlist', 'numberedlist', '|', 'imageUpload', '|', 'blockquote', 'insertTable', 'undo', 'redo' ],
-				}
+				},
+				extraPlugins: [this.uploader]
       },
       isEdit: false,
       isDateChange: false,
@@ -178,7 +180,13 @@ export default {
         this.newArticleImage = evt.target.result;
         this.base64Image = image;
       };
-    }
+		},
+		uploader(editor) {
+			editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+				return new UploadAdapter(loader);
+			}
+		},
+
 	},
 	computed: {
     ...mapGetters([

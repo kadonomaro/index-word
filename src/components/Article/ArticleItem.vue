@@ -93,6 +93,7 @@ export default {
 				width: 100%;
 				height: 100px;
 				background-image: linear-gradient(to bottom, transparent 0%, transparent 30%, $color-dark-gray 100%);
+        pointer-events: none;
 			}
     }
     &__image-img {
